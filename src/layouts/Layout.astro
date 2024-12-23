@@ -1,0 +1,51 @@
+---
+import Head from "@components/Head.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import SkinnyCenter from "@components/SkinnyCenter.astro";
+import "@styles/tailwind.css";
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  date?: Date;
+  updated?: Date;
+  tags?: Array<string>;
+}
+
+const { title, description, image, date, updated, tags } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="overflow-y-scroll scroll-smooth subpixel-antialiased">
+  <Head
+    title={title}
+    description={description}
+    image={image}
+    date={date}
+    updated={updated}
+    tags={tags}
+  />
+  <body class="bg-primary text-secondary">
+    <div class="flex min-h-screen flex-col justify-start">
+      <Header />
+      <main>
+        <SkinnyCenter>
+          <slot />
+        </SkinnyCenter>
+      </main>
+      <div
+        class="fixed top-[-10px] z-40 h-5 w-screen bg-primary opacity-90 blur"
+        aria-hidden="true"
+      >
+      </div>
+      <div
+        class="fixed bottom-[-10px] z-40 h-5 w-screen bg-primary opacity-90 blur"
+        aria-hidden="true"
+      >
+      </div>
+      <Footer />
+    </div>
+  </body>
+</html>

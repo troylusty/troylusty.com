@@ -1,0 +1,19 @@
+---
+import { SITE } from "@consts";
+import { Icon } from "astro-icon/components";
+---
+
+<header id="header" class="mx-auto w-full max-w-screen-lg p-4">
+  <div
+    class="flex h-12 items-center justify-between leading-[0px] text-secondary"
+  >
+    <a class="inline-flex items-center" href="/" title={SITE.TITLE}>
+      <Icon name="icon" title={SITE.TITLE} class="h-8 w-auto ease-in-out" />
+      <div
+        class="ml-2 hidden flex-none text-sm font-bold capitalize md:visible lg:block"
+      >
+        Troy Lusty
+      </div>
+    </a>
+  </div>
+</header>

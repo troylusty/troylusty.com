@@ -1,0 +1,11 @@
+---
+import { getCollection } from "astro:content";
+import { PROJECTS } from "@consts";
+import ShowcasePage from "@components/ShowcasePage.astro";
+
+const projects = (await getCollection("projects"))
+  .filter((project) => !project.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<ShowcasePage content={projects} CONSTS={PROJECTS} />

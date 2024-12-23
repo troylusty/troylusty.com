@@ -1,0 +1,121 @@
+---
+import { SITE } from "@consts";
+import gradient from "../../public/assets/gradient.avif";
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  date?: Date;
+  updated?: Date;
+  tags?: Array<string>;
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const { title, description, image = gradient.src, date, updated } = Astro.props;
+let { tags } = Astro.props;
+
+if (typeof tags !== "undefined") {
+  tags = SITE.KEYWORDS.concat(tags);
+}
+
+import inter from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url";
+import redhatmono from "@fontsource-variable/red-hat-mono/files/red-hat-mono-latin-wght-normal.woff2?url";
+---
+
+<head>
+  <!-- Global Metadata -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta content="True" name="HandheldFriendly" />
+  <meta content="en-gb" name="lang" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <!-- Generator -->
+  <meta name="generator" content={Astro.generator} />
+
+  <!-- Author -->
+  <meta content={SITE.AUTHOR} name="author" />
+
+  <!-- Sitemap -->
+  <link rel="sitemap" href="/sitemap-index.xml" />
+
+  <!-- RSS -->
+  <link
+    rel="alternate"
+    type="application/rss+xml"
+    title={SITE.TITLE}
+    href="/rss.xml"
+    }
+  />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href={canonicalURL} />
+
+  <!-- Primary Meta Tags -->
+  <title>{title}</title>
+  <meta name="title" content={title} />
+  <meta name="description" content={description} />
+
+  <!-- Keywords -->
+  <meta
+    content={tags ? tags?.toString() : SITE.KEYWORDS.toString()}
+    name="keywords"
+  />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={Astro.url} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={new URL(image, Astro.url)} />
+  <meta property="og:site_name" content={SITE.TITLE} />
+  {
+    date ? (
+      <meta property="article:published_time" content={date.toISOString()} />
+    ) : null
+  }
+  {
+    updated ? (
+      <meta property="article:modified_time" content={updated.toISOString()} />
+    ) : null
+  }
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content={Astro.url} />
+  <meta property="twitter:title" content={title} />
+  <meta property="twitter:description" content={description} />
+  <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+  <!-- View Transitions -->
+  <style>
+    @view-transition {
+      navigation: auto;
+    }
+  </style>
+
+  <!-- Disable Dark Reader Statically -->
+  <meta name="darkreader-lock" />
+
+  <!-- Font Preload -->
+  <link
+    rel="preload"
+    as="font"
+    type="font/woff2"
+    href={inter}
+    crossorigin="anonymous"
+  />
+  <link
+    rel="preload"
+    as="font"
+    type="font/woff2"
+    href={redhatmono}
+    crossorigin="anonymous"
+  />
+</head>

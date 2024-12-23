@@ -1,0 +1,106 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Prose from "@components/Prose.astro";
+import FormattedDate from "@components/FormattedDate.astro";
+import { readingTime } from "@lib/utils";
+import { Icon } from "astro-icon/components";
+
+const { article, isPost = false } = Astro.props;
+const { Content } = await article.render();
+
+let datesMatch = false;
+if (article.data.date.getTime() == article.data.updated?.getTime()) {
+  datesMatch = true;
+}
+
+const listFormatter = new Intl.ListFormat("en-GB", {
+  style: "long",
+  type: "conjunction",
+});
+---
+
+<Layout
+  title={article.data.title}
+  description={article.data.description}
+  image={article.data.image.url.src}
+  date={article.data.date}
+  updated={article.data.updated}
+  tags={article.data.tags}
+>
+  <div class="mx-auto mb-16 max-w-prose">
+    <h1
+      class="animate-reveal break-words text-start text-4xl font-medium opacity-0"
+    >
+      {article.data.title}
+    </h1>
+    <div
+      class="flex animate-reveal flex-col items-start opacity-0 [animation-delay:0.3s]"
+    >
+      <div
+        class="mt-4 flex flex-col items-start gap-2 text-lg text-tertiary md:flex-row"
+      >
+        <div class="flex items-center gap-2">
+          <Icon name="mdi:calendar" />
+          {
+            datesMatch ? (
+              <p title="Date">
+                <FormattedDate date={article.data.date} />
+              </p>
+            ) : (
+              <>
+                <p title="Date">
+                  <FormattedDate date={article.data.date} />
+                </p>
+                <Icon name="mdi:trending-up" />
+                <p title="Updated">
+                  <FormattedDate date={article.data.updated} />
+                </p>
+              </>
+            )
+          }
+        </div>
+        {
+          isPost ? (
+            <div class="flex items-center gap-2">
+              <Icon name="mdi:timer" />
+              <p title="Word count">{readingTime(article.body)}</p>
+            </div>
+          ) : null
+        }
+      </div>
+      {
+        article.data.extraAuthors ? (
+          <div class="mt-2 flex items-center gap-2 text-tertiary">
+            <p>
+              In collaboration with{" "}
+              {listFormatter.format(article.data.extraAuthors)}
+            </p>
+          </div>
+        ) : null
+      }
+      <ul class="mt-4 flex flex-wrap gap-1">
+        {
+          article.data.categories.map((category: string) => (
+            <li class="rounded border border-accent bg-accent/50 px-1 py-0.5 text-sm capitalize text-primary invert">
+              {category}
+            </li>
+          ))
+        }
+        {
+          article.data.tags.map((tag: string) => (
+            <li class="rounded border border-accent bg-accent/50 px-1 py-0.5 text-sm capitalize text-secondary">
+              {tag}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+  <div
+    class="mx-auto max-w-prose animate-reveal opacity-0 [animation-delay:0.6s]"
+  >
+    <Prose>
+      <Content />
+    </Prose>
+  </div>
+</Layout>

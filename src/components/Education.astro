@@ -1,0 +1,30 @@
+---
+import { getCollection } from "astro:content";
+import { dateRange } from "@lib/utils";
+import Accordion from "@components/Accordion.astro";
+
+const collection = (await getCollection("education")).sort(
+  (a, b) =>
+    new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf(),
+);
+
+const education = await Promise.all(
+  collection.map(async (item) => {
+    const { Content } = await item.render();
+    return { ...item, Content };
+  }),
+);
+---
+
+<div>
+  {
+    education.map((entry) => (
+      <Accordion
+        institution={`${entry.data.institution} (${dateRange(entry.data.dateStart, entry.data.dateEnd)})`}
+        qualification={entry.data.qualification}
+        grades={entry.data.grades}
+        isOpen={entry.data.isOpen}
+      />
+    ))
+  }
+</div>

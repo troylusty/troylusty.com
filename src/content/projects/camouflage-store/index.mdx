@@ -1,0 +1,61 @@
+---
+title: "Camouflage Store"
+description: "Camouflage is a family run outdoor clothing and equipment business, which started in 2007. We also provide consultation to a major MOD Supplier. This includes product concept design and testing. With these partnerships we are able to provide the best possible products, designed, tested and proven."
+#date: 2020-12-03T09:17:23+00:00 # Date of site creation
+date: 2022-10-18 # Date Persuit theme was purchased
+updated: 2024-12-05
+image:
+  {
+    url: "camouflage-store-homepage.avif",
+    alt: "Camouflage Store homepage as of 2022",
+  }
+tags: ["ecommerce", "shopify", "docker"]
+categories: ["client work"]
+---
+
+My role has me in charge of managing an online ecommerce store in addition to creating, editing, and publishing informational YouTube and social media content for a family run outdoors store. This includes the redesign shown below but also any maintenance and general upkeep of the site and all related systems.
+
+## YouTube content
+
+As of 2024-12-05 the [YouTube channel](https://www.youtube.com/@camouflagestoreuk) has 1.37k subscribers and 312,241 views over a total of 168 videos. If were to pick one video that displays the quality of the content we produce, it would probably be [SOLO ATP SAS SMOCK MK2 (2022) OVERVIEW | Camouflage Store](https://www.youtube.com/watch?v=K7wlm60rXVs). I am incredibly grateful to Steve for giving me the opportunity to continue working with him, and for the amount of creative freedom he gives me when experimenting with new ideas.
+
+![SOLO ATP SAS SMOCK MK2 (2022) OVERVIEW | Camouflage Store YouTube Video Thumbnail](camouflage-store-video-thumbnail.avif)
+
+## Site redesign
+
+Most recently I completed modernising the website which included moving it to Shopify from its previous CMS platform. This has resulted in the owner gaining more control over his business as he can now make changes to the site that would have previously required hiring a developer to do. Additionally, the new site is far more modern introducing benefits such as being mobile friendly, fast, and much more secure which will improve the experience for everyone.
+
+![Camouflage Store homepage as of 2022](camouflage-store-homepage.avif)
+_New design as of 2022_
+
+The default border-radius of buttons was also unable to be changed within the theme so I used Shopify's custom CSS feature to override the default styling on all affected elements. This instantly makes the site look more unique compared to others using the same theme. Additionally, keywords have been added into the HTML head for better SEO using Liquid and a custom product metafeild.
+
+```liquid
+<meta name="keywords" content="camouflage store, camo, outdoors, devon, uk, ..., {{ product.metafields.custom.keywords }}">
+```
+
+Whilst making these modifications to the theme, I found two bugs. Initially with the variant selection options on product pages which I was able to diagnose and fix in communication with the original theme developers. The change was then included within the next update. And lastly, an issue with pages locking up and crashing the entire browser tab or application. According to the developers this was due to the JavaScript in the theme having quotes within option names.
+
+Here's a look at the prior site as it was the day we switched over to using the new redesign.
+
+![Camouflage Store Previous Design](camouflage-store-previous.avif)
+_Previous design_
+
+## Branding
+
+Along with the switch of platform, we came to the decision that the domain and overall branding would need to be updated to to go along with the rest of the work being done. I felt it was important however that the original red colour of `#dd3e3e` was kept as it was a key part of the brand from all the way back in 2007.
+
+For the domain, we have gone with [camouflagestore.uk](https://camouflagestore.uk) (and its equavalent .co.uk tld). This was chosen as the location of the store is a key factor in its identity, and having this represented from the geto go meant a lot to the client. The legacy domain of [camouflage-store.com](https://camouflage-store.com) has also been kept since it has also been with Steve since 2007 and holds significant personal value.
+
+## VPS
+
+Continuing my goal of giving Steve the most amount of freedom possible without having to rely on thirdparty services, I have setup a VPS on his behalf to host a variety of services.
+
+The first of which is an instance of [Umami](https://umami.is/), a self-hostable analytics platform. This has been hosted using Docker and includes automatic redeployments using Watchtower, and reverse proxying with Traefik.
+
+### Other links
+
+- [Camouflage Store](https://camouflagestore.uk)
+- [YouTube](https://www.youtube.com/@camouflagestoreuk)
+- [Instagram](https://www.instagram.com/camouflagestoreuk)
+- [Twitter](https://twitter.com/camouflagestore)

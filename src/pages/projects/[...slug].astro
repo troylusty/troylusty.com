@@ -1,0 +1,19 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import Article from "@components/Article.astro";
+
+export async function getStaticPaths() {
+  const projects = (await getCollection("projects"))
+    .filter((project) => !project.data.draft)
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: project,
+  }));
+}
+type Props = CollectionEntry<"projects">;
+
+const project = Astro.props;
+---
+
+<Article article={project} />

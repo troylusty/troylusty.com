@@ -1,0 +1,144 @@
+---
+title: "Libreboot on an X230"
+date: 2024-01-07
+updated: 2024-07-09
+description: "An easy guide on how I flashed Libreboot onto my Lenovo Thinkpad X230, and later internally flashed an updated bios version."
+image:
+  url: "flashing.avif"
+  alt: "Flashing the chips"
+categories: ["personal"]
+tags: ["linux", "libreboot", "raspberry pi", "thinkpad", "x230"]
+---
+
+This post is a simple guide on how I "Librebooted" my Lenovo Thinkpad X230. I struggled to find instructions which detailed the entire process for a beginner who has never used tools such as flashrom before. The examples I have given here are based on what I did personally. Whilst these are the exact steps I took, for you there may be other or completely different steps so please reference the [documentation](https://libreboot.org/docs/install/x230_external.html) before carrying out any steps listed here.
+
+**If you are unsure of what size rom you require, you can find this out by reading the data from each chip and checking the resulting files.**
+
+In my case I used a Raspberry Pi 3 Model B, a Pomona SOIC Clip 8 Pin, and a minimum of 6 female jumper wires.
+
+![Flashing the chips](flashing.avif)
+
+Before starting remember to remove the laptop's battery. Some guides state that you should also disconnect the CMOS battery however I didn't. When connecting and disconnecting the SOIC clip, ensure that the Pi is not connected to power to avoid damaging the chip.
+
+## Preparing the rom
+
+1. Download Libreboot's build system.
+
+```sh
+git clone https://codeberg.org/libreboot/lbmk
+```
+
+2. [Download](https://libreboot.org/download.html) the rom from Libreboot.
+
+_stable > 20230625 (or the latest folder for you) > roms > libreboot-20230625_x230_12mb.tar.xz_
+
+3. Extract the downloaded tar archive. Inside _bin > x230_12mb_ pick the correct rom for your keyboard layout and whether you want to use GRUB or SeaBIOS.
+
+4. Run the below command **from inside** the lbmk directory and point it to the rom you chose above. Put your devices MAC address after the _-m_ switch as shown. Mine was printed on a sticker located inside the machine.
+
+```sh
+./vendor inject -r grub_x230_12mb_libgfxinit_corebootfb_ukqwerty.rom -b x230_12mb -m 00:f6:f0:40:71:fd
+```
+
+5. Split the rom for flashing onto the two chips.
+
+```sh
+dd if=grub_x230_12mb_libgfxinit_corebootfb_ukqwerty.rom of=top.rom bs=1M skip=8
+dd if=grub_x230_12mb_libgfxinit_corebootfb_ukqwerty.rom of=bottom.rom bs=1M count=8
+```
+
+## Flashing
+
+1. Read the top chip 2 or 3 times into separate files and compare the outcome using _diff_. This ensures that the data received has no discrepancies.
+
+```sh
+sudo flashrom -p linux_spi:dev=/dev/spidev0.0,spispeed=32768 -r factory_bios_top_01.rom -c "MX25L3206E/MX25L3208E" -V
+```
+
+2. Read bottom chip 2 or 3 times and again compare the outcome.
+
+```sh
+sudo flashrom -p linux_spi:dev=/dev/spidev0.0,spispeed=32768 -r factory_bios_bottom_01.rom -c "MX25L6406E/MX25L6408E" -V
+```
+
+3. Flash the top chip.
+
+```sh
+sudo flashrom -p linux_spi:dev=/dev/spidev0.0,spispeed=32768 -w top.rom -c "MX25L3206E/MX25L3208E" -V
+```
+
+4. Flash the bottom chip.
+
+```sh
+sudo flashrom -p linux_spi:dev=/dev/spidev0.0,spispeed=32768 -w bottom.rom -c "MX25L6406E/MX25L6408E" -V
+```
+
+### References
+
+[Libreboot](https://libreboot.org/docs/install/x230_external.html), [Skulls](https://github.com/merge/skulls/blob/master/x230/README.md), [thinkpad-ec](https://github.com/hamishcoleman/thinkpad-ec/blob/master/docs/CONFIG.md), and [Harmonic Flow](https://www.harmonicflow.org/en/blog/2022/flashing-coreboot-on-a-lenovo-thinkpad-x230-with-a-raspberry-pi-tutorial).
+
+## Internal flashing to update Libreboot
+
+1. Find flash chip size.
+
+```sh
+flashprog -p internal
+```
+
+2. If flashprog tells you '/dev/mem mmap failed: Operation not permitted' then use the following command.
+
+```sh
+sudo modprobe -r lpc_ich
+```
+
+3. Install flashprog and optionally dmidecode from the AUR.
+
+```sh
+paru -S flashprog dmidecode
+```
+
+4. Read the current chip contents several times. To do this, run the same command changing the dump.bin filename.
+
+```sh
+sudo flashprog -p internal:laptop=force_I_want_a_brick,boardmismatch=force -r dump.bin
+```
+
+5. Clone Libreboot MaKe and change into the directory.
+
+```sh
+git clone https://codeberg.org/libreboot/lbmk; cd lbmk
+```
+
+6. Run the dependencies installer script. The content of which can be found in: `config/dependencies/arch`, if using Arch Linux for example.
+
+```sh
+sudo ./build dependencies arch
+```
+
+7. Manually install missing dependencies listed at the end of the script.
+
+```sh
+paru -S bdf-unifont ttf-unifont # ttf-unifont was meant to be unifont
+```
+
+8. Run the injection script to patch the release rom with the necessary vendor files.
+
+```sh
+./vendor inject -r seabios_withgrub_x230_12mb_libgfxinit_corebootfb_ukqwerty_grubfirst.rom -b x230_12mb -m 00:f6:f0:40:71:fd
+```
+
+9. Erase and rewrite the chip contents with the new rom.
+
+```sh
+sudo flashprog -p internal:laptop=force_I_want_a_brick,boardmismatch=force -w seabios_withgrub_x230_12mb_libgfxinit_corebootfb_ukqwerty_grubfirst.rom
+```
+
+10. Identify and clean-up installed dependencies.
+
+```sh
+paru -Qe
+```
+
+### References
+
+[Flashprog FAQ](https://flashprog.org/wiki/FAQ), [Libreboot Build Dependencies](https://libreboot.org/docs/build/#first-install-build-dependencies), [Libreboot Internal Flashing](https://libreboot.org/docs/install/#run-flashprog-on-host-cpu).

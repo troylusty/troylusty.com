@@ -1,0 +1,85 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { CV } from "@consts";
+import Work from "@components/Work.astro";
+import Education from "@components/Education.astro";
+import Skills from "@components/Skills.astro";
+import { Icon } from "astro-icon/components";
+import Link from "@components/Link.astro";
+import Prose from "@components/Prose.astro";
+---
+
+<Layout title={CV.TITLE} description={CV.DESCRIPTION}>
+  <section>
+    <div
+      class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center"
+    >
+      <h1 class="animate-reveal break-words text-4xl font-medium opacity-0">
+        Troy Lusty
+      </h1>
+      <div
+        class="mt-4 flex flex-col items-start gap-2 text-lg text-tertiary md:flex-row"
+      >
+        <div
+          class="flex animate-reveal items-center gap-2 opacity-0 [animation-delay:0.3s]"
+        >
+          <Icon name="mdi:email" />
+          <Link href="mailto:hello@troylusty.com">
+            <p>hello@troylusty.com</p>
+          </Link>
+          <Icon name="mdi:web" />
+          <Link href="/">
+            <p>troylusty.com</p>
+          </Link>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="mt-16 animate-reveal opacity-0 [animation-delay:0.4s]">
+    <Prose>
+      <h2>About me</h2>
+      <p>
+        Hi, my name is Troy and I’m a student 3D artist studying on a BA (Hons)
+        Game Arts and Design course in the UK.
+      </p>
+      <p>
+        In 2019 I began experimenting with Blender after having used various 2D
+        art applications such as Adobe Photoshop for over 5 years. After making
+        this change, I realised that I have a huge interest in creating 3D
+        graphics for video games and TV. At the moment I am working on expanding
+        my skillset to encompass other areas with a focus on lighting and
+        rendering techniques in relation to environment art.
+      </p>
+      <p>
+        My current portfolio of work can be found on my website at:
+        <a href="/projects">troylusty.com/projects</a>.
+      </p>
+    </Prose>
+  </section>
+  <section class="mt-16 animate-reveal opacity-0 [animation-delay:0.5s]">
+    <Prose>
+      <h2>Education</h2>
+      <Education />
+    </Prose>
+  </section>
+  <section class="mt-16 animate-reveal opacity-0 [animation-delay:0.6s]">
+    <Prose>
+      <h2>Skills</h2>
+      <p>
+        My specific chosen area of focus is design, lighting, and rendering
+        focusing on 3D environments within software such as Blender and Unreal
+        Engine. Using either real-time or offline rendering techniques. In
+        addition to this, I am also very interested in web development.
+      </p>
+      <p>Please note, this skills section is a only placeholder.</p>
+      <Skills />
+      <ul><li>Full drivers licence for cars and motorbikes</li></ul>
+    </Prose>
+  </section>
+  <section class="mt-16 animate-reveal opacity-0 [animation-delay:0.7s]">
+    <Prose>
+      <h2>Experience</h2>
+      <Work />
+    </Prose>
+  </section>
+</Layout>

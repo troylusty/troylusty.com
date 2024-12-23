@@ -1,0 +1,35 @@
+---
+import { Icon } from "astro-icon/components";
+
+type Props = {
+  institution: String;
+  qualification: String;
+  grades: Array<String>;
+  isOpen?: boolean;
+};
+
+const { institution, qualification, grades, isOpen = false } = Astro.props;
+---
+
+<div class="grid">
+  <details open={isOpen === true ? "open" : null} class="group">
+    <summary
+      class="flex cursor-pointer items-center justify-between py-3 font-bold"
+    >
+      <p class="m-0">
+        {institution}
+      </p>
+      <span class="transition group-open:rotate-180">
+        <Icon name="mdi:chevron-down" class="h-6 w-auto text-tertiary" />
+      </span>
+    </summary>
+    <div class="p-4 text-sm text-neutral-600 dark:text-neutral-400">
+      <p class="my-0">
+        {qualification}
+      </p>
+      <ul>
+        {grades.map((grade) => <li>{grade}</li>)}
+      </ul>
+    </div>
+  </details>
+</div>

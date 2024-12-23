@@ -1,0 +1,74 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { HOME } from "@consts";
+import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
+import Showcase from "@components/Showcase.astro";
+
+const posts = (await getCollection("posts"))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, HOME.HOMESETTINGS?.NUM_POSTS_ON_HOMEPAGE);
+
+const projects = (await getCollection("projects"))
+  .filter((project) => !project.data.draft && project.data.featured)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, HOME.HOMESETTINGS?.NUM_PROJECTS_ON_HOMEPAGE);
+---
+
+<Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
+  <section class="mb-32" id="postHero" aria-labelledby="featured-projects">
+    <div class="flex flex-row items-center justify-between gap-6">
+      <a href="/projects">
+        <h2
+          class="animate-reveal break-words text-4xl font-medium opacity-0"
+          id="featured-projects"
+        >
+          Featured projects
+        </h2>
+      </a>
+      <a
+        href="/projects"
+        class="animate-reveal rounded-full bg-secondary p-1 opacity-0 transition-all ease-in-out [animation-delay:0.3s] hover:scale-90 hover:bg-tertiary"
+      >
+        <Icon
+          name="mdi:arrow-right"
+          title="All projects"
+          class="h-4 w-auto text-primary"
+        />
+      </a>
+    </div>
+    <div
+      class="mt-16 grid animate-reveal grid-cols-1 gap-6 opacity-0 [animation-delay:0.4s] md:grid-cols-3 md:[&>*:nth-child(4n+2)]:col-span-2 md:[&>*:nth-child(4n+3)]:col-span-2 md:[&>*:only-child]:col-span-3"
+    >
+      {projects.map((project) => <Showcase collection={project} />)}
+    </div>
+  </section>
+  <section aria-labelledby="recent-posts">
+    <div class="flex flex-row items-center justify-between gap-6">
+      <a href="/posts">
+        <h2
+          class="animate-reveal break-words text-4xl font-medium opacity-0 [animation-delay:0.5s]"
+          id="recent-posts"
+        >
+          Recent posts
+        </h2>
+      </a>
+      <a
+        href="/posts"
+        class="animate-reveal rounded-full bg-secondary p-1 opacity-0 transition-all ease-in-out [animation-delay:0.8s] hover:scale-90 hover:bg-tertiary"
+      >
+        <Icon
+          name="mdi:arrow-right"
+          title="All posts"
+          class="h-4 w-auto text-primary"
+        />
+      </a>
+    </div>
+    <div
+      class="mt-16 grid animate-reveal grid-cols-1 gap-6 opacity-0 [animation-delay:0.9s] md:grid-cols-3 md:[&>*:nth-child(4n+2)]:col-span-2 md:[&>*:nth-child(4n+3)]:col-span-2 md:[&>*:only-child]:col-span-3"
+    >
+      {posts.map((post) => <Showcase collection={post} />)}
+    </div>
+  </section>
+</Layout>

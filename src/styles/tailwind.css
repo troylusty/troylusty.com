@@ -1,0 +1,29 @@
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/red-hat-mono";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: 60deg 3.03% 93.53%;
+    --secondary: 60deg 5.56% 7.06%;
+    --tertiary: 45deg 5.13% 30.59%;
+    --accent: 60deg 2.44% 83.92%;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --primary: 60deg 3.03% 6.47%;
+      --secondary: 60deg 5.56% 92.94%;
+      --tertiary: 45deg 5.13% 69.41%;
+      --accent: 60deg 2.44% 16.08%;
+    }
+  }
+  :root[data-theme="tritanopia"] {
+    --primary: 216deg 27.78% 7.06%;
+    --secondary: 210deg 66.67% 96.47%;
+    --tertiary: 213.75deg 7.84% 60%;
+    --accent: 130.49deg 55.68% 36.27%;
+  }
+}

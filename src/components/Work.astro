@@ -1,0 +1,36 @@
+---
+import { getCollection } from "astro:content";
+import { dateRange } from "@lib/utils";
+
+const collection = (await getCollection("work")).sort(
+  (a, b) =>
+    new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf(),
+);
+
+const work = await Promise.all(
+  collection.map(async (item) => {
+    const { Content } = await item.render();
+    return { ...item, Content };
+  }),
+);
+---
+
+<ul class="list-none pl-0">
+  {
+    work.map((entry) => (
+      <li class="pl-0">
+        <h3>
+          <span>{entry.data.company}</span>
+          <span>({dateRange(entry.data.dateStart, entry.data.dateEnd)})</span>
+        </h3>
+        <p>{entry.data.role}</p>
+        <article>
+          <entry.Content />
+        </article>
+        {entry.data.article ? (
+          <a href={entry.data.article}>See related project</a>
+        ) : null}
+      </li>
+    ))
+  }
+</ul>

@@ -1,0 +1,19 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import Article from "@components/Article.astro";
+
+export async function getStaticPaths() {
+  const posts = (await getCollection("posts"))
+    .filter((post) => !post.data.draft)
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+type Props = CollectionEntry<"posts">;
+
+const post = Astro.props;
+---
+
+<Article article={post} isPost={true} />
