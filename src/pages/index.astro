@@ -18,7 +18,7 @@ const projects = (await getCollection("projects"))
 
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <section class="mb-32" id="postHero" aria-labelledby="featured-projects">
-    <div class="flex flex-row items-center justify-between gap-6">
+    <div class="group flex flex-row items-center justify-between gap-6">
       <a href="/projects">
         <h2
           class="animate-reveal break-words text-4xl font-medium opacity-0"
@@ -29,7 +29,7 @@ const projects = (await getCollection("projects"))
       </a>
       <a
         href="/projects"
-        class="animate-reveal rounded-full bg-secondary p-1 opacity-0 transition-all ease-in-out [animation-delay:0.3s] hover:scale-90 hover:bg-tertiary"
+        class="animate-reveal rounded-full bg-secondary p-1 opacity-0 transition-all ease-in-out group-hover:scale-90 group-hover:bg-tertiary"
       >
         <Icon
           name="mdi:arrow-right"
@@ -39,16 +39,16 @@ const projects = (await getCollection("projects"))
       </a>
     </div>
     <div
-      class="mt-16 grid animate-reveal grid-cols-1 gap-6 opacity-0 [animation-delay:0.4s] md:grid-cols-3 md:[&>*:nth-child(4n+2)]:col-span-2 md:[&>*:nth-child(4n+3)]:col-span-2 md:[&>*:only-child]:col-span-3"
+      class="mt-16 grid animate-reveal grid-cols-1 gap-6 opacity-0 [animation-delay:0.1s] md:grid-cols-3 md:[&>*:nth-child(4n+2)]:col-span-2 md:[&>*:nth-child(4n+3)]:col-span-2 md:[&>*:only-child]:col-span-3"
     >
       {projects.map((project) => <Showcase collection={project} />)}
     </div>
   </section>
   <section aria-labelledby="recent-posts">
-    <div class="flex flex-row items-center justify-between gap-6">
+    <div class="group flex flex-row items-center justify-between gap-6">
       <a href="/posts">
         <h2
-          class="animate-reveal break-words text-4xl font-medium opacity-0 [animation-delay:0.5s]"
+          class="animate-reveal break-words text-4xl font-medium opacity-0 [animation-delay:0.2s]"
           id="recent-posts"
         >
           Recent posts
@@ -56,7 +56,7 @@ const projects = (await getCollection("projects"))
       </a>
       <a
         href="/posts"
-        class="animate-reveal rounded-full bg-secondary p-1 opacity-0 transition-all ease-in-out [animation-delay:0.8s] hover:scale-90 hover:bg-tertiary"
+        class="animate-reveal rounded-full bg-secondary p-1 opacity-0 transition-all ease-in-out [animation-delay:0.2s] group-hover:scale-90 group-hover:bg-tertiary"
       >
         <Icon
           name="mdi:arrow-right"
@@ -66,7 +66,7 @@ const projects = (await getCollection("projects"))
       </a>
     </div>
     <div
-      class="mt-16 grid animate-reveal grid-cols-1 gap-6 opacity-0 [animation-delay:0.9s] md:grid-cols-3 md:[&>*:nth-child(4n+2)]:col-span-2 md:[&>*:nth-child(4n+3)]:col-span-2 md:[&>*:only-child]:col-span-3"
+      class="mt-16 grid animate-reveal grid-cols-1 gap-6 opacity-0 [animation-delay:0.3s] md:grid-cols-3 md:[&>*:nth-child(4n+2)]:col-span-2 md:[&>*:nth-child(4n+3)]:col-span-2 md:[&>*:only-child]:col-span-3"
     >
       {posts.map((post) => <Showcase collection={post} />)}
     </div>
