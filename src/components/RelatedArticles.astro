@@ -33,7 +33,7 @@ const next = items[(index + 1) % items.length];
       />
     </a>
     <a href={`/${prev.collection}/${prev.slug}`}>
-      <p class="animate-reveal break-words text-2xl font-medium opacity-0">
+      <p class="animate-reveal break-words text-xl font-medium opacity-0">
         {prev.data.title}
       </p>
     </a>
@@ -42,7 +42,7 @@ const next = items[(index + 1) % items.length];
     class="group flex w-fit flex-row items-center justify-between gap-6 self-end"
   >
     <a href={`/${next.collection}/${next.slug}`}>
-      <p class="animate-reveal break-words text-2xl font-medium opacity-0">
+      <p class="animate-reveal break-words text-xl font-medium opacity-0">
         {next.data.title}
       </p>
     </a>
