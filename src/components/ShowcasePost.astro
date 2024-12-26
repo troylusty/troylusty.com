@@ -1,0 +1,28 @@
+---
+import FormattedDate from "@components/FormattedDate.astro";
+
+type Props = {
+  collection: any;
+};
+
+const { collection } = Astro.props;
+---
+
+<li>
+  <a
+    class="bg-none hover:bg-tertiary/30"
+    href={`/${collection.collection}/${collection.slug}`}
+  >
+    <article class="flex flex-col">
+      <h3 class="mb-3 text-balance text-xl font-semibold">
+        <span title="Title" class="text-secondary">{collection.data.title}</span
+        ><span title="Description" class="ml-2 text-tertiary"
+          >{collection.data.description}</span
+        >
+      </h3>
+      <time class="block text-sm text-accent"
+        ><FormattedDate date={collection.data.date} /></time
+      >
+    </article>
+  </a>
+</li>

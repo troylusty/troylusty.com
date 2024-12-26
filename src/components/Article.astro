@@ -30,15 +30,17 @@ const listFormatter = new Intl.ListFormat("en-GB", {
 >
   <div class="mx-auto mb-16 max-w-prose">
     <h1
-      class="animate-reveal break-words text-start text-4xl font-medium opacity-0"
+      class="animate-reveal break-words text-start text-4xl font-semibold opacity-0"
     >
-      {article.data.title}
+      <span class="text-secondary">{article.data.title}</span><span
+        class="ml-2 text-tertiary">{article.data.description}</span
+      >
     </h1>
     <div
       class="flex animate-reveal flex-col items-start opacity-0 [animation-delay:0.1s]"
     >
       <div
-        class="mt-4 flex flex-col items-start gap-2 text-lg text-tertiary md:flex-row"
+        class="mt-4 flex flex-col items-start gap-2 text-lg text-accent md:flex-row"
       >
         <div class="flex items-center gap-2">
           <Icon name="mdi:calendar" />
@@ -71,7 +73,7 @@ const listFormatter = new Intl.ListFormat("en-GB", {
       </div>
       {
         article.data.extraAuthors ? (
-          <div class="mt-2 flex items-center gap-2 text-tertiary">
+          <div class="mt-2 flex items-center gap-2">
             <p>
               In collaboration with{" "}
               {listFormatter.format(article.data.extraAuthors)}
@@ -82,14 +84,14 @@ const listFormatter = new Intl.ListFormat("en-GB", {
       <ul class="mt-4 flex flex-wrap gap-1">
         {
           article.data.categories.map((category: string) => (
-            <li class="rounded border border-accent bg-accent/50 px-1 py-0.5 text-sm capitalize text-primary invert">
+            <li class="rounded border border-accent bg-accent px-1 py-0.5 text-sm capitalize text-primary">
               {category}
             </li>
           ))
         }
         {
           article.data.tags.map((tag: string) => (
-            <li class="rounded border border-accent bg-accent/50 px-1 py-0.5 text-sm capitalize text-secondary">
+            <li class="rounded border border-accent bg-primary px-1 py-0.5 text-sm capitalize text-accent">
               {tag}
             </li>
           ))

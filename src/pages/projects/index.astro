@@ -1,11 +1,21 @@
 ---
 import { getCollection } from "astro:content";
-import { PROJECTS } from "@consts";
-import ShowcasePage from "@components/ShowcasePage.astro";
+import { PROJECTS, SITE } from "@consts";
+import Layout from "@layouts/Layout.astro";
+import ShowcaseProject from "@components/ShowcaseProject.astro";
 
 const projects = (await getCollection("projects"))
   .filter((project) => !project.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<ShowcasePage content={projects} CONSTS={PROJECTS} />
+<Layout title={SITE.TITLE} description={PROJECTS.DESCRIPTION}>
+  <h1 class="animate-reveal break-words text-4xl font-semibold opacity-0">
+    {PROJECTS.TITLE}
+  </h1>
+  <ol
+    class="mt-16 grid animate-reveal grid-cols-1 gap-6 opacity-0 [animation-delay:0.1s] md:grid-cols-3 md:[&>*:nth-child(4n+2)]:col-span-2 md:[&>*:nth-child(4n+3)]:col-span-2 md:[&>*:only-child]:col-span-3"
+  >
+    {projects.map((article: any) => <ShowcaseProject collection={article} />)}
+  </ol>
+</Layout>
