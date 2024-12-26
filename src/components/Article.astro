@@ -4,6 +4,7 @@ import Prose from "@components/Prose.astro";
 import FormattedDate from "@components/FormattedDate.astro";
 import { readingTime } from "@lib/utils";
 import { Icon } from "astro-icon/components";
+import RelatedArticles from "@components/RelatedArticles.astro";
 
 const { article, isPost = false } = Astro.props;
 const { Content } = await article.render();
@@ -34,7 +35,7 @@ const listFormatter = new Intl.ListFormat("en-GB", {
       {article.data.title}
     </h1>
     <div
-      class="flex animate-reveal flex-col items-start opacity-0 [animation-delay:0.3s]"
+      class="flex animate-reveal flex-col items-start opacity-0 [animation-delay:0.1s]"
     >
       <div
         class="mt-4 flex flex-col items-start gap-2 text-lg text-tertiary md:flex-row"
@@ -97,10 +98,11 @@ const listFormatter = new Intl.ListFormat("en-GB", {
     </div>
   </div>
   <div
-    class="mx-auto max-w-prose animate-reveal opacity-0 [animation-delay:0.6s]"
+    class="mx-auto max-w-prose animate-reveal opacity-0 [animation-delay:0.2s]"
   >
     <Prose>
       <Content />
     </Prose>
   </div>
+  <RelatedArticles entry={article} />
 </Layout>

@@ -15,12 +15,13 @@ const skills = await Promise.all(
 <ul class="flex max-w-full list-none flex-wrap gap-4 px-0">
   {
     skills.map((entry) => (
-      <li>
+      <li class="flex items-center gap-2 rounded border border-tertiary p-2">
         <Icon
           name={entry.data.icon}
           title={entry.data.title}
-          class="h-12 w-auto text-secondary"
+          class="h-6 w-auto text-secondary"
         />
+        <p class="m-0">{entry.data.title}</p>
       </li>
     ))
   }

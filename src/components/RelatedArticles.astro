@@ -1,0 +1,60 @@
+---
+import { Icon } from "astro-icon/components";
+
+import { type CollectionEntry, getCollection } from "astro:content";
+
+type Props = {
+  entry: CollectionEntry<"posts"> | CollectionEntry<"projects">;
+};
+
+const { entry } = Astro.props;
+const { collection } = entry;
+
+const items = (await getCollection(collection))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const index = items.findIndex((x) => x.slug === entry.slug);
+const prev = items[(index - 1 + items.length) % items.length];
+const next = items[(index + 1) % items.length];
+---
+
+<div
+  class="mx-auto mt-8 flex max-w-prose flex-col justify-between gap-4 md:flex-row md:gap-0"
+>
+  <div class="group flex w-fit flex-row items-center justify-between gap-6">
+    <a
+      href={`/${prev.collection}/${prev.slug}`}
+      class="animate-reveal rounded-full bg-secondary p-1 opacity-0 transition-all ease-in-out group-hover:scale-90 group-hover:bg-tertiary"
+    >
+      <Icon
+        name="mdi:arrow-left"
+        title="All projects"
+        class="h-4 w-auto text-primary"
+      />
+    </a>
+    <a href={`/${prev.collection}/${prev.slug}`}>
+      <p class="animate-reveal break-words text-2xl font-medium opacity-0">
+        {prev.data.title}
+      </p>
+    </a>
+  </div>
+  <div
+    class="group flex w-fit flex-row items-center justify-between gap-6 self-end"
+  >
+    <a href={`/${next.collection}/${next.slug}`}>
+      <p class="animate-reveal break-words text-2xl font-medium opacity-0">
+        {next.data.title}
+      </p>
+    </a>
+    <a
+      href={`/${next.collection}/${next.slug}`}
+      class="animate-reveal rounded-full bg-secondary p-1 opacity-0 transition-all ease-in-out group-hover:scale-90 group-hover:bg-tertiary"
+    >
+      <Icon
+        name="mdi:arrow-right"
+        title="All projects"
+        class="h-4 w-auto text-primary"
+      />
+    </a>
+  </div>
+</div>
