@@ -26,7 +26,7 @@ import { Icon } from "astro-icon/components";
                   <a
                     data-navlink
                     href={i.href}
-                    class="capitalize hover:text-secondary"
+                    class="capitalize transition-colors hover:text-secondary"
                   >
                     {i.name}
                   </a>
@@ -40,8 +40,9 @@ import { Icon } from "astro-icon/components";
     <div class="mt-12 sm:flex sm:items-center sm:justify-between lg:mt-16">
       <span class="text-sm text-tertiary sm:text-center"
         >&copy; {new Date().getFullYear()}
-        <a href="/" class="hover:text-secondary">{SITE.TITLE}</a>. All Rights
-        Reserved.
+        <a href="/" class="transition-colors hover:text-secondary"
+          >{SITE.TITLE}</a
+        >. All Rights Reserved.
       </span>
       <div class="mt-4 flex gap-5 sm:mt-0 sm:justify-center">
         {
@@ -50,7 +51,7 @@ import { Icon } from "astro-icon/components";
               <Icon
                 name={i.icon}
                 title={i.name}
-                class="h-5 w-5 text-tertiary hover:text-secondary"
+                class="h-5 w-5 text-tertiary transition-colors hover:text-secondary"
               />
             </Link>
           ))

@@ -37,66 +37,46 @@ const listFormatter = new Intl.ListFormat("en-GB", {
       >
     </h1>
     <div
-      class="flex animate-reveal flex-col items-start opacity-0 [animation-delay:0.1s]"
+      class="mt-4 flex animate-reveal flex-col flex-wrap items-start gap-2 text-lg text-tertiary opacity-0 [animation-delay:0.1s] md:flex-row"
     >
-      <div
-        class="mt-4 flex flex-col items-start gap-2 text-lg text-accent md:flex-row"
-      >
-        <div class="flex items-center gap-2">
-          <Icon name="mdi:calendar" />
-          {
-            datesMatch ? (
+      <div class="flex items-center gap-2">
+        <Icon name="mdi:calendar" />
+        {
+          datesMatch ? (
+            <p title="Date">
+              <FormattedDate date={article.data.date} />
+            </p>
+          ) : (
+            <>
               <p title="Date">
                 <FormattedDate date={article.data.date} />
               </p>
-            ) : (
-              <>
-                <p title="Date">
-                  <FormattedDate date={article.data.date} />
-                </p>
-                <Icon name="mdi:trending-up" />
-                <p title="Updated">
-                  <FormattedDate date={article.data.updated} />
-                </p>
-              </>
-            )
-          }
-        </div>
-        {
-          isPost ? (
-            <div class="flex items-center gap-2">
-              <Icon name="mdi:timer" />
-              <p title="Word count">{readingTime(article.body)}</p>
-            </div>
-          ) : null
+              <Icon name="mdi:trending-up" />
+              <p title="Updated">
+                <FormattedDate date={article.data.updated} />
+              </p>
+            </>
+          )
         }
       </div>
       {
+        isPost ? (
+          <div class="flex items-center gap-2">
+            <Icon name="mdi:timer" />
+            <p title="Word count">{readingTime(article.body)}</p>
+          </div>
+        ) : null
+      }
+      {
         article.data.extraAuthors ? (
-          <div class="mt-2 flex items-center gap-2">
-            <p>
-              In collaboration with{" "}
+          <div class="flex items-center gap-2">
+            <Icon name="mdi:account-plus" />
+            <p title="Extra authors">
               {listFormatter.format(article.data.extraAuthors)}
             </p>
           </div>
         ) : null
       }
-      <ul class="mt-4 flex flex-wrap gap-1">
-        {
-          article.data.categories.map((category: string) => (
-            <li class="rounded border border-accent bg-accent px-1 py-0.5 text-sm capitalize text-primary">
-              {category}
-            </li>
-          ))
-        }
-        {
-          article.data.tags.map((tag: string) => (
-            <li class="rounded border border-accent bg-primary px-1 py-0.5 text-sm capitalize text-accent">
-              {tag}
-            </li>
-          ))
-        }
-      </ul>
     </div>
   </div>
   <div

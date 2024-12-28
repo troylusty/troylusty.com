@@ -10,13 +10,15 @@ const { collection } = Astro.props;
 
 <li>
   <a
-    class="bg-none hover:bg-tertiary/30"
+    class="group bg-none hover:bg-tertiary/30"
     href={`/${collection.collection}/${collection.slug}`}
   >
     <article class="flex flex-col">
       <h3 class="mb-3 text-balance text-xl font-semibold">
         <span title="Title" class="text-secondary">{collection.data.title}</span
-        ><span title="Description" class="ml-2 text-tertiary"
+        ><span
+          title="Description"
+          class="ml-2 text-tertiary transition-colors group-hover:text-accent"
           >{collection.data.description}</span
         >
       </h3>

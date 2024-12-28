@@ -24,7 +24,7 @@ const next = items[(index + 1) % items.length];
   <div class="group flex w-fit flex-row items-center justify-between gap-6">
     <a
       href={`/${prev.collection}/${prev.slug}`}
-      class="animate-reveal rounded-full bg-secondary p-1 opacity-0 transition-all ease-in-out group-hover:scale-90 group-hover:bg-tertiary"
+      class="animate-reveal rounded-full bg-secondary p-1 opacity-0 transition-colors group-hover:bg-tertiary"
     >
       <Icon
         name="mdi:arrow-left"
@@ -48,7 +48,7 @@ const next = items[(index + 1) % items.length];
     </a>
     <a
       href={`/${next.collection}/${next.slug}`}
-      class="animate-reveal rounded-full bg-secondary p-1 opacity-0 transition-all ease-in-out group-hover:scale-90 group-hover:bg-tertiary"
+      class="animate-reveal rounded-full bg-secondary p-1 opacity-0 transition-colors group-hover:bg-tertiary"
     >
       <Icon
         name="mdi:arrow-right"
