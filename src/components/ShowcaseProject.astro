@@ -18,7 +18,7 @@ const { collection } = Astro.props;
       alt={collection.data.image.alt}
       title={collection.data.title}
       loading="eager"
-      class="absolute inset-0 h-full w-full object-cover duration-300 ease-in-out group-hover:scale-105"
+      class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
       fit="cover"
     />
     <div
@@ -40,7 +40,7 @@ const { collection } = Astro.props;
       {
         collection.data.collection ? (
           <span>
-            <FormattedDate date={collection.data.date} /> &bull; Collection
+            <FormattedDate date={collection.data.date} /> (Collection)
           </span>
         ) : (
           <FormattedDate date={collection.data.date} />
