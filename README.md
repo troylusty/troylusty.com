@@ -1,6 +1,6 @@
 # Astro Portfolio: Personal Website
 
-![showcase](https://github.com/user-attachments/assets/87f37f94-4c1c-4afd-9fb1-e1dbc3729a64)
+![showcase](https://github.com/user-attachments/assets/cb6c080f-08c6-42d1-85cf-3a060b6d05a7)
 
 Features:
 
