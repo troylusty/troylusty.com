@@ -6,12 +6,16 @@ import ShowcaseProject from "@components/ShowcaseProject.astro";
 import ShowcasePost from "@components/ShowcasePost.astro";
 import Hero from "@components/Hero.astro";
 
-const posts = (await getCollection("posts"))
+const allPosts = await getCollection("posts");
+
+const posts = allPosts
   .filter((post) => !post.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, HOME.HOMESETTINGS?.NUM_POSTS_ON_HOMEPAGE);
 
-const projects = (await getCollection("projects"))
+const allProjects = await getCollection("projects");
+
+const projects = allProjects
   .filter((project) => !project.data.draft && project.data.featured)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, HOME.HOMESETTINGS?.NUM_PROJECTS_ON_HOMEPAGE);
@@ -36,9 +40,8 @@ const projects = (await getCollection("projects"))
       {projects.map((project) => <ShowcaseProject collection={project} />)}
     </ol>
     {
-      projects.length > 1 ? (
+      allProjects.length > HOME.HOMESETTINGS!.NUM_PROJECTS_ON_HOMEPAGE ? (
         <a href="/projects">
-          {" "}
           <div class="mt-8 flex animate-reveal flex-row items-center gap-1 justify-self-center rounded-full bg-tertiary px-3 py-2 font-medium capitalize text-primary opacity-0 transition-colors duration-300 [animation-delay:0.1s] hover:bg-accent">
             View all
           </div>
@@ -63,7 +66,7 @@ const projects = (await getCollection("projects"))
       {posts.map((post) => <ShowcasePost collection={post} />)}
     </ol>
     {
-      posts.length > 1 ? (
+      allPosts.length > HOME.HOMESETTINGS!.NUM_POSTS_ON_HOMEPAGE ? (
         <a href="/posts">
           {" "}
           <div class="mt-8 flex animate-reveal flex-row items-center gap-1 justify-self-center rounded-full bg-tertiary px-3 py-2 font-medium capitalize text-primary opacity-0 transition-colors duration-300 [animation-delay:0.1s] hover:bg-accent">
