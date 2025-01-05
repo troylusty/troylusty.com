@@ -1,5 +1,6 @@
-@import "@fontsource-variable/inter";
 @import "@fontsource-variable/red-hat-mono";
+@import "@fontsource-variable/outfit";
+@import "@fontsource-variable/playwrite-ca";
 
 @tailwind base;
 @tailwind components;

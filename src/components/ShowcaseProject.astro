@@ -11,31 +11,28 @@ const { collection } = Astro.props;
 
 <li>
   <article
-    class="group relative isolate mx-auto flex h-full w-full flex-col justify-end overflow-hidden rounded-lg px-8 pb-8 pt-40"
+    class="group relative isolate mx-auto flex h-full w-full flex-col justify-end overflow-hidden rounded px-8 pb-8 pt-40"
   >
     <Image
       src={collection.data.image.url}
       alt={collection.data.image.alt}
       title={collection.data.title}
       loading="eager"
-      class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+      class="absolute inset-0 h-full w-full object-cover transition-all duration-300 group-hover:brightness-50"
       fit="cover"
     />
-    <div
-      class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"
-    >
-    </div>
+
     <a
       class="absolute inset-0 z-20"
       href={`/${collection.collection}/${collection.slug}`}
       aria-label={collection.data.title}></a>
     <h3
-      class="z-10 mt-3 w-fit text-xl font-semibold text-primary dark:text-secondary"
+      class="z-10 mt-3 w-fit text-xl font-semibold text-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:text-secondary"
     >
       {collection.data.title}
     </h3>
     <div
-      class="z-10 w-fit gap-y-1 overflow-hidden text-sm leading-6 text-accent"
+      class="z-10 w-fit gap-y-1 overflow-hidden text-sm leading-6 text-accent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
     >
       {
         collection.data.collection ? (

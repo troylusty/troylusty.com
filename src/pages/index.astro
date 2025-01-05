@@ -2,9 +2,9 @@
 import Layout from "@layouts/Layout.astro";
 import { HOME } from "@consts";
 import { getCollection } from "astro:content";
-import { Icon } from "astro-icon/components";
 import ShowcaseProject from "@components/ShowcaseProject.astro";
 import ShowcasePost from "@components/ShowcasePost.astro";
+import Hero from "@components/Hero.astro";
 
 const posts = (await getCollection("posts"))
   .filter((post) => !post.data.draft)
@@ -18,25 +18,16 @@ const projects = (await getCollection("projects"))
 ---
 
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
-  <section class="mb-32" id="postHero" aria-labelledby="featured-projects">
-    <div class="group flex flex-row items-center justify-between gap-6">
+  <Hero />
+  <section class="mb-32" aria-labelledby="featured-projects">
+    <div class="group flex w-fit flex-row items-center justify-between gap-6">
       <a href="/projects">
         <h2
-          class="animate-reveal break-words text-4xl font-semibold opacity-0"
+          class="animate-reveal break-words text-4xl font-semibold capitalize opacity-0 transition-colors duration-500 group-hover:text-tertiary"
           id="featured-projects"
         >
           Featured projects
         </h2>
-      </a>
-      <a
-        href="/projects"
-        class="animate-reveal rounded-full bg-secondary p-1 opacity-0 transition-colors group-hover:bg-tertiary"
-      >
-        <Icon
-          name="mdi:arrow-right"
-          title="All projects"
-          class="h-4 w-auto text-primary"
-        />
       </a>
     </div>
     <ol
@@ -44,26 +35,26 @@ const projects = (await getCollection("projects"))
     >
       {projects.map((project) => <ShowcaseProject collection={project} />)}
     </ol>
+    {
+      projects.length > 1 ? (
+        <a href="/projects">
+          {" "}
+          <div class="mt-8 flex animate-reveal flex-row items-center gap-1 justify-self-center rounded-full bg-tertiary px-3 py-2 font-medium capitalize text-primary opacity-0 transition-colors duration-300 [animation-delay:0.1s] hover:bg-accent">
+            View all
+          </div>
+        </a>
+      ) : null
+    }
   </section>
   <section aria-labelledby="recent-posts">
-    <div class="group flex flex-row items-center justify-between gap-6">
+    <div class="group flex w-fit flex-row items-center justify-between gap-6">
       <a href="/posts">
         <h2
-          class="animate-reveal break-words text-4xl font-semibold opacity-0 [animation-delay:0.2s]"
-          id="recent-posts"
+          class="animate-reveal break-words text-4xl font-semibold capitalize opacity-0 transition-colors duration-500 [animation-delay:0.2s] group-hover:text-tertiary"
+          id="featured-projects"
         >
           Recent posts
         </h2>
-      </a>
-      <a
-        href="/posts"
-        class="animate-reveal rounded-full bg-secondary p-1 opacity-0 transition-colors [animation-delay:0.2s] group-hover:bg-tertiary"
-      >
-        <Icon
-          name="mdi:arrow-right"
-          title="All posts"
-          class="h-4 w-auto text-primary"
-        />
       </a>
     </div>
     <ol
@@ -71,5 +62,15 @@ const projects = (await getCollection("projects"))
     >
       {posts.map((post) => <ShowcasePost collection={post} />)}
     </ol>
+    {
+      posts.length > 1 ? (
+        <a href="/posts">
+          {" "}
+          <div class="mt-8 flex animate-reveal flex-row items-center gap-1 justify-self-center rounded-full bg-tertiary px-3 py-2 font-medium capitalize text-primary opacity-0 transition-colors duration-300 [animation-delay:0.1s] hover:bg-accent">
+            View all
+          </div>
+        </a>
+      ) : null
+    }
   </section>
 </Layout>
