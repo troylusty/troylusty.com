@@ -39,7 +39,7 @@ export default {
       },
       logo: {
         "0%": {
-          transform: "translateY(200px)",
+          transform: "translateY(512px)",
           color: "hsl(var(--primary))",
         },
         "100%": {
