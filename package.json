@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@iconify-json/mdi": "^1.2.1",
-    "@iconify-json/simple-icons": "^1.2.13",
+    "@iconify-json/simple-icons": "^1.2.18",
     "@tailwindcss/typography": "^0.5.15",
     "@types/node": "^22.10.1",
     "prettier": "^3.4.1",
