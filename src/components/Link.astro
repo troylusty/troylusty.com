@@ -10,11 +10,6 @@ interface Props extends HTMLAttributes<"a"> {
 const { href, external = true, ...rest } = Astro.props;
 ---
 
-<a
-  href={href}
-  rel={external ? "noopener nofollow noreferrer" : ""}
-  target={external ? "_blank" : "_self"}
-  {...rest}
->
+<a href={href} target={external ? "_blank" : "_self"} {...rest}>
   <slot />
 </a>

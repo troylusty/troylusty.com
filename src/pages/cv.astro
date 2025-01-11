@@ -22,14 +22,22 @@ import Prose from "@components/Prose.astro";
           class="mt-4 flex flex-col items-start gap-2 text-lg text-tertiary md:flex-row"
         >
           <div class="flex animate-reveal items-center gap-2 opacity-0">
-            <Icon name="mdi:email" />
-            <Link href="mailto:hello@troylusty.com">
-              <p>hello@troylusty.com</p>
-            </Link>
-            <Icon name="mdi:web" />
-            <Link href="/">
-              <p>troylusty.com</p>
-            </Link>
+            <div
+              class="flex flex-row items-center gap-2 text-tertiary transition-colors hover:text-accent"
+            >
+              <Icon name="mdi:email" />
+              <Link href="mailto:hello@troylusty.com">
+                <p>hello@troylusty.com</p>
+              </Link>
+            </div>
+            <div
+              class="flex flex-row items-center gap-2 text-tertiary transition-colors hover:text-accent"
+            >
+              <Icon name="mdi:web" />
+              <Link href="/">
+                <p>troylusty.com</p>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
