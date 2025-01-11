@@ -57,4 +57,4 @@ All available commands can be found by running `npm run` from a terminal.
 
 ## 📜 Licence
 
-This project is under the [MIT LICENSE](LICENSE). However, this applies to the **ONLY** to the website itself and does not extend to the artwork included within.
+This project is under the [MIT LICENSE](LICENSE). However, this applies to the **ONLY** to the website itself and does not extend to any content included within.
