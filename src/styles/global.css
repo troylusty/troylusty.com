@@ -22,3 +22,9 @@
     }
   }
 }
+
+@layer components {
+  .prose img {
+    @apply transition-transform hover:scale-[98%] active:scale-[200%];
+  }
+}
