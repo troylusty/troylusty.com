@@ -16,19 +16,22 @@ const { institution, qualification, grades, isOpen = false } = Astro.props;
     <summary
       class="flex cursor-pointer items-center justify-between py-3 font-bold"
     >
-      <p class="m-0">
-        {institution}
-      </p>
-      <span class="transition group-open:rotate-180">
-        <Icon name="mdi:chevron-down" class="h-6 w-auto text-tertiary" />
-      </span>
-    </summary>
-    <div class="p-4 text-sm text-neutral-600 dark:text-neutral-400">
-      <p class="my-0">
+      <p class="m-0 text-balance text-xl font-semibold text-secondary">
         {qualification}
       </p>
+      <span class="transition group-open:rotate-180">
+        <Icon
+          name="mdi:chevron-down"
+          class="h-6 w-auto text-secondary transition-colors group-open:text-tertiary"
+        />
+      </span>
+    </summary>
+    <div class="p-4 text-lg">
+      <p class="my-0 mb-2 font-semibold text-tertiary">
+        {institution}
+      </p>
       <ul>
-        {grades.map((grade) => <li>{grade}</li>)}
+        {grades.map((grade) => <li class="font-light">{grade}</li>)}
       </ul>
     </div>
   </details>
