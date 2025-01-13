@@ -19,7 +19,7 @@ const work = await Promise.all(
   {
     work.map((entry) => (
       <li class="pb-8 pl-0 last:pb-0">
-        <h3 class="mb-3 mt-4 text-balance text-xl font-semibold text-secondary">
+        <h3 class="mb-1 mt-4 text-balance text-xl font-semibold text-secondary">
           <span class="text-tertiary">{entry.data.role} at</span>{" "}
           {entry.data.company}
         </h3>
@@ -30,11 +30,10 @@ const work = await Promise.all(
           <entry.Content />
         </article>
         {entry.data.article ? (
-          <a
-            class="text-tertiary transition-colors hover:text-accent"
-            href={entry.data.article}
-          >
-            See related project
+          <a href={entry.data.article}>
+            <div class="mt-2 flex flex-row items-center gap-1 justify-self-center rounded-full bg-tertiary px-2 py-1 text-sm font-medium capitalize text-primary transition-colors hover:bg-accent">
+              View project
+            </div>
           </a>
         ) : null}
       </li>

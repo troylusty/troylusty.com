@@ -30,9 +30,9 @@ const { institution, qualification, grades, isOpen = false } = Astro.props;
       <p class="my-0 mb-2 font-semibold text-tertiary">
         {institution}
       </p>
-      <ul>
-        {grades.map((grade) => <li class="font-light">{grade}</li>)}
-      </ul>
+      <ol class="list-inside list-disc">
+        {grades.map((grade) => <li class="text-tertiary">{grade}</li>)}
+      </ol>
     </div>
   </details>
 </div>

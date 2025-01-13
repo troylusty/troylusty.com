@@ -11,4 +11,3 @@ by controlling related media being displayed onto
 [The Market Hall](https://real-immersive.realideas.org/market-hall/)’s
 ‘Immersive Dome’. In addition, technical support was also provided to diagnose
 and fix an item of broadcast hardware which was failing to output any signal.
-Reference: [Joseph Cook](mailto:josephcook@southdevon.ac.uk).
