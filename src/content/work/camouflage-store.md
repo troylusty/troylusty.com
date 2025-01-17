@@ -6,8 +6,4 @@ dateEnd: "Current"
 article: "https://troylusty.com/projects/camouflage-store"
 ---
 
-Setup and ongoing management of an
-[online e-commerce store](https://camouflagestore.uk) in addition to creating,
-editing, and publishing informational
-[YouTube](https://www.youtube.com/@camouflagestoreuk) and social media content
-for a family run outdoors store.
+Migrating and managing an ecommerce store, in addition to creating informational video content.

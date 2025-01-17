@@ -28,16 +28,16 @@ const listFormatter = new Intl.ListFormat("en-GB", {
   updated={article.data.updated}
   tags={article.data.tags}
 >
-  <div class="mx-auto mb-16 max-w-prose">
+  <div class="mx-auto mb-8">
     <h1
-      class="animate-reveal break-words text-start text-4xl font-semibold opacity-0"
+      class="animate-reveal break-words text-start text-2xl font-semibold opacity-0"
     >
       <span class="text-secondary">{article.data.title}</span><span
         class="ml-2 text-tertiary">{article.data.description}</span
       >
     </h1>
     <div
-      class="mt-4 flex animate-reveal flex-col flex-wrap items-start gap-2 text-lg text-tertiary opacity-0 [animation-delay:0.1s] md:flex-row"
+      class="mt-4 flex animate-reveal flex-col flex-wrap items-start gap-2 text-tertiary opacity-0 [animation-delay:0.1s] md:flex-row"
     >
       <div class="flex items-center gap-2">
         <Icon name="mdi:calendar" />
@@ -79,9 +79,7 @@ const listFormatter = new Intl.ListFormat("en-GB", {
       }
     </div>
   </div>
-  <div
-    class="mx-auto max-w-prose animate-reveal opacity-0 [animation-delay:0.2s]"
-  >
+  <div class="mx-auto animate-reveal opacity-0 [animation-delay:0.2s]">
     <Prose>
       <Content />
     </Prose>

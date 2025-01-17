@@ -33,14 +33,14 @@ const next = items[(index + 1) % items.length];
           />
         </a>
         <a href={`/${prev.collection}/${prev.slug}`}>
-          <p class="animate-reveal break-words text-xl font-medium text-tertiary opacity-0 transition-colors duration-300 group-hover:text-accent">
+          <p class="animate-reveal break-words font-medium text-tertiary opacity-0 transition-colors duration-300 group-hover:text-accent">
             {prev.data.title}
           </p>
         </a>
       </div>
       <div class="group flex w-fit flex-row items-center justify-between gap-2 self-end">
         <a href={`/${next.collection}/${next.slug}`}>
-          <p class="animate-reveal break-words text-xl font-medium text-tertiary opacity-0 transition-colors duration-300 group-hover:text-accent">
+          <p class="animate-reveal break-words font-medium text-tertiary opacity-0 transition-colors duration-300 group-hover:text-accent">
             {next.data.title}
           </p>
         </a>

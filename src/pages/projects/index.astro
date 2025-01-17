@@ -10,11 +10,11 @@ const projects = (await getCollection("projects"))
 ---
 
 <Layout title={SITE.TITLE} description={PROJECTS.DESCRIPTION}>
-  <h1 class="animate-reveal break-words text-4xl font-semibold opacity-0">
+  <h1 class="animate-reveal break-words text-2xl font-semibold opacity-0">
     {PROJECTS.TITLE}
   </h1>
   <ol
-    class="mt-16 grid animate-reveal grid-cols-1 gap-6 opacity-0 [animation-delay:0.1s] md:grid-cols-3 md:[&>*:nth-child(4n+2)]:col-span-2 md:[&>*:nth-child(4n+3)]:col-span-2 md:[&>*:only-child]:col-span-3"
+    class="mt-16 grid animate-reveal grid-cols-1 gap-4 opacity-0 [animation-delay:0.1s] md:grid-cols-2"
   >
     {projects.map((article: any) => <ShowcaseProject collection={article} />)}
   </ol>
