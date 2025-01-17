@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import { dateRange } from "@lib/utils";
+import Button from "./Button.astro";
 
 const collection = (await getCollection("work")).sort(
   (a, b) =>
@@ -18,23 +19,19 @@ const work = await Promise.all(
 <ul class="list-none pl-0">
   {
     work.map((entry) => (
-      <li class="pb-8 pl-0 last:pb-0">
-        <h3 class="mb-1 mt-4 text-balance text-xl font-semibold text-secondary">
-          <span class="text-tertiary">{entry.data.role} at</span>{" "}
+      <li class="pb-4 pl-0 last:pb-0">
+        <h3 class="mb-1 mt-4 text-balance font-semibold text-secondary">
+          <span class="text-tertiary">{entry.data.role} at</span>
           {entry.data.company}
         </h3>
-        <time class="block text-sm text-accent">
+        <time class="block text-accent">
           {dateRange(entry.data.dateStart, entry.data.dateEnd)}
         </time>
-        <article class="mt-4 text-lg text-secondary prose-a:underline prose-a:decoration-tertiary prose-a:decoration-wavy">
+        <article class="mt-2 text-secondary prose-a:underline prose-a:decoration-tertiary prose-a:decoration-wavy">
           <entry.Content />
         </article>
         {entry.data.article ? (
-          <a href={entry.data.article}>
-            <div class="mt-2 flex flex-row items-center gap-1 justify-self-center rounded-full bg-tertiary px-2 py-1 text-sm font-medium capitalize text-primary transition-colors hover:bg-accent">
-              View project
-            </div>
-          </a>
+          <Button href={entry.data.article} link="View project" />
         ) : null}
       </li>
     ))

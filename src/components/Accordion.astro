@@ -16,7 +16,7 @@ const { institution, qualification, grades, isOpen = false } = Astro.props;
     <summary
       class="flex cursor-pointer items-center justify-between py-3 font-bold"
     >
-      <p class="m-0 text-balance text-xl font-semibold text-secondary">
+      <p class="m-0 text-balance font-semibold text-secondary">
         {qualification}
       </p>
       <span class="transition group-open:rotate-180">
@@ -26,7 +26,7 @@ const { institution, qualification, grades, isOpen = false } = Astro.props;
         />
       </span>
     </summary>
-    <div class="p-4 text-lg">
+    <div class="p-4">
       <p class="my-0 mb-2 font-semibold text-tertiary">
         {institution}
       </p>

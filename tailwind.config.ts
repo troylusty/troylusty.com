@@ -19,7 +19,7 @@ export default {
     },
     animation: {
       reveal: "reveal 0.3s forwards ease-in-out",
-      logo: "logo 1s forwards ease-out",
+      logo: "logo 0.5s forwards ease-out",
       "gradient-x": "gradient-x 6s ease infinite",
       "gradient-y": "gradient-y 6s ease infinite",
       "gradient-xy": "gradient-xy 6s ease infinite",
@@ -39,11 +39,11 @@ export default {
       },
       logo: {
         "0%": {
-          transform: "translateY(480px)",
+          transform: "translateY(100%)",
           color: "hsl(var(--primary))",
         },
         "100%": {
-          transform: "translateY(0px)",
+          transform: "translateY(0%)",
           color: "hsl(var(--secondary))",
         },
       },

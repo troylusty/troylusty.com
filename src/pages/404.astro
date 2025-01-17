@@ -1,7 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { SITE } from "@consts";
-import { Icon } from "astro-icon/components";
+import Button from "@components/Button.astro";
 ---
 
 <Layout title="404" description={SITE.DESCRIPTION}>
@@ -11,29 +11,19 @@ import { Icon } from "astro-icon/components";
     >
       <div>
         <h2
-          class="animate-reveal break-words text-4xl font-semibold opacity-0"
+          class="animate-reveal break-words text-2xl font-semibold opacity-0"
           id="featured-projects"
         >
           404
         </h2>
         <h3
-          class="mt-2 animate-reveal text-xl font-bold opacity-0 [animation-delay:0.1s]"
+          class="mt-2 animate-reveal font-bold opacity-0 [animation-delay:0.1s]"
         >
           Content not found
         </h3>
       </div>
       <div class="animate-reveal opacity-0 [animation-delay:0.2s]">
-        <a
-          href="/"
-          class="flex items-center gap-1 rounded bg-secondary px-3.5 py-2.5 text-sm font-semibold text-primary"
-        >
-          <p>Go back home</p>
-          <Icon
-            name="mdi:arrow-u-left-top"
-            title="Send me an email"
-            class="h-4 w-auto"
-          />
-        </a>
+        <Button href="/" link="Go home" />
       </div>
     </div>
   </section>

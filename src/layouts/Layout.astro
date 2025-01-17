@@ -2,7 +2,6 @@
 import Head from "@components/Head.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
-import SkinnyCenter from "@components/SkinnyCenter.astro";
 import "@styles/global.css";
 
 interface Props {
@@ -18,7 +17,7 @@ const { title, description, image, date, updated, tags } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="overflow-y-scroll scroll-smooth subpixel-antialiased">
+<html lang="en" class="scroll-smooth antialiased">
   <Head
     title={title}
     description={description}
@@ -28,12 +27,10 @@ const { title, description, image, date, updated, tags } = Astro.props;
     tags={tags}
   />
   <body class="bg-primary text-secondary">
-    <div class="flex min-h-screen flex-col justify-start">
+    <div class="flex min-h-screen flex-col justify-start p-8 pt-0 md:pt-8">
       <Header />
-      <main>
-        <SkinnyCenter>
-          <slot />
-        </SkinnyCenter>
+      <main class="mx-auto w-full max-w-prose space-y-6">
+        <slot />
       </main>
       <Footer />
     </div>

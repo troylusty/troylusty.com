@@ -6,89 +6,82 @@ import Education from "@components/Education.astro";
 import Skills from "@components/Skills.astro";
 import { Icon } from "astro-icon/components";
 import Link from "@components/Link.astro";
-import Prose from "@components/Prose.astro";
 ---
 
 <Layout title={CV.TITLE} description={CV.DESCRIPTION}>
-  <div class="mx-auto max-w-full md:max-w-prose">
-    <section>
+  <section>
+    <div
+      class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center"
+    >
+      <h1 class="animate-reveal break-words text-2xl font-semibold opacity-0">
+        Troy Lusty
+      </h1>
       <div
-        class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center"
+        class="mt-4 flex flex-col items-start gap-2 text-tertiary md:flex-row"
       >
-        <h1 class="animate-reveal break-words text-4xl font-semibold opacity-0">
-          Troy Lusty
-        </h1>
-        <div
-          class="mt-4 flex flex-col items-start gap-2 text-lg text-tertiary md:flex-row"
-        >
-          <div class="flex animate-reveal items-center gap-2 opacity-0">
-            <div
-              class="flex flex-row items-center gap-2 text-tertiary transition-colors hover:text-accent"
-            >
-              <Icon name="mdi:email" />
-              <Link href="mailto:hello@troylusty.com">
-                <p>hello@troylusty.com</p>
-              </Link>
-            </div>
-            <div
-              class="flex flex-row items-center gap-2 text-tertiary transition-colors hover:text-accent"
-            >
-              <Icon name="mdi:web" />
-              <Link href="/">
-                <p>troylusty.com</p>
-              </Link>
-            </div>
+        <div class="flex animate-reveal items-center gap-2 opacity-0">
+          <div
+            class="flex flex-row items-center gap-2 text-tertiary transition-colors hover:text-accent"
+          >
+            <Icon name="mdi:email" />
+            <Link href="mailto:hello@troylusty.com">
+              <p>hello@troylusty.com</p>
+            </Link>
+          </div>
+          <div
+            class="flex flex-row items-center gap-2 text-tertiary transition-colors hover:text-accent"
+          >
+            <Icon name="mdi:web" />
+            <Link href="/">
+              <p>troylusty.com</p>
+            </Link>
           </div>
         </div>
       </div>
-    </section>
-    <section class="mt-16 animate-reveal opacity-0 [animation-delay:0.1s]">
-      <h2 class="mb-16 break-words text-4xl font-semibold capitalize">
-        About me
-      </h2>
-      <p class="mb-8 text-lg">
-        Hi, my name is Troy and I’m a student 3D artist studying on a BA (Hons)
-        Game Arts and Design course in the UK.
-      </p>
-      <p class="mb-8 text-lg">
-        In 2019 I began experimenting with Blender after having used various 2D
-        art applications such as Adobe Photoshop for over 5 years. After making
-        this change, I realised that I have a huge interest in creating 3D
-        graphics for video games and TV. At the moment I am working on expanding
-        my skillset to encompass other areas with a focus on lighting and
-        rendering techniques in relation to environment art.
-      </p>
-      <p class="mb-8 text-lg">
-        My current portfolio of work can be found on my website at:
-        <a
-          class="text-secondary underline decoration-tertiary decoration-wavy"
-          href="/projects">troylusty.com/projects</a
-        >.
-      </p>
-    </section>
-    <section class="mt-16 animate-reveal opacity-0 [animation-delay:0.2s]">
-      <h2 class="mb-16 break-words text-4xl font-semibold capitalize">
-        Education
-      </h2>
-      <Education />
-    </section>
-    <section class="mt-16 animate-reveal opacity-0 [animation-delay:0.3s]">
-      <h2 class="mb-16 break-words text-4xl font-semibold capitalize">
-        Skills
-      </h2>
-      <p class="mb-8 text-lg">
-        My specific chosen area of focus is design, lighting, and rendering
-        focusing on 3D environments within software such as Blender and Unreal
-        Engine. Using either real-time or offline rendering techniques. In
-        addition to this, I am also very interested in web development.
-      </p>
-      <Skills />
-    </section>
-    <section class="mt-16 animate-reveal opacity-0 [animation-delay:0.4s]">
-      <h2 class="mb-16 break-words text-4xl font-semibold capitalize">
-        Experience
-      </h2>
-      <Work />
-    </section>
-  </div>
+    </div>
+  </section>
+  <section class="mt-16 animate-reveal opacity-0 [animation-delay:0.1s]">
+    <h2 class="mb-4 break-words text-2xl font-semibold capitalize">About me</h2>
+    <p class="mb-2">
+      Hi, my name is Troy and I’m a student 3D artist studying on a BA (Hons)
+      Game Arts and Design course in the UK.
+    </p>
+    <p class="mb-2">
+      In 2019 I began experimenting with Blender after having used various 2D
+      art applications such as Adobe Photoshop for over 5 years. After making
+      this change, I realised that I have a huge interest in creating 3D
+      graphics for video games and TV. At the moment I am working on expanding
+      my skillset to encompass other areas with a focus on lighting and
+      rendering techniques in relation to environment art.
+    </p>
+    <p class="mb-2">
+      My current portfolio of work can be found on my website at:
+      <a
+        class="text-secondary underline decoration-tertiary decoration-wavy"
+        href="/projects">troylusty.com/projects</a
+      >.
+    </p>
+  </section>
+  <section class="mt-16 animate-reveal opacity-0 [animation-delay:0.2s]">
+    <h2 class="mb-4 break-words text-2xl font-semibold capitalize">
+      Education
+    </h2>
+    <Education />
+  </section>
+  <section class="mt-16 animate-reveal opacity-0 [animation-delay:0.3s]">
+    <h2 class="mb-4 break-words text-2xl font-semibold capitalize">Skills</h2>
+    <p class="mb-2">
+      My specific chosen area of focus is design, lighting, and rendering
+      focusing on 3D environments within software such as Blender and Unreal
+      Engine. Using either real-time or offline rendering techniques. In
+      addition to this, I am also very interested in web development.
+    </p>
+    <Skills />
+  </section>
+  <section class="mt-16 animate-reveal opacity-0 [animation-delay:0.4s]">
+    <h2 class="mb-4 break-words text-2xl font-semibold capitalize">
+      Experience
+    </h2>
+    <Work />
+  </section>
 </Layout>

@@ -28,3 +28,11 @@
     @apply transition-transform hover:scale-[98%] active:scale-[200%];
   }
 }
+
+@media print {
+  body {
+    margin: 0;
+    color: #000;
+    background-color: #fff;
+  }
+}
