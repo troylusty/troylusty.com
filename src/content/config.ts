@@ -1,4 +1,5 @@
 import { defineCollection, z } from "astro:content";
+import { rssSchema } from '@astrojs/rss';
 
 const posts = defineCollection({
   type: "content",
@@ -16,7 +17,7 @@ const posts = defineCollection({
       tags: z.array(z.string()),
       extraAuthors: z.array(z.string()).optional(),
       categories: z.array(z.string()),
-    }),
+    }).merge(rssSchema)
 });
 
 const projects = defineCollection({
@@ -38,7 +39,7 @@ const projects = defineCollection({
       featured: z.boolean().optional(),
       collection: z.boolean().optional(),
       includeHero: z.boolean().optional(),
-    }),
+    }).merge(rssSchema)
 });
 
 const work = defineCollection({
