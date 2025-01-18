@@ -25,14 +25,22 @@
 
 @layer components {
   .prose img {
-    @apply transition-transform hover:scale-[98%] active:scale-[200%];
+    @apply cursor-pointer transition-transform hover:scale-[98%] active:scale-[200%];
   }
 }
 
 @media print {
   body {
-    margin: 0;
-    color: #000;
-    background-color: #fff;
+    background: none;
+    color: black;
+  }
+  header,
+  footer,
+  main {
+    max-width: unset !important;
+  }
+  header,
+  footer {
+    display: none;
   }
 }
