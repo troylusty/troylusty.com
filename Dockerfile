@@ -1,12 +1,12 @@
-FROM node:alpine as node
-USER node
+FROM oven/bun:alpine as bun
+USER bun
 WORKDIR /usr/src/app
 
 COPY . .
 
-RUN ["npm", "ci"]
-RUN ["npm", "run", "build"]
+RUN ["bun", "install", "--frozen-lockfile"]
+RUN ["bun", "run", "build"]
 
 FROM ghcr.io/static-web-server/static-web-server:latest
 WORKDIR /
-COPY --from=node /usr/src/app/dist /public
+COPY --from=bun /usr/src/app/dist /public

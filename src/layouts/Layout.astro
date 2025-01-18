@@ -17,7 +17,7 @@ const { title, description, image, date, updated, tags } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth antialiased">
+<html lang="en" class="scroll-smooth antialiased" transition:animate="none">
   <Head
     title={title}
     description={description}
@@ -30,7 +30,10 @@ const { title, description, image, date, updated, tags } = Astro.props;
     class="flex min-h-screen flex-col justify-start bg-primary p-8 pt-0 text-secondary md:pt-8"
   >
     <Header />
-    <main class="mx-auto w-full max-w-prose space-y-6">
+    <main
+      class="mx-auto w-full max-w-prose space-y-6"
+      transition:animate="fade"
+    >
       <slot />
     </main>
     <Footer />
