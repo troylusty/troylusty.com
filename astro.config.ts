@@ -33,4 +33,5 @@ export default defineConfig({
   experimental: {
     responsiveImages: true,
   },
+  prefetch: true,
 });
