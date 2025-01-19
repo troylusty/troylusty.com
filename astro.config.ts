@@ -5,29 +5,10 @@ import mdx from "@astrojs/mdx";
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
 
-import expressiveCode from "astro-expressive-code";
-
 // https://astro.build/config
 export default defineConfig({
   site: "https://troylusty.com",
-  integrations: [
-    sitemap(),
-    expressiveCode({
-      themes: ["github-dark-default", "github-light-default"],
-      defaultProps: {
-        frame: "none",
-        wrap: true,
-      },
-      styleOverrides: {
-        frames: {
-          shadowColor: "none",
-        },
-      },
-    }),
-    mdx(),
-    tailwind(),
-    icon(),
-  ],
+  integrations: [sitemap(), mdx(), tailwind(), icon()],
   output: "static",
   markdown: {
     rehypePlugins: [
@@ -38,6 +19,13 @@ export default defineConfig({
         },
       ],
     ],
+    shikiConfig: {
+      wrap: true,
+      themes: {
+        light: "github-light-default",
+        dark: "github-dark-default",
+      },
+    },
   },
   image: {
     service: passthroughImageService(),
