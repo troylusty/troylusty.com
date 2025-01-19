@@ -10,14 +10,14 @@
   :root {
     --primary: 0deg 0% 99%;
     --secondary: 0deg 0% 13%;
-    --tertiary: 0deg 0% 51%;
+    --tertiary: 0deg 0% 45%;
     --accent: 0deg 0% 39%;
   }
   @media (prefers-color-scheme: dark) {
     :root {
       --primary: 0deg 0% 0%;
       --secondary: 0deg 0% 93%;
-      --tertiary: 0deg 0% 45%;
+      --tertiary: 0deg 0% 50%;
       --accent: 0deg 0% 71%;
     }
   }
