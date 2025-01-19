@@ -18,7 +18,6 @@ const skills = await Promise.all(
       <li class="group flex items-center gap-2 rounded border border-tertiary p-2 text-tertiary transition-colors hover:border-accent hover:text-accent">
         <Icon
           name={entry.data.icon}
-          title={entry.data.title}
           class="h-5 w-auto text-tertiary transition-colors group-hover:text-accent"
         />
         <p class="m-0 cursor-default">{entry.data.title}</p>

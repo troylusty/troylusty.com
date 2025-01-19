@@ -35,12 +35,6 @@
   }
 }
 
-@layer components {
-  .prose img {
-    @apply cursor-pointer transition-transform hover:scale-[98%] active:scale-[200%];
-  }
-}
-
 @media print {
   body {
     background: none;

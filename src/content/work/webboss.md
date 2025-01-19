@@ -3,7 +3,7 @@ company: "WebBoss"
 role: "Web Design Mockups"
 dateStart: "2019"
 dateEnd: "2019"
-article: "https://troylusty.com/projects/webboss"
+article: "/projects/webboss"
 ---
 
 I joined WebBoss for a week as my work experience placement in Sixth Form. In my

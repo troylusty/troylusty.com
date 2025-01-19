@@ -1,6 +1,5 @@
 ---
-import { Icon } from "astro-icon/components";
-
+import Button from "./Button.astro";
 import { type CollectionEntry, getCollection } from "astro:content";
 
 type Props = {
@@ -21,39 +20,17 @@ const next = items[(index + 1) % items.length];
 {
   items.length > 1 ? (
     <div class="mx-auto mt-8 flex max-w-prose justify-between gap-4 md:gap-0">
-      <div class="group flex w-fit flex-row items-center justify-between gap-2">
-        <a
+      <div class="group flex w-fit flex-row items-center justify-between">
+        <Button
           href={`/${prev.collection}/${prev.slug}`}
-          class="animate-reveal opacity-0"
-        >
-          <Icon
-            name="mdi:arrow-left"
-            title="All projects"
-            class="h-4 w-auto text-tertiary transition-colors duration-300 group-hover:text-accent"
-          />
-        </a>
-        <a href={`/${prev.collection}/${prev.slug}`}>
-          <p class="animate-reveal break-words font-medium text-tertiary opacity-0 transition-colors duration-300 group-hover:text-accent">
-            {prev.data.title}
-          </p>
-        </a>
+          link={`Previous: ${prev.data.title}`}
+        />
       </div>
-      <div class="group flex w-fit flex-row items-center justify-between gap-2 self-end">
-        <a href={`/${next.collection}/${next.slug}`}>
-          <p class="animate-reveal break-words font-medium text-tertiary opacity-0 transition-colors duration-300 group-hover:text-accent">
-            {next.data.title}
-          </p>
-        </a>
-        <a
+      <div class="group flex w-fit flex-row items-center justify-between self-end">
+        <Button
           href={`/${next.collection}/${next.slug}`}
-          class="animate-reveal opacity-0"
-        >
-          <Icon
-            name="mdi:arrow-right"
-            title="All projects"
-            class="h-4 w-auto text-tertiary transition-colors duration-300 group-hover:text-accent"
-          />
-        </a>
+          link={`Next: ${next.data.title}`}
+        />
       </div>
     </div>
   ) : null
