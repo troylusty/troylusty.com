@@ -7,10 +7,10 @@ import { Icon } from "astro-icon/components";
 <footer class="mx-auto mb-8 mt-auto w-full max-w-prose space-y-6 pt-12">
   <div class="md:flex md:justify-between">
     <div class="mb-6 text-secondary md:mb-0">
-      <a class="inline-flex items-center" href="#top" title="Back to top">
-        <Icon name="icon" title={SITE.TITLE} class="h-8 w-auto ease-in-out" />
+      <a class="inline-flex items-center group" href="#top" title="Back to top">
+        <Icon name="icon" title={SITE.TITLE} class="h-8 w-auto ease-in-out transition-colors duration-500 group-hover:text-tertiary" />
         <div
-          class="ml-2 hidden flex-none text-sm font-bold capitalize md:visible lg:block"
+          class="ml-2 hidden flex-none text-sm font-bold capitalize md:visible lg:block transition-colors duration-500 group-hover:text-tertiary"
         >
           Troy Lusty
         </div>
