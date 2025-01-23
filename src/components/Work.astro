@@ -20,14 +20,14 @@ const work = await Promise.all(
   {
     work.map((entry) => (
       <li class="pb-4 pl-0 last:pb-0">
-        <h3 class="mb-1 mt-4 text-balance font-semibold text-secondary">
+        <h3 class="text-secondary mt-4 mb-1 font-semibold text-balance">
           <span class="text-tertiary">{entry.data.role} at</span>
           {entry.data.company}
         </h3>
-        <time class="block text-accent">
+        <time class="text-accent block">
           {dateRange(entry.data.dateStart, entry.data.dateEnd)}
         </time>
-        <article class="mt-2 text-secondary prose-a:underline prose-a:decoration-tertiary prose-a:decoration-wavy">
+        <article class="text-secondary prose-a:underline prose-a:decoration-tertiary prose-a:decoration-wavy mt-2">
           <entry.Content />
         </article>
         {entry.data.article ? (

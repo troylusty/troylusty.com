@@ -28,7 +28,7 @@ const projects = allProjects
     <div class="group flex w-fit flex-row items-center justify-between gap-6">
       <a href="/projects">
         <h2
-          class="animate-reveal break-words text-2xl font-semibold capitalize opacity-0 transition-colors duration-500 group-hover:text-tertiary"
+          class="animate-reveal group-hover:text-tertiary text-2xl font-semibold break-words capitalize opacity-0 transition-colors duration-500"
           id="featured-projects"
         >
           Featured projects
@@ -36,7 +36,7 @@ const projects = allProjects
       </a>
     </div>
     <ol
-      class="mt-8 grid animate-reveal grid-cols-1 gap-4 opacity-0 [animation-delay:0.1s] md:grid-cols-2"
+      class="animate-reveal mt-8 grid grid-cols-1 gap-4 opacity-0 [animation-delay:0.1s] md:grid-cols-2"
     >
       {projects.map((project) => <ShowcaseProject collection={project} />)}
     </ol>
@@ -50,7 +50,7 @@ const projects = allProjects
     <div class="group flex w-fit flex-row items-center justify-between gap-6">
       <a href="/posts">
         <h2
-          class="animate-reveal break-words text-2xl font-semibold capitalize opacity-0 transition-colors duration-500 [animation-delay:0.2s] group-hover:text-tertiary"
+          class="animate-reveal group-hover:text-tertiary text-2xl font-semibold break-words capitalize opacity-0 transition-colors duration-500 [animation-delay:0.2s]"
           id="featured-projects"
         >
           Recent posts
@@ -58,7 +58,7 @@ const projects = allProjects
       </a>
     </div>
     <ol
-      class="mt-8 grid animate-reveal grid-cols-1 gap-6 opacity-0 [animation-delay:0.3s]"
+      class="animate-reveal mt-8 grid grid-cols-1 gap-6 opacity-0 [animation-delay:0.3s]"
     >
       {posts.map((post) => <ShowcasePost collection={post} />)}
     </ol>
