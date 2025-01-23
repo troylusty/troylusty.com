@@ -86,10 +86,12 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  --primary: #000000;
-  --secondary: #ededed;
-  --tertiary: #737373;
-  --accent: #636363;
+  :root {
+    --primary: #000000;
+    --secondary: #ededed;
+    --tertiary: #737373;
+    --accent: #636363;
+  }
 
   .astro-code,
   .astro-code span {
