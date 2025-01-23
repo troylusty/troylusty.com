@@ -16,18 +16,18 @@ const { institution, qualification, grades, isOpen = false } = Astro.props;
     <summary
       class="flex cursor-pointer items-center justify-between py-3 font-bold"
     >
-      <p class="m-0 text-balance font-semibold text-secondary">
+      <p class="text-secondary m-0 font-semibold text-balance">
         {qualification}
       </p>
       <span class="transition group-open:rotate-180">
         <Icon
           name="mdi:chevron-down"
-          class="h-6 w-auto text-secondary transition-colors group-open:text-tertiary"
+          class="text-secondary group-open:text-tertiary h-6 w-auto transition-colors"
         />
       </span>
     </summary>
     <div class="p-4">
-      <p class="my-0 mb-2 font-semibold text-tertiary">
+      <p class="text-tertiary my-0 mb-2 font-semibold">
         {institution}
       </p>
       <ol class="list-inside list-disc">

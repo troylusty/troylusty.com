@@ -4,27 +4,31 @@ import Link from "@components/Link.astro";
 import { Icon } from "astro-icon/components";
 ---
 
-<footer class="mx-auto mb-8 mt-auto w-full max-w-prose space-y-6 pt-12">
+<footer class="mx-auto mt-auto mb-8 w-full max-w-prose space-y-6 pt-12">
   <div class="md:flex md:justify-between">
-    <div class="mb-6 text-secondary md:mb-0">
-      <a class="inline-flex items-center group" href="#top" title="Back to top">
-        <Icon name="icon" title={SITE.TITLE} class="h-8 w-auto ease-in-out transition-colors duration-500 group-hover:text-tertiary" />
+    <div class="text-secondary mb-6 md:mb-0">
+      <a class="group inline-flex items-center" href="#top" title="Back to top">
+        <Icon
+          name="icon"
+          title={SITE.TITLE}
+          class="group-hover:text-tertiary h-8 w-auto transition-colors duration-500 ease-in-out"
+        />
         <div
-          class="ml-2 hidden flex-none text-sm font-bold capitalize md:visible lg:block transition-colors duration-500 group-hover:text-tertiary"
+          class="group-hover:text-tertiary ml-2 hidden flex-none text-sm font-bold capitalize transition-colors duration-500 md:visible lg:block"
         >
           Troy Lusty
         </div>
       </a>
     </div>
     <div class="text-left sm:gap-6 md:text-right">
-      <ul class="font-medium text-tertiary">
+      <ul class="text-tertiary font-medium">
         {
           SITE.NAVLINKS.map((i) => (
             <li class="mb-1 last:mb-0">
               <a
                 data-navlink
                 href={i.href}
-                class="capitalize transition-colors hover:text-secondary"
+                class="hover:text-secondary capitalize transition-colors"
               >
                 {i.name}
               </a>
@@ -34,10 +38,10 @@ import { Icon } from "astro-icon/components";
       </ul>
     </div>
   </div>
-  <div class="mt-12 sm:flex sm:items-center sm:justify-between lg:mt-16">
-    <span class="text-sm text-tertiary sm:text-center"
+  <div class="sm:flex sm:items-center sm:justify-between">
+    <span class="text-tertiary text-sm sm:text-center"
       >&copy; {new Date().getFullYear()}
-      <a href="/" class="transition-colors hover:text-secondary">{SITE.TITLE}</a
+      <a href="/" class="hover:text-secondary transition-colors">{SITE.TITLE}</a
       >. All Rights Reserved.
     </span>
     <div class="mt-4 flex gap-2 sm:mt-0 sm:justify-center">
@@ -47,7 +51,7 @@ import { Icon } from "astro-icon/components";
             <Icon
               name={i.icon}
               title={i.name}
-              class="h-5 w-5 text-tertiary transition-colors hover:text-secondary"
+              class="text-tertiary hover:text-secondary h-5 w-5 transition-colors"
             />
           </Link>
         ))

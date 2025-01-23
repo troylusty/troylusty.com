@@ -19,15 +19,15 @@ const next = items[(index + 1) % items.length];
 
 {
   items.length > 1 ? (
-    <div class="mx-auto mt-8 flex max-w-prose md:flex-row justify-between gap-4 md:gap-0 flex-col-reverse">
-        <Button
-          href={`/${prev.collection}/${prev.slug}`}
-          link={`Previous: ${prev.data.title}`}
-        />
-        <Button
-          href={`/${next.collection}/${next.slug}`}
-          link={`Next: ${next.data.title}`}
-        />
+    <div class="mx-auto mt-8 flex max-w-prose flex-col-reverse justify-between gap-4 md:flex-row md:gap-0">
+      <Button
+        href={`/${prev.collection}/${prev.slug}`}
+        link={`Previous: ${prev.data.title}`}
+      />
+      <Button
+        href={`/${next.collection}/${next.slug}`}
+        link={`Next: ${next.data.title}`}
+      />
     </div>
   ) : null
 }

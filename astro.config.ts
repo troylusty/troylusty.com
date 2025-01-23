@@ -2,13 +2,16 @@ import { defineConfig, passthroughImageService } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import rehypeExternalLinks from "rehype-external-links";
 import mdx from "@astrojs/mdx";
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://troylusty.com",
-  integrations: [sitemap(), mdx(), tailwind(), icon()],
+  integrations: [sitemap(), mdx(), icon()],
+  vite: {
+    plugins: [tailwindcss()],
+  },
   output: "static",
   markdown: {
     rehypePlugins: [

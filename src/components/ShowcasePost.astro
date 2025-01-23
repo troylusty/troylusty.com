@@ -10,17 +10,17 @@ const { collection } = Astro.props;
 
 <li>
   <a
-    class="group bg-none hover:bg-tertiary/30"
+    class="group hover:bg-tertiary/30 bg-none"
     href={`/${collection.collection}/${collection.slug}`}
   >
     <article class="flex flex-col">
-      <h3 class="mb-1 text-balance font-semibold">
+      <h3 class="mb-1 font-semibold text-balance">
         <span class="text-secondary">{collection.data.title}</span><span
-          class="ml-2 text-tertiary transition-colors group-hover:text-accent"
+          class="text-tertiary group-hover:text-accent ml-2 transition-colors"
           >{collection.data.description}</span
         >
       </h3>
-      <time class="block text-sm text-accent"
+      <time class="text-accent block text-sm"
         ><FormattedDate date={collection.data.date} /></time
       >
     </article>
