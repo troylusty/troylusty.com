@@ -1,4 +1,4 @@
-FROM oven/bun:alpine as bun
+FROM oven/bun:latest as bun
 USER bun
 WORKDIR /usr/src/app
 
