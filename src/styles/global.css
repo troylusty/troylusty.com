@@ -4,37 +4,29 @@
 
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
-@config "../../tailwind.config.ts";
 
-@theme {
-  --font-display: "Satoshi", "sans-serif";
-  --breakpoint-3xl: 1920px;
-  --color-avocado-100: oklch(0.99 0 0);
-  --color-avocado-200: oklch(0.98 0.04 113.22);
-  --color-avocado-300: oklch(0.94 0.11 115.03);
-  --color-avocado-400: oklch(0.92 0.19 114.08);
-  --color-avocado-500: oklch(0.84 0.18 117.33);
-  --color-avocado-600: oklch(0.53 0.12 118.34);
-  --ease-fluid: cubic-bezier(0.3, 0, 0, 1);
-  --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
-  /* ... */
+@theme inline {
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-tertiary: var(--tertiary);
+  --color-accent: var(--accent);
 }
 
-@layer base {
-  :root {
-    --primary: 0deg 0% 99%;
-    --secondary: 0deg 0% 13%;
-    --tertiary: 0deg 0% 45%;
-    --accent: 0deg 0% 39%;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --primary: 0deg 0% 0%;
-      --secondary: 0deg 0% 93%;
-      --tertiary: 0deg 0% 50%;
-      --accent: 0deg 0% 71%;
-    }
-  }
+@theme {
+}
+
+:root {
+  --primary: 0deg 0% 99%;
+  --secondary: 0deg 0% 13%;
+  --tertiary: 0deg 0% 45%;
+  --accent: 0deg 0% 39%;
+}
+
+[data-theme="dark"] {
+  --primary: 0deg 0% 0%;
+  --secondary: 0deg 0% 93%;
+  --tertiary: 0deg 0% 50%;
+  --accent: 0deg 0% 71%;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -64,3 +56,79 @@
     display: none;
   }
 }
+
+/*
+export default {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ["'Outfit Variable'", ...defaultTheme.fontFamily.sans],
+        serif: [...defaultTheme.fontFamily.serif],
+        mono: ["'Red Hat Mono Variable'", ...defaultTheme.fontFamily.mono],
+      },
+    },
+    animation: {
+      reveal: "reveal 0.3s forwards ease-in-out",
+      logo: "logo 0.5s forwards ease-out",
+      "gradient-x": "gradient-x 6s ease infinite",
+      "gradient-y": "gradient-y 6s ease infinite",
+      "gradient-xy": "gradient-xy 6s ease infinite",
+    },
+    keyframes: {
+      reveal: {
+        "0%": {
+          transform: "translateY(20px)",
+          opacity: "0",
+          filter: "blur(4px)",
+        },
+        "100%": {
+          transform: "translateY(0px)",
+          opacity: "1",
+          filter: "blur(0px)",
+        },
+      },
+      logo: {
+        "0%": {
+          transform: "translateY(100%)",
+          color: "hsl(var(--primary))",
+        },
+        "100%": {
+          transform: "translateY(0%)",
+          color: "hsl(var(--secondary))",
+        },
+      },
+      "gradient-y": {
+        "0%, 100%": {
+          "background-size": "400% 400%",
+          "background-position": "center top",
+        },
+        "50%": {
+          "background-size": "200% 200%",
+          "background-position": "center center",
+        },
+      },
+      "gradient-x": {
+        "0%, 100%": {
+          "background-size": "200% 200%",
+          "background-position": "left center",
+        },
+        "50%": {
+          "background-size": "200% 200%",
+          "background-position": "right center",
+        },
+      },
+      "gradient-xy": {
+        "0%, 100%": {
+          "background-size": "400% 400%",
+          "background-position": "left center",
+        },
+        "50%": {
+          "background-size": "200% 200%",
+          "background-position": "right center",
+        },
+      },
+    },
+  },
+  plugins: [require("@tailwindcss/typography")],
+} satisfies Config;
+*/
