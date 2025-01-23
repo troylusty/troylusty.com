@@ -79,25 +79,24 @@
 }
 
 :root {
-  --primary: #fcfcfc;
-  --secondary: #212121;
-  --tertiary: #737373;
-  --accent: #636363;
+  --primary: oklch(99% 0 0);
+  --secondary: oklch(15% 0 0);
+  --tertiary: oklch(40% 0 0);
+  --accent: oklch(25% 0 0);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --primary: #000000;
-    --secondary: #ededed;
-    --tertiary: #737373;
-    --accent: #636363;
+    --primary: oklch(0% 0 0);
+    --secondary: oklch(95% 0 0);
+    --tertiary: oklch(60% 0 0);
+    --accent: oklch(75% 0 0);
   }
 
   .astro-code,
   .astro-code span {
     color: var(--shiki-dark) !important;
     background-color: var(--shiki-dark-bg) !important;
-    /* Optional, if you also want font styles */
     font-style: var(--shiki-dark-font-style) !important;
     font-weight: var(--shiki-dark-font-weight) !important;
     text-decoration: var(--shiki-dark-text-decoration) !important;
