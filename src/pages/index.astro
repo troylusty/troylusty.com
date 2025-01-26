@@ -42,7 +42,9 @@ const projects = allProjects
     </ol>
     {
       allProjects.length > HOME.HOMESETTINGS!.NUM_PROJECTS_ON_HOMEPAGE ? (
-        <Button href="/projects" link="View all" />
+        <div class="flex justify-center">
+          <Button href="/projects" link="View all" />
+        </div>
       ) : null
     }
   </section>
@@ -64,7 +66,9 @@ const projects = allProjects
     </ol>
     {
       allPosts.length > HOME.HOMESETTINGS!.NUM_POSTS_ON_HOMEPAGE ? (
-        <Button href="/posts" link="View all" />
+        <div class="flex justify-center">
+          <Button href="/posts" link="View all" />
+        </div>
       ) : null
     }
   </section>

@@ -31,7 +31,9 @@ const work = await Promise.all(
           <entry.Content />
         </article>
         {entry.data.article ? (
-          <Button href={entry.data.article} link="View project" />
+          <div class="flex justify-center">
+            <Button href={entry.data.article} link="View project" />
+          </div>
         ) : null}
       </li>
     ))
