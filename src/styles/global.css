@@ -21,6 +21,7 @@
   --animate-gradient-x: gradient-x 6s ease infinite;
   --animate-gradient-y: gradient-y 6s ease infinite;
   --animate-gradient-xy: gradient-xy 6s ease infinite;
+
   @keyframes reveal {
     0% {
       opacity: 0;
@@ -79,18 +80,18 @@
 }
 
 :root {
-  --primary: oklch(99% 0 0);
-  --secondary: oklch(15% 0 0);
-  --tertiary: oklch(40% 0 0);
-  --accent: oklch(25% 0 0);
+  --primary: var(--color-neutral-50);
+  --secondary: var(--color-neutral-950);
+  --tertiary: var(--color-neutral-500);
+  --accent: var(--color-neutral-700);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --primary: oklch(0% 0 0);
-    --secondary: oklch(95% 0 0);
-    --tertiary: oklch(60% 0 0);
-    --accent: oklch(75% 0 0);
+    --primary: var(--color-black);
+    --secondary: var(--color-neutral-50);
+    --tertiary: var(--color-neutral-500);
+    --accent: var(--color-neutral-300);
   }
 
   .astro-code,

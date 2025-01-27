@@ -14,7 +14,7 @@ const posts = (await getCollection("posts"))
     {POSTS.TITLE}
   </h1>
   <ol
-    class="animate-reveal mt-16 grid grid-cols-1 gap-6 opacity-0 [animation-delay:0.1s]"
+    class="animate-reveal grid grid-cols-1 gap-6 opacity-0 [animation-delay:0.1s]"
   >
     {posts.map((article: any) => <ShowcasePost collection={article} />)}
   </ol>

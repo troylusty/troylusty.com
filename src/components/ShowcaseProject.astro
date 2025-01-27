@@ -27,12 +27,12 @@ const { collection } = Astro.props;
       href={`/${collection.collection}/${collection.slug}`}
       aria-label={collection.data.title}></a>
     <h3
-      class="text-primary dark:text-secondary z-10 w-fit text-xl font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+      class="text-white z-10 w-fit text-xl font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100"
     >
       {collection.data.title}
     </h3>
     <div
-      class="text-accent z-10 w-fit gap-y-1 overflow-hidden text-sm leading-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+      class="text-neutral-400 z-10 w-fit gap-y-1 overflow-hidden text-sm leading-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
     >
       {
         collection.data.collection ? (
