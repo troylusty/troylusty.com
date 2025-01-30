@@ -16,13 +16,15 @@ const { institution, qualification, grades, isOpen = false } = Astro.props;
     <summary
       class="flex cursor-pointer items-center justify-between py-3 font-bold"
     >
-      <p class="text-secondary m-0 font-semibold text-balance">
+      <p
+        class="text-tertiary group-hover:text-secondary group-open:text-secondary group-open:group-hover:text-tertiary m-0 font-semibold text-balance transition-colors"
+      >
         {qualification}
       </p>
       <span class="transition group-open:rotate-180">
         <Icon
           name="mdi:chevron-down"
-          class="text-secondary group-open:text-tertiary h-6 w-auto transition-colors"
+          class="text-tertiary group-open:text-secondary group-hover:text-secondary group-open:group-hover:text-tertiary h-6 w-auto transition-colors"
         />
       </span>
     </summary>
