@@ -80,20 +80,14 @@
 }
 
 :root {
-  --primary: var(--color-neutral-50);
-  --secondary: var(--color-neutral-950);
-  --tertiary: var(--color-neutral-500);
-  --accent: var(--color-neutral-700);
+  color-scheme: light dark;
+  --primary: light-dark(var(--color-neutral-50), var(--color-black));
+  --secondary: light-dark(var(--color-neutral-950), var(--color-neutral-50));
+  --tertiary: light-dark(var(--color-neutral-500), var(--color-neutral-500));
+  --accent: light-dark(var(--color-neutral-700), var(--color-neutral-300));
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --primary: var(--color-black);
-    --secondary: var(--color-neutral-50);
-    --tertiary: var(--color-neutral-500);
-    --accent: var(--color-neutral-300);
-  }
-
   .astro-code,
   .astro-code span {
     color: var(--shiki-dark) !important;
