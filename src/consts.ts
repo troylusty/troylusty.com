@@ -40,6 +40,11 @@ export const SITE: Site = {
       icon: "mdi:email",
     },
     {
+      name: "itch.io",
+      href: "https://troylusty.itch.io",
+      icon: "simple-icons:itchdotio",
+    },
+    {
       name: "GitHub",
       href: "https://github.com/troylusty",
       icon: "mdi:github",

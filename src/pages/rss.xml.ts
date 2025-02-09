@@ -19,7 +19,6 @@ export async function GET(context: { site: string }) {
     title: SITE.TITLE,
     description: SITE.DESCRIPTION,
     site: context.site,
-    stylesheet: "/rss/styles.xsl",
     items: items.map((item) => ({
       title: item.data.title,
       description: item.data.description,
