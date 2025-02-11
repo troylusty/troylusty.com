@@ -1,6 +1,6 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import { HOME } from "@consts";
+import { HOME, SITE } from "@consts";
 import { getCollection } from "astro:content";
 import ShowcasePost from "@components/ShowcasePost.astro";
 import Hero from "@components/Hero.astro";
@@ -126,7 +126,7 @@ const projectsJSON = JSON.stringify(projects);
             />
             <a
               class="absolute inset-0 z-10"
-              x-bind:title="slide.data.title"
+              x-bind:aria-label="slide.data.title"
               x-bind:href="'/' + slide.collection + '/' + slide.slug"></a>
           </div>
         </template>
@@ -175,11 +175,11 @@ const projectsJSON = JSON.stringify(projects);
             class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start"
           >
             <a
-              href="#"
+              href={`mailto:${SITE.EMAIL}`}
               class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-xs hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >Get started</a
             >
-            <a href="#" class="text-sm/6 font-semibold text-white"
+            <a href="/projects" class="text-sm/6 font-semibold text-white"
               >Learn more <span aria-hidden="true">→</span></a
             >
           </div>
