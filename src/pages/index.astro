@@ -2,10 +2,10 @@
 import Layout from "@layouts/Layout.astro";
 import { HOME } from "@consts";
 import { getCollection } from "astro:content";
-import ShowcaseProject from "@components/ShowcaseProject.astro";
 import ShowcasePost from "@components/ShowcasePost.astro";
 import Hero from "@components/Hero.astro";
 import Button from "@components/Button.astro";
+import { Image } from "astro:assets";
 
 const allPosts = await getCollection("posts");
 
@@ -20,35 +20,190 @@ const projects = allProjects
   .filter((project) => !project.data.draft && project.data.featured)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, HOME.HOMESETTINGS?.NUM_PROJECTS_ON_HOMEPAGE);
+
+const projectsJSON = JSON.stringify(projects);
 ---
 
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Hero />
-  <section aria-labelledby="featured-projects">
-    <div class="group flex w-fit flex-row items-center">
+  <section aria-labelledby="featured-projects" class="container">
+    <div class="flex flex-row items-center justify-between">
       <a href="/projects">
         <h2
-          class="animate-reveal group-hover:text-tertiary text-2xl font-semibold break-words capitalize opacity-0 transition-colors duration-500"
+          class="animate-reveal hover:text-tertiary text-2xl font-semibold break-words capitalize opacity-0 transition-colors duration-500"
           id="featured-projects"
         >
           Featured projects
         </h2>
       </a>
+      {
+        allProjects.length > HOME.HOMESETTINGS!.NUM_PROJECTS_ON_HOMEPAGE ? (
+          <div class="flex justify-center">
+            <Button href="/projects" link="View all" />
+          </div>
+        ) : null
+      }
     </div>
-    <ol
-      class="animate-reveal mt-8 grid grid-cols-1 gap-4 opacity-0 [animation-delay:0.1s] md:grid-cols-2"
+    <div
+      class="pt-6"
+      data-slides={projectsJSON}
+      x-data="{            
+    // Sets the time between each slides in milliseconds
+    autoplayIntervalTime: 5000,
+    init() {
+      this.slides = JSON.parse(this.$el.dataset.slides);
+    },
+    currentSlideIndex: 1,
+    isPaused: false,
+    autoplayInterval: null,
+    previous() {                
+        if (this.currentSlideIndex > 1) {                    
+            this.currentSlideIndex = this.currentSlideIndex - 1                
+        } else {   
+            // If it's the first slide, go to the last slide           
+            this.currentSlideIndex = this.slides.length                
+        }            
+    },            
+    next() {                
+        if (this.currentSlideIndex < this.slides.length) {                    
+            this.currentSlideIndex = this.currentSlideIndex + 1                
+        } else {                 
+            // If it's the last slide, go to the first slide    
+            this.currentSlideIndex = 1                
+        }            
+    },    
+    autoplay() {
+        this.autoplayInterval = setInterval(() => {
+            if (! this.isPaused) {
+                this.next()
+            }
+        }, this.autoplayIntervalTime)
+    },
+    // Updates interval time   
+    setAutoplayInterval(newIntervalTime) {
+        clearInterval(this.autoplayInterval)
+        this.autoplayIntervalTime = newIntervalTime
+        this.autoplay()
+    },    
+    }"
+      x-init="autoplay"
+      class="relative w-full overflow-hidden"
     >
-      {projects.map((project) => <ShowcaseProject collection={project} />)}
-    </ol>
-    {
-      allProjects.length > HOME.HOMESETTINGS!.NUM_PROJECTS_ON_HOMEPAGE ? (
-        <div class="flex justify-center">
-          <Button href="/projects" link="View all" />
-        </div>
-      ) : null
-    }
+      <!-- slides -->
+      <!-- Change min-h-[50svh] to your preferred height size -->
+      <div class="relative min-h-[50svh] w-full">
+        <template x-for="(slide, index) in slides">
+          <div
+            x-cloak
+            x-show="currentSlideIndex == index + 1"
+            class="absolute inset-0"
+            x-transition.opacity.duration.1000ms
+          >
+            <!-- Title and description -->
+            <div
+              class="absolute inset-0 z-10 flex flex-col items-center justify-end gap-2 bg-linear-to-t to-transparent px-16 py-12 text-center lg:px-32 lg:py-14"
+            >
+              <h3
+                class="w-full text-2xl font-bold text-balance text-white lg:w-[80%] lg:text-3xl"
+                x-text="slide.data.title"
+                x-bind:aria-describedby="'slide' + (index + 1) + 'Description'"
+              >
+              </h3>
+              <p
+                class="text-tertiary w-full text-sm text-pretty lg:w-1/2"
+                x-text="slide.data.description"
+                x-bind:id="'slide' + (index + 1) + 'Description'"
+              >
+              </p>
+            </div>
+
+            <img
+              class="absolute inset-0 h-full w-full rounded-md object-cover"
+              x-bind:src="slide.data.image.url.src"
+              x-bind:alt="slide.data.image.alt"
+            />
+          </div>
+        </template>
+      </div>
+    </div>
   </section>
-  <section aria-labelledby="recent-posts">
+
+  <section class="container">
+    <div
+      class="animate-reveal mx-auto max-w-7xl opacity-0 [animation-delay:0.2s]"
+    >
+      <div
+        class="relative isolate overflow-hidden bg-gray-900 px-6 pt-16 shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0"
+      >
+        <svg
+          viewBox="0 0 1024 1024"
+          class="absolute top-1/2 left-1/2 -z-10 size-[64rem] -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)] sm:left-full sm:-ml-80 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2 lg:translate-y-0"
+          aria-hidden="true"
+        >
+          <circle
+            cx="512"
+            cy="512"
+            r="512"
+            fill="url(#759c1415-0410-454c-8f7c-9a820de03641)"
+            fill-opacity="0.7"></circle>
+          <defs>
+            <radialGradient id="759c1415-0410-454c-8f7c-9a820de03641">
+              <stop stop-color="#7775D6"></stop>
+              <stop offset="1" stop-color="#E935C1"></stop>
+            </radialGradient>
+          </defs>
+        </svg>
+        <div
+          class="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left"
+        >
+          <h2
+            class="text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl"
+          >
+            Boost your productivity. Start using our app today.
+          </h2>
+          <p class="mt-6 text-lg/8 text-pretty text-gray-300">
+            Ac euismod vel sit maecenas id pellentesque eu sed consectetur.
+            Malesuada adipiscing sagittis vel nulla.
+          </p>
+          <div
+            class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start"
+          >
+            <a
+              href="#"
+              class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-xs hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              >Get started</a
+            >
+            <a href="#" class="text-sm/6 font-semibold text-white"
+              >Learn more <span aria-hidden="true">→</span></a
+            >
+          </div>
+        </div>
+        <div class="relative mt-16 h-80 lg:mt-8">
+          <Image
+            class="absolute top-0 left-0 w-[57rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10"
+            src={projects[4].data.image.url}
+            alt="App screenshot"
+            width="1824"
+            height="1080"
+            loading="eager"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--
+<span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-gray-500/10 ring-inset">Badge</span>
+<span class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-red-600/10 ring-inset">Badge</span>
+<span class="inline-flex items-center rounded-md bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-800 ring-1 ring-yellow-600/20 ring-inset">Badge</span>
+<span class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-green-600/20 ring-inset">Badge</span>
+<span class="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-blue-700/10 ring-inset">Badge</span>
+<span class="inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-indigo-700/10 ring-inset">Badge</span>
+<span class="inline-flex items-center rounded-md bg-purple-50 px-2 py-1 text-xs font-medium text-purple-700 ring-1 ring-purple-700/10 ring-inset">Badge</span>
+<span class="inline-flex items-center rounded-md bg-pink-50 px-2 py-1 text-xs font-medium text-pink-700 ring-1 ring-pink-700/10 ring-inset">Badge</span>
+-->
+
+  <section aria-labelledby="recent-posts" class="container max-w-[65ch]">
     <div class="group flex w-fit flex-row items-center">
       <a href="/posts">
         <h2

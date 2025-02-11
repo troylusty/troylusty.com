@@ -98,6 +98,12 @@
   }
 }
 
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+  margin-inline: auto;
+}
+
 @media print {
   body {
     background: none;
@@ -112,4 +118,8 @@
   footer {
     display: none;
   }
+}
+
+[x-cloak] {
+  display: none !important;
 }

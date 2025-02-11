@@ -27,11 +27,11 @@ const { title, description, image, date, updated, tags } = Astro.props;
     tags={tags}
   />
   <body
-    class="bg-primary text-secondary flex min-h-screen flex-col justify-start p-8 pt-0 md:pt-8"
+    class="bg-primary text-secondary flex min-h-screen flex-col justify-start p-4 pt-0 md:pt-4"
   >
     <Header />
     <main
-      class="mx-auto w-full max-w-prose space-y-6"
+      class="mx-auto w-full max-w-[1344px] space-y-6"
       transition:animate="fade"
     >
       <slot />

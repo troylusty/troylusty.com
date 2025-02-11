@@ -45,6 +45,11 @@ export const SITE: Site = {
       icon: "simple-icons:itchdotio",
     },
     {
+      name: "LinkedIn",
+      href: "https://linkedin.com/in/troylusty",
+      icon: "mdi:linkedin",
+    },
+    {
       name: "GitHub",
       href: "https://github.com/troylusty",
       icon: "mdi:github",

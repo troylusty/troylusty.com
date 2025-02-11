@@ -4,54 +4,24 @@ import Link from "@components/Link.astro";
 import { Icon } from "astro-icon/components";
 ---
 
-<footer class="mx-auto mt-auto mb-8 w-full max-w-prose space-y-6 pt-12">
-  <div class="md:flex md:justify-between">
-    <div class="text-secondary mb-6 md:mb-0">
-      <a class="group inline-flex items-center" href="#top" title="Back to top">
-        <Icon
-          name="icon"
-          title={SITE.TITLE}
-          class="group-hover:text-tertiary h-8 w-auto transition-colors duration-500 ease-in-out"
-        />
-        <div
-          class="group-hover:text-tertiary ml-2 hidden flex-none text-sm font-bold capitalize transition-colors duration-500 md:visible lg:block"
-        >
-          Troy Lusty
-        </div>
-      </a>
-    </div>
-    <div class="text-left sm:gap-6 md:text-right">
-      <ul class="text-tertiary font-medium">
-        {
-          SITE.NAVLINKS.map((i) => (
-            <li class="mb-1 last:mb-0">
-              <a
-                data-navlink
-                href={i.href}
-                class="hover:text-secondary capitalize transition-colors"
-              >
-                {i.name}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </div>
-  <div class="sm:flex sm:items-center sm:justify-between">
-    <span class="text-tertiary text-sm sm:text-center"
+<footer
+  class="border-tertiary/30 mx-auto mt-12 mb-6 w-full max-w-prose space-y-6 border-t pt-6"
+>
+  <div class="flex flex-col items-center justify-between md:flex-row">
+    <span class="text-tertiary text-center text-sm font-medium"
       >&copy; {new Date().getFullYear()}
-      <a href="/" class="hover:text-secondary transition-colors">{SITE.TITLE}</a
-      >. All Rights Reserved.
+      <a href="/" class="hover:text-secondary transition-colors duration-300"
+        >{SITE.TITLE}</a
+      >. All rights reserved.
     </span>
-    <div class="mt-4 flex gap-2 sm:mt-0 sm:justify-center">
+    <div class="mt-4 flex gap-3 sm:mt-0 sm:justify-center">
       {
         SITE.LINKS.map((i) => (
           <Link href={i.href}>
             <Icon
               name={i.icon}
               title={i.name}
-              class="text-tertiary hover:text-secondary h-5 w-5 transition-colors"
+              class="text-tertiary hover:text-secondary h-5 w-auto transition-colors duration-300"
             />
           </Link>
         ))
