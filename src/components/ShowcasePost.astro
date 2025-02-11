@@ -8,14 +8,14 @@ type Props = {
 const { collection } = Astro.props;
 ---
 
-<li>
+<li class="bg-secondary rounded-md p-8">
   <a
     class="group hover:bg-tertiary/30 bg-none"
     href={`/${collection.collection}/${collection.slug}`}
   >
     <article class="flex flex-col">
       <h3 class="mb-1 font-semibold text-balance">
-        <span class="text-secondary">{collection.data.title}</span><span
+        <span class="text-primary">{collection.data.title}</span><span
           class="text-tertiary group-hover:text-accent ml-2 transition-colors"
           >{collection.data.description}</span
         >

@@ -18,7 +18,7 @@
     "@astrojs/sitemap": "3.2.1",
     "@fontsource-variable/outfit": "^5.1.1",
     "@fontsource-variable/red-hat-mono": "^5.1.1",
-    "@fontsource/borel": "^5.1.1",
+    "@fontsource/instrument-serif": "^5.1.1",
     "@tailwindcss/vite": "^4.0.6",
     "@types/alpinejs": "^3.13.11",
     "alpinejs": "^3.14.8",

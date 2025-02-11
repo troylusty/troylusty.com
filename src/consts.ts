@@ -40,6 +40,11 @@ export const SITE: Site = {
       icon: "mdi:email",
     },
     {
+      name: "CV",
+      href: "/cv.pdf",
+      icon: "mdi:certificate",
+    },
+    {
       name: "itch.io",
       href: "https://troylusty.itch.io",
       icon: "simple-icons:itchdotio",
@@ -62,20 +67,12 @@ export const SITE: Site = {
   ],
   NAVLINKS: [
     {
-      name: "home",
-      href: "/",
-    },
-    {
       name: "projects",
       href: "/projects",
     },
     {
       name: "posts",
       href: "/posts",
-    },
-    {
-      name: "curriculum vitae",
-      href: "/cv",
     },
   ],
 };

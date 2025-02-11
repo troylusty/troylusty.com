@@ -3,7 +3,7 @@ name: Docker
 on:
   push:
     branches:
-      - "main"
+      - "alpine-interactivity"
 
 env:
   REGISTRY: ghcr.io
@@ -38,7 +38,7 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:testing
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
 
       - name: Get repository name

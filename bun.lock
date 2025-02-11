@@ -11,7 +11,7 @@
         "@astrojs/sitemap": "3.2.1",
         "@fontsource-variable/outfit": "^5.1.1",
         "@fontsource-variable/red-hat-mono": "^5.1.1",
-        "@fontsource/borel": "^5.1.1",
+        "@fontsource/instrument-serif": "^5.1.1",
         "@tailwindcss/vite": "^4.0.6",
         "@types/alpinejs": "^3.13.11",
         "alpinejs": "^3.14.8",
@@ -139,7 +139,7 @@
 
     "@fontsource-variable/red-hat-mono": ["@fontsource-variable/red-hat-mono@5.1.1", "", {}, "sha512-yeZTpCFFU+fJwlhDrMdQROva42Kuaj1KjCp2HSHziT0FE+BPEL90oS0yAAdDZqwjgI77wDp2I6kgnZoHFV95AQ=="],
 
-    "@fontsource/borel": ["@fontsource/borel@5.1.1", "", {}, "sha512-FkQy7EqFdnDuDXIekP3bYLu/UhoCxhrJ+3cg71OgR3M4AgInLgPUKcsOI+OLuQ24GlThLVtEXWnEkgf/0apJEA=="],
+    "@fontsource/instrument-serif": ["@fontsource/instrument-serif@5.1.1", "", {}, "sha512-DZ+ho/lr8PIqilsGjh5jc0o9oT1BR8UHaBMzCdC4r4MmMqopMzS8uEFGuKwNCd7cDSoAiVXEigaRgnzdi1uv1g=="],
 
     "@iconify-json/mdi": ["@iconify-json/mdi@1.2.3", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-O3cLwbDOK7NNDf2ihaQOH5F9JglnulNDFV7WprU2dSoZu3h3cWH//h74uQAB87brHmvFVxIOkuBX2sZSzYhScg=="],
 
