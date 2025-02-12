@@ -1,6 +1,6 @@
 @import "@fontsource-variable/red-hat-mono";
 @import "@fontsource-variable/outfit";
-@import "@fontsource/borel";
+@import "@fontsource/instrument-serif";
 
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
@@ -14,13 +14,10 @@
 
 @theme {
   --font-sans: "Outfit Variable", "sans-serif";
+  --font-serif: "Instrument Serif", "serif";
   --font-mono: "Red Hat Mono Variable", "monospace";
 
   --animate-reveal: reveal 0.3s forwards ease-in-out;
-  --animate-logo: logo 0.5s forwards ease-out;
-  --animate-gradient-x: gradient-x 6s ease infinite;
-  --animate-gradient-y: gradient-y 6s ease infinite;
-  --animate-gradient-xy: gradient-xy 6s ease infinite;
 
   @keyframes reveal {
     0% {
@@ -32,49 +29,6 @@
       opacity: 1;
       transform: translateY(0px);
       filter: blur(0px);
-    }
-  }
-  @keyframes logo {
-    0% {
-      transform: translateY(100%);
-      color: var(--primary);
-    }
-    100% {
-      transform: translateY(0%);
-      color: var(--secondary);
-    }
-  }
-  @keyframes gradient-x {
-    0%,
-    100% {
-      background-size: 200% 200%;
-      background-position: left center;
-    }
-    50% {
-      background-size: 200% 200%;
-      background-position: right center;
-    }
-  }
-  @keyframes gradient-y {
-    0%,
-    100% {
-      background-size: 400% 400%;
-      background-position: center top;
-    }
-    50% {
-      background-size: 200% 200%;
-      background-position: center center;
-    }
-  }
-  @keyframes gradient-xy {
-    0%,
-    100% {
-      background-size: 400% 400%;
-      background-position: left center;
-    }
-    50% {
-      background-size: 200% 200%;
-      background-position: right center;
     }
   }
 }
@@ -98,6 +52,12 @@
   }
 }
 
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+  margin-inline: auto;
+}
+
 @media print {
   body {
     background: none;
@@ -112,4 +72,8 @@
   footer {
     display: none;
   }
+}
+
+[x-cloak] {
+  display: none !important;
 }

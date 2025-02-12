@@ -2,10 +2,11 @@
 import Layout from "@layouts/Layout.astro";
 import { HOME } from "@consts";
 import { getCollection } from "astro:content";
-import ShowcaseProject from "@components/ShowcaseProject.astro";
 import ShowcasePost from "@components/ShowcasePost.astro";
 import Hero from "@components/Hero.astro";
 import Button from "@components/Button.astro";
+import { Icon } from "astro-icon/components";
+import Carousel from "@components/Carousel.astro";
 
 const allPosts = await getCollection("posts");
 
@@ -20,35 +21,43 @@ const projects = allProjects
   .filter((project) => !project.data.draft && project.data.featured)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, HOME.HOMESETTINGS?.NUM_PROJECTS_ON_HOMEPAGE);
+
+const projectsJSON = JSON.stringify(projects);
 ---
 
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Hero />
-  <section aria-labelledby="featured-projects">
-    <div class="group flex w-fit flex-row items-center">
-      <a href="/projects">
-        <h2
-          class="animate-reveal group-hover:text-tertiary text-2xl font-semibold break-words capitalize opacity-0 transition-colors duration-500"
-          id="featured-projects"
-        >
-          Featured projects
-        </h2>
-      </a>
-    </div>
-    <ol
-      class="animate-reveal mt-8 grid grid-cols-1 gap-4 opacity-0 [animation-delay:0.1s] md:grid-cols-2"
+  <section aria-labelledby="featured-projects" class="container">
+    <div
+      class="mx-auto flex flex-col items-start justify-between sm:flex-row sm:items-center"
     >
-      {projects.map((project) => <ShowcaseProject collection={project} />)}
-    </ol>
-    {
-      allProjects.length > HOME.HOMESETTINGS!.NUM_PROJECTS_ON_HOMEPAGE ? (
-        <div class="flex justify-center">
-          <Button href="/projects" link="View all" />
-        </div>
-      ) : null
-    }
+      <h2
+        class="animate-reveal text-2xl font-semibold break-words capitalize opacity-0"
+        id="featured-projects"
+      >
+        Featured projects
+      </h2>
+      {
+        allProjects.length > HOME.HOMESETTINGS!.NUM_PROJECTS_ON_HOMEPAGE ? (
+          <div class="group">
+            <a
+              href="/projects"
+              class="group text-tertiary flex items-center justify-center gap-1 transition-colors duration-300 group-hover:text-sky-500"
+            >
+              View all
+              <Icon
+                name="mdi:chevron-right"
+                class="transition-all duration-300 group-hover:translate-x-2 group-hover:text-sky-500"
+              />
+            </a>
+          </div>
+        ) : null
+      }
+    </div>
+    <Carousel data={projectsJSON} />
   </section>
-  <section aria-labelledby="recent-posts">
+
+  <section aria-labelledby="recent-posts" class="container max-w-[65ch]">
     <div class="group flex w-fit flex-row items-center">
       <a href="/posts">
         <h2

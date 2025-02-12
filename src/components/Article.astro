@@ -28,7 +28,7 @@ const listFormatter = new Intl.ListFormat("en-GB", {
   updated={article.data.updated}
   tags={article.data.tags}
 >
-  <div class="mx-auto mb-8">
+  <div class="mx-auto mb-8 max-w-[65ch]">
     <h1
       class="animate-reveal text-start text-2xl font-semibold break-words opacity-0"
     >
@@ -79,7 +79,9 @@ const listFormatter = new Intl.ListFormat("en-GB", {
       }
     </div>
   </div>
-  <div class="animate-reveal mx-auto opacity-0 [animation-delay:0.2s]">
+  <div
+    class="animate-reveal mx-auto max-w-[65ch] opacity-0 [animation-delay:0.2s]"
+  >
     <Prose>
       <Content />
     </Prose>

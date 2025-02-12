@@ -1,22 +1,33 @@
 ---
-import borel from "@fontsource/borel/files/borel-latin-400-normal.woff2?url";
+import instrument from "@fontsource/instrument-serif/files/instrument-serif-latin-400-normal.woff2?url";
 ---
 
 <link
   rel="preload"
   as="font"
   type="font/woff2"
-  href={borel}
+  href={instrument}
   crossorigin="anonymous"
 />
 
-<section class="mt-6 overflow-clip">
-  <h1
-    class="--translate-y-full animate-logo text-4xl font-bold text-pretty md:text-6xl"
-  >
-    Digital designer based in the <span
-      class="animate-gradient-x bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% bg-clip-text px-1 font-['Borel'] text-3xl text-transparent md:text-5xl"
-      >United Kingdom</span
-    >.
-  </h1>
+<section>
+  <div class="mx-auto px-8 py-32">
+    <div
+      class="animate-reveal mx-auto max-w-xl text-center text-4xl tracking-tight text-balance text-white md:text-6xl"
+    >
+      <div
+        class="text-secondary flex items-center justify-center gap-3 font-semibold"
+      >
+        Hi, I'm Troy,
+        <img
+          src="/assets/icon.png"
+          class="size-12 rounded-xl md:size-16"
+          alt=""
+        />
+      </div>
+      <div class="text-tertiary font-serif font-light tracking-wide italic">
+        digital designer.
+      </div>
+    </div>
+  </div>
 </section>
