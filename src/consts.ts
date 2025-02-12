@@ -41,7 +41,7 @@ export const SITE: Site = {
     },
     {
       name: "CV",
-      href: "/troy-lusty-cv.pdf",
+      href: "/cv",
       icon: "mdi:certificate",
     },
     {

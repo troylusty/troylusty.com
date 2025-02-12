@@ -1,0 +1,300 @@
+---
+import "@styles/global.css";
+import { SITE, CV } from "@consts";
+import { Icon } from "astro-icon/components";
+import Head from "@components/Head.astro";
+import Link from "@components/Link.astro";
+import { Image } from "astro:assets";
+import icon from "public/assets/icon.png";
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth antialiased" transition:animate="none">
+  <Head title={CV.TITLE} description={CV.DESCRIPTION} />
+  <body class="w-full font-sans antialiased">
+    <div class="container mx-auto max-w-screen-xl">
+      <main
+        id="wrapper"
+        class="flex flex-col rounded-md shadow-2xl sm:m-12 sm:flex-row-reverse"
+      >
+        <div id="sidebar" class="w-full rounded-r-md p-8 sm:max-w-sm">
+          <div class="mb-12 px-2">
+            <Image
+              src={icon}
+              alt="Troy Lusty"
+              class="mx-auto mb-2 w-48 rounded-full"
+              loading="eager"
+            />
+          </div>
+
+          <div class="mb-12 px-2 text-lg font-light">
+            <div class="mb-4 flex items-center">
+              <Icon name="mdi:cogs" class="mr-2" />
+              <h2 class="text-xl font-semibold">Skills & Tools</h2>
+            </div>
+            <h3>Programming</h3>
+            <p class="leading-8">
+              <span class="box">Python</span>
+              <span class="box">Rust</span>
+              <span class="box">TypeScript</span>
+            </p>
+            <h3>Development</h3>
+            <p class="leading-8">
+              <span class="box">Git</span>
+              <span class="box">Docker</span>
+              <span class="box">Linux</span>
+              <span class="box">Shopify</span>
+              <span class="box">Astro</span>
+              <span class="box">Steamworks</span>
+            </p>
+            <h3>3D</h3>
+            <p class="leading-8">
+              <span class="box">Blender</span>
+              <span class="box">Godot</span>
+              <span class="box">Unreal Engine</span>
+            </p>
+            <h3>2D</h3>
+            <p class="leading-8">
+              <span class="box">Adobe Photoshop</span>
+              <span class="box">GIMP</span>
+              <span class="box">Inkscape</span>
+              <span class="box">DaVinci Resolve</span>
+              <span class="box">Pixelmator Pro</span>
+            </p>
+            <h3>Other</h3>
+            <p class="leading-8">
+              <span class="box">Full drivers licence (A & B)</span>
+            </p>
+          </div>
+
+          <div class="mb-12 px-2 text-lg font-light">
+            <div class="mb-4 flex items-center">
+              <Icon name="mdi:chart-timeline-variant-shimmer" class="mr-2" />
+              <h2 class="text-xl font-semibold">Education</h2>
+            </div>
+            <h3 class="font-semibold">BA (Hons) Game Arts and Design</h3>
+            <p>2024 - 2025 University of Plymouth</p>
+            <ol class="list-inside list-disc">
+              <li><small>1st year: Estimated completion May 2025</small></li>
+            </ol>
+            <h3 class="font-semibold">FdA Games and Interactive Design</h3>
+            <p>2022 - 2024 University Centre South Devon</p>
+            <ol class="list-inside list-disc">
+              <li><small>2nd year: 70.25% State Aggregate Mark</small></li>
+              <li><small>1st year: 69.43% State Aggregate Mark</small></li>
+            </ol>
+          </div>
+
+          <div class="mb-12 px-2 text-lg font-light">
+            <div class="mb-4 flex items-center">
+              <Icon name="mdi:wrench" class="mr-2" />
+              <h2 class="text-xl font-semibold">Other</h2>
+            </div>
+            <h3 class="font-semibold">Production Assistant</h3>
+            <p>2024 SDC Radiant Rumble</p>
+            <h3 class="font-semibold">Photogrammetrist</h3>
+            <p>2023 Paignton Picture House</p>
+          </div>
+
+          <div class="mb-12 px-2 text-lg font-light">
+            <div class="mb-4 flex items-center">
+              <Icon name="mdi:plane-train" class="mr-2" />
+              <h2 class="text-xl font-semibold">Languages</h2>
+            </div>
+            <h3 class="font-semibold">English</h3>
+            <p>Native</p>
+          </div>
+        </div>
+        <div class="content w-full p-12">
+          <h1 class="mb-2 text-5xl font-bold">{SITE.AUTHOR}</h1>
+          <h2 class="mb-2 text-xl italic">Digital Designer</h2>
+          <div class="social-links grid grid-cols-2 gap-1 py-4 font-medium">
+            <div class="flex items-center">
+              <Icon name="mdi:house" class="mr-2 inline w-6" />
+              Devon, United Kingdom
+            </div>
+            <div class="flex items-center">
+              <Icon name="mdi:globe" class="mr-2 inline w-6" />
+              <a href="/">troylusty.com</a>
+            </div>
+            <div class="flex items-center">
+              <Icon name="mdi:email" class="mr-2 inline w-6" />
+              <a href={`mailto:${SITE.EMAIL}`}>hello@troylusty.com</a>
+            </div>
+            <div class="flex items-center">
+              <Icon name="mdi:house" class="mr-2 inline w-6" />
+              <Link href="https://github.com/troylusty"
+                >github.com/troylusty</Link
+              >
+            </div>
+          </div>
+          <div id="profile" class="prose">
+            <h2>Summary</h2>
+            <p>
+              My specific chosen area of focus is design, lighting, and
+              rendering focusing on 3D environments within software such as
+              Blender and Unreal Engine. Using either real-time or offline
+              rendering techniques. In addition to this I also have interests in
+              web development and cyber security.
+            </p>
+            <p>
+              My portfolio of work can be found on my website at <a
+                href="/projects">troylusty.com/projects</a
+              >.
+            </p>
+          </div>
+          <hr class="mt-8 mb-12" />
+          <div id="experience" class="prose">
+            <h2>Experience</h2>
+            <div>
+              <h3>Camouflage Store</h3>
+              <section class="mb-6">
+                <p class="mb-2 italic lg:inline-block lg:w-3/12 lg:align-top">
+                  2020 - Current:
+                </p>
+                <p class="w-full lg:inline-block lg:w-8/12">
+                  E-commerce Business Management
+                </p>
+              </section>
+              <section class="mb-6">
+                <p class="mb-2 italic lg:inline-block lg:w-3/12 lg:align-top">
+                  Task:
+                </p>
+                <p class="w-full lg:inline-block lg:w-8/12">
+                  CMS Migration and Rebrand
+                </p>
+              </section>
+              <section class="mb-6">
+                <p class="mb-2 italic lg:inline-block lg:w-3/12 lg:align-top">
+                  Description:
+                </p>
+                <div class="w-full lg:inline-block lg:w-8/12">
+                  <p>
+                    My role has me in charge of managing an online e-commerce
+                    store in addition to creating, editing, and publishing
+                    informational YouTube and social media content for a family
+                    run outdoors store. This includes the recent redesign and
+                    also any maintenance and general upkeep of the site with all
+                    its related systems.
+                  </p>
+                  <ul>
+                    <li>Migration of content to Shopify</li>
+                    <li>Branding refresh and site redesign</li>
+                    <li>VPS setup and self-hosted analytics platform</li>
+                  </ul>
+                </div>
+              </section>
+              <section class="mb-6">
+                <div class="mb-2 italic lg:inline-block lg:w-3/12 lg:align-top">
+                  Tools:
+                </div>
+                <div class="w-full lg:inline-block lg:w-8/12">
+                  <span class="box">Shopify</span>
+                  <span class="box">Docker</span>
+                  <span class="box">DaVinci Resolve</span>
+                  <span class="box">Pixelmator Pro</span>
+                  <span class="box">YouTube Creator Studio</span>
+                  <span class="box">GitHub</span>
+                </div>
+              </section>
+            </div>
+          </div>
+          <hr class="mt-8 mb-12" />
+          <div id="projects" class="prose">
+            <h2>Projects</h2>
+            <div class="mb-16">
+              <h3>troylusty.com</h3>
+              <section class="mb-6">
+                <p class="mb-2 italic lg:inline-block lg:w-3/12 lg:align-top">
+                  Personal blog:
+                </p>
+                <p class="w-full lg:inline-block lg:w-8/12">
+                  My blog is the center of my online presence. Here, I share
+                  posts about what I've learnt, tutorials and my thoughts on web
+                  development in general.
+                </p>
+              </section>
+              <section class="mb-6">
+                <p class="mb-2 italic lg:inline-block lg:w-3/12 lg:align-top">
+                  Deployed to:
+                </p>
+                <div class="w-full lg:inline-block lg:w-8/12">
+                  <Link href="/">troylusty.com</Link>
+                </div>
+              </section>
+              <section class="mb-6">
+                <p class="mb-2 italic lg:inline-block lg:w-3/12 lg:align-top">
+                  Code on:
+                </p>
+                <p class="w-full lg:inline-block lg:w-8/12">
+                  <Link href="https://github.com/troylusty/troylusty.com"
+                    >github.com/troylusty/troylusty.com</Link
+                  >
+                </p>
+              </section>
+              <section class="mb-6">
+                <p class="mb-2 italic lg:inline-block lg:w-3/12 lg:align-top">
+                  Features:
+                </p>
+                <div class="w-full lg:inline-block lg:w-8/12">
+                  <ul>
+                    <li>Static generation</li>
+                    <li>Blog and project articles written in Markdown/MDX</li>
+                    <li>SEO</li>
+                  </ul>
+                </div>
+              </section>
+
+              <section class="mb-6">
+                <p class="mb-2 italic lg:inline-block lg:w-3/12 lg:align-top">
+                  Built with:
+                </p>
+                <div class="w-full lg:inline-block lg:w-8/12">
+                  <span class="box">Astro</span>
+                  <span class="box">Tailwind CSS</span>
+                  <span class="box">Alpine.js</span>
+                  <span class="box">GitHub Actions</span>
+                  <span class="box">Docker</span>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
+
+<style>
+  body {
+    color: #3c3c42;
+    background: #f3f1ea;
+  }
+  p,
+  li,
+  h1,
+  h2,
+  h3 {
+    color: #3c3c42;
+    a {
+      color: #3c3c42;
+    }
+  }
+  a {
+    text-decoration-style: wavy;
+    text-decoration-color: #3c3c42;
+  }
+  hr {
+    color: #d4d2cc;
+  }
+  .social-links {
+    color: #78787e;
+  }
+  .box {
+    border-radius: var(--radius-md);
+    background: #d4d2cc;
+    color: #3c3c42;
+    padding-inline: calc(var(--spacing) * 2);
+    font-weight: var(--font-weight-medium);
+  }
+</style>
