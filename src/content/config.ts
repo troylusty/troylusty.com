@@ -46,36 +46,4 @@ const projects = defineCollection({
       .merge(rssSchema),
 });
 
-const work = defineCollection({
-  type: "content",
-  schema: z.object({
-    company: z.string(),
-    role: z.string(),
-    dateStart: z.coerce.date(),
-    dateEnd: z.union([z.coerce.date(), z.string()]),
-    article: z.string().optional(),
-  }),
-});
-
-const education = defineCollection({
-  type: "content",
-  schema: z.object({
-    institution: z.string(),
-    qualification: z.string(),
-    grades: z.array(z.string()),
-    dateStart: z.coerce.date(),
-    dateEnd: z.union([z.coerce.date(), z.string()]),
-    isOpen: z.boolean().optional(),
-  }),
-});
-
-const skills = defineCollection({
-  type: "content",
-  schema: z.object({
-    type: z.string(),
-    title: z.string(),
-    icon: z.string(),
-  }),
-});
-
-export const collections = { posts, projects, work, education, skills };
+export const collections = { posts, projects };
