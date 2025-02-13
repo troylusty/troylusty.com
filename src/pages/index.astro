@@ -27,12 +27,12 @@ const projectsJSON = JSON.stringify(projects);
 
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Hero />
-  <section aria-labelledby="featured-projects" class="container">
+  <section aria-labelledby="featured-projects">
     <div
       class="mx-auto flex flex-col items-start justify-between sm:flex-row sm:items-center"
     >
       <h2
-        class="animate-reveal text-2xl font-semibold break-words capitalize opacity-0"
+        class=" animate-reveal text-2xl font-semibold break-words capitalize opacity-0"
         id="featured-projects"
       >
         Featured projects
@@ -42,12 +42,12 @@ const projectsJSON = JSON.stringify(projects);
           <div class="group">
             <a
               href="/projects"
-              class="group text-tertiary flex items-center justify-center gap-1 transition-colors duration-300 group-hover:text-sky-500"
+              class="group text-tertiary group-hover:text-secondary flex items-center justify-center gap-1 transition-colors duration-300"
             >
               View all
               <Icon
                 name="mdi:chevron-right"
-                class="transition-all duration-300 group-hover:translate-x-2 group-hover:text-sky-500"
+                class="group-hover:text-secondary transition-all duration-300 group-hover:translate-x-2"
               />
             </a>
           </div>
@@ -57,16 +57,13 @@ const projectsJSON = JSON.stringify(projects);
     <Carousel data={projectsJSON} />
   </section>
 
-  <section aria-labelledby="recent-posts" class="container max-w-[65ch]">
+  <section aria-labelledby="recent-posts" class="mt-24">
     <div class="group flex w-fit flex-row items-center">
-      <a href="/posts">
-        <h2
-          class="animate-reveal group-hover:text-tertiary text-2xl font-semibold break-words capitalize opacity-0 transition-colors duration-500 [animation-delay:0.2s]"
-          id="featured-projects"
-        >
-          Recent posts
-        </h2>
-      </a>
+      <h2
+        class="animate-reveal text-2xl font-semibold break-words capitalize opacity-0"
+      >
+        Recent posts
+      </h2>
     </div>
     <ol
       class="animate-reveal mt-8 grid grid-cols-1 gap-6 opacity-0 [animation-delay:0.3s]"
@@ -75,8 +72,17 @@ const projectsJSON = JSON.stringify(projects);
     </ol>
     {
       allPosts.length > HOME.HOMESETTINGS!.NUM_POSTS_ON_HOMEPAGE ? (
-        <div class="flex justify-center">
-          <Button href="/posts" link="View all" />
+        <div class="group">
+          <a
+            href="/posts"
+            class="group text-tertiary group-hover:text-secondary flex items-center justify-center gap-1 transition-colors duration-300"
+          >
+            View all
+            <Icon
+              name="mdi:chevron-right"
+              class="group-hover:text-secondary transition-all duration-300 group-hover:translate-x-2"
+            />
+          </a>
         </div>
       ) : null
     }

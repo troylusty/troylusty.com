@@ -1,35 +1,29 @@
 ---
 import { SITE } from "@consts";
 import { Icon } from "astro-icon/components";
-import Button from "@components/Button.astro";
 ---
 
-<header class="mx-auto mb-8 w-full max-w-6xl space-y-6 px-4 pt-4">
+<header class="mx-auto mb-8 w-full max-w-[65ch] space-y-6 pt-4">
   <nav
     x-data="{ mobileMenuIsOpen: false }"
     x-on:click.away="mobileMenuIsOpen = false"
     class="flex h-12 items-center justify-between"
   >
-    <a class="group inline-flex items-center" href="/" title={SITE.TITLE}>
+    <a href="/" title={SITE.TITLE}>
       <Icon
         name="icon"
         title={SITE.TITLE}
-        class="group-hover:text-tertiary h-8 w-auto transition-colors duration-500 ease-in-out"
+        class="hover:text-tertiary h-8 w-auto transition-colors duration-500 ease-in-out"
       />
-      <div
-        class="group-hover:text-tertiary ml-2 hidden flex-none text-sm font-bold capitalize transition-colors duration-500 md:visible lg:block"
-      >
-        Troy Lusty
-      </div>
     </a>
     <ul class="hidden items-center gap-4 sm:flex">
       {
         SITE.NAVLINKS.map((i) => (
-          <li class="mb-1 last:mb-0">
+          <li>
             <a
               data-navlink
               href={i.href}
-              class="text-secondary hover:text-secondary decoration-tertiary font-medium capitalize decoration-wavy underline-offset-2 focus:underline focus:outline-hidden"
+              class="text-tertiary hover:text-secondary focus:text-secondary font-medium capitalize transition-colors duration-300 focus:outline-hidden"
               aria-current="page"
             >
               {i.name}
@@ -37,14 +31,6 @@ import Button from "@components/Button.astro";
           </li>
         ))
       }
-      <li>
-        <a href={`mailto:${SITE.EMAIL}`}>
-          <span
-            class="rounded-full bg-blue-500/10 px-3 py-2 text-sm leading-6 font-medium text-blue-400 ring-1 ring-blue-500/20 ring-inset"
-            >Hire me</span
-          >
-        </a>
-      </li>
     </ul>
     <button
       x-on:click="mobileMenuIsOpen = !mobileMenuIsOpen"
@@ -80,7 +66,7 @@ import Button from "@components/Button.astro";
       x-transition:leave-start="translate-y-0"
       x-transition:leave-end="-translate-y-full"
       id="mobileMenu"
-      class="bg-primary fixed inset-x-0 top-0 z-98 flex max-h-svh flex-col overflow-y-auto rounded-b-md px-6 pt-20 pb-6 sm:hidden"
+      class="bg-primary fixed inset-x-0 top-0 z-98 flex max-h-svh flex-col overflow-y-auto px-6 pt-6 pb-6 sm:hidden"
     >
       {
         SITE.NAVLINKS.map((i) => (
@@ -96,13 +82,6 @@ import Button from "@components/Button.astro";
           </li>
         ))
       }
-      <li class="mt-4 w-full border-none">
-        <Button
-          href={`mailto:${SITE.EMAIL}`}
-          link="Hire me"
-          class="block w-full justify-center"
-        />
-      </li>
     </ul>
   </nav>
 </header>
