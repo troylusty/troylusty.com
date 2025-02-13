@@ -27,12 +27,12 @@ const projectsJSON = JSON.stringify(projects);
 
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Hero />
-  <section aria-labelledby="featured-projects">
+  <section aria-labelledby="featured-projects" class="animate-reveal opacity-0 [animation-delay:0.1s]">
     <div
       class="mx-auto flex flex-col items-start justify-between sm:flex-row sm:items-center"
     >
       <h2
-        class=" animate-reveal text-2xl font-semibold break-words capitalize opacity-0"
+        class=" text-2xl font-semibold break-words capitalize "
         id="featured-projects"
       >
         Featured projects
@@ -57,16 +57,16 @@ const projectsJSON = JSON.stringify(projects);
     <Carousel data={projectsJSON} />
   </section>
 
-  <section aria-labelledby="recent-posts" class="mt-24">
+  <section aria-labelledby="recent-posts" class="mt-24 animate-reveal opacity-0 [animation-delay:0.2s]">
     <div class="group flex w-fit flex-row items-center">
       <h2
-        class="animate-reveal text-2xl font-semibold break-words capitalize opacity-0"
+        class="text-2xl font-semibold break-words capitalize"
       >
         Recent posts
       </h2>
     </div>
     <ol
-      class="animate-reveal mt-8 grid grid-cols-1 gap-6 opacity-0 [animation-delay:0.3s]"
+      class="mt-8 grid grid-cols-1 gap-6"
     >
       {posts.map((post) => <ShowcasePost collection={post} />)}
     </ol>

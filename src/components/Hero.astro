@@ -1,6 +1,8 @@
 ---
 import instrument from "@fontsource/instrument-serif/files/instrument-serif-latin-400-normal.woff2?url";
 import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import icon from "public/assets/icon.png";
 ---
 
 <link
@@ -20,10 +22,11 @@ import { Icon } from "astro-icon/components";
         class="text-secondary flex items-center justify-center gap-3 font-semibold"
       >
         Hi, I'm Troy,
-        <img
-          src="/assets/icon.png"
+        <Image
+          src={icon}
           class="size-12 rounded-xl md:size-16"
-          alt=""
+          alt="Troy Lusty"
+          loading="eager"
         />
       </div>
       <div class="text-tertiary font-serif font-light tracking-wide italic">
