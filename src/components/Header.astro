@@ -44,7 +44,7 @@ const currentPath = pathname.replace(/\/$/, "");
       </button>
     </div>
     <ul
-      class="w-full items-center gap-4 text-right md:flex md:w-fit md:text-left"
+      class="my-4 flex w-full flex-col items-center gap-4 text-right md:my-0 md:flex md:w-fit md:flex-row md:text-left"
       x-bind:class="{ 'hidden': !open }"
       x-cloak
     >
@@ -53,7 +53,7 @@ const currentPath = pathname.replace(/\/$/, "");
           let linkHref = link.href.replace(/\/$/, "");
           const isActive = currentPath.startsWith(linkHref);
           return (
-            <li class="text-tertiary hover:text-secondary focus:text-secondary font-medium capitalize transition-colors duration-300 focus:outline-hidden">
+            <li class="text-tertiary hover:text-secondary focus:text-secondary text-2xl font-medium capitalize transition-colors duration-300 focus:outline-hidden md:text-base">
               <a
                 href={link.href}
                 class:list={[isActive ? "text-secondary" : ""]}
