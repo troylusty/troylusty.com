@@ -28,56 +28,54 @@ const listFormatter = new Intl.ListFormat("en-GB", {
   updated={article.data.updated}
   tags={article.data.tags}
 >
-  <div class="mx-auto mb-8">
-    <h1
-      class="animate-reveal text-start text-2xl font-semibold break-words opacity-0"
+  <h1
+    class="animate-reveal text-start text-3xl font-semibold break-words opacity-0"
+  >
+    <span class="text-secondary">{article.data.title}</span><span
+      class="text-tertiary ml-2">{article.data.description}</span
     >
-      <span class="text-secondary">{article.data.title}</span><span
-        class="text-tertiary ml-2">{article.data.description}</span
-      >
-    </h1>
-    <div
-      class="animate-reveal text-tertiary mt-4 flex flex-row flex-wrap items-start gap-2 opacity-0 [animation-delay:0.1s]"
-    >
-      <div class="flex items-center gap-2">
-        <Icon name="mdi:calendar" />
-        {
-          datesMatch ? (
+  </h1>
+  <div
+    class="animate-reveal text-tertiary flex flex-row flex-wrap items-start gap-2 opacity-0 [animation-delay:0.1s]"
+  >
+    <div class="flex items-center gap-2">
+      <Icon name="mdi:calendar" />
+      {
+        datesMatch ? (
+          <p title="Date">
+            <FormattedDate date={article.data.date} />
+          </p>
+        ) : (
+          <>
             <p title="Date">
               <FormattedDate date={article.data.date} />
             </p>
-          ) : (
-            <>
-              <p title="Date">
-                <FormattedDate date={article.data.date} />
-              </p>
-              <Icon name="mdi:trending-up" />
-              <p title="Updated">
-                <FormattedDate date={article.data.updated} />
-              </p>
-            </>
-          )
-        }
-      </div>
-      {
-        isPost ? (
-          <div class="flex items-center gap-2">
-            <Icon name="mdi:timer" />
-            <p title="Word count">{readingTime(article.body)}</p>
-          </div>
-        ) : null
-      }
-      {
-        article.data.extraAuthors ? (
-          <div class="flex items-center gap-2">
-            <Icon name="mdi:account-plus" />
-            <p title="Collaborators">
-              {listFormatter.format(article.data.extraAuthors)}
+            <Icon name="mdi:trending-up" />
+            <p title="Updated">
+              <FormattedDate date={article.data.updated} />
             </p>
-          </div>
-        ) : null
+          </>
+        )
       }
     </div>
+    {
+      isPost ? (
+        <div class="flex items-center gap-2">
+          <Icon name="mdi:timer" />
+          <p title="Word count">{readingTime(article.body)}</p>
+        </div>
+      ) : null
+    }
+    {
+      article.data.extraAuthors ? (
+        <div class="flex items-center gap-2">
+          <Icon name="mdi:account-plus" />
+          <p title="Collaborators">
+            {listFormatter.format(article.data.extraAuthors)}
+          </p>
+        </div>
+      ) : null
+    }
   </div>
   <div class="animate-reveal mx-auto opacity-0 [animation-delay:0.2s]">
     <Prose>

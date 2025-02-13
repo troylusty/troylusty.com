@@ -14,11 +14,13 @@ const projectsJSON = JSON.stringify(projects);
 ---
 
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
-  <Hero />
-  <section
-    id="featured-projects"
-    class="animate-reveal opacity-0 [animation-delay:0.1s]"
-  >
-    <Carousel data={projectsJSON} />
-  </section>
+  <div class="block w-full">
+    <Hero />
+    <section
+      id="featured-projects"
+      class="animate-reveal opacity-0 [animation-delay:0.1s]"
+    >
+      <Carousel data={projectsJSON} />
+    </section>
+  </div>
 </Layout>

@@ -6,7 +6,7 @@ const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.replace(/\/$/, "");
 ---
 
-<header class="mx-auto mb-8 w-full max-w-[65ch] space-y-6 md:pt-4">
+<header class="mx-auto w-full">
   <nav
     class="md:flex-no-wrap flex w-full flex-wrap justify-between"
     x-data="{ open: false }"

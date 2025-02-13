@@ -7,7 +7,6 @@ const { data } = Astro.props;
 ---
 
 <div
-  class="pt-6"
   data-slides={data}
   x-data="{            
     // Sets the time between each slides in milliseconds
@@ -71,7 +70,7 @@ const { data } = Astro.props;
       </div>
     </template>
   </div>
-  <div class="relative min-h-16">
+  <div class="relative min-h-18">
     <template x-for="(slide, index) in slides">
       <div
         x-show="currentSlideIndex == index + 1"

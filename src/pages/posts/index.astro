@@ -10,14 +10,12 @@ const posts = (await getCollection("posts"))
 ---
 
 <Layout title={SITE.TITLE} description={POSTS.DESCRIPTION}>
-  <div class="mx-auto max-w-[65ch]">
-    <h1 class="animate-reveal text-2xl font-semibold break-words opacity-0">
-      {POSTS.TITLE}
-    </h1>
-    <ol
-      class="animate-reveal mt-8 grid grid-cols-1 gap-6 opacity-0 [animation-delay:0.1s]"
-    >
-      {posts.map((article: any) => <ShowcasePost collection={article} />)}
-    </ol>
-  </div>
+  <h1 class="animate-reveal text-3xl font-semibold break-words opacity-0">
+    {POSTS.TITLE}
+  </h1>
+  <ol
+    class="animate-reveal grid grid-cols-1 gap-6 opacity-0 [animation-delay:0.1s]"
+  >
+    {posts.map((article: any) => <ShowcasePost collection={article} />)}
+  </ol>
 </Layout>
