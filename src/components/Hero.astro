@@ -1,17 +1,7 @@
 ---
-import instrument from "@fontsource/instrument-serif/files/instrument-serif-latin-400-normal.woff2?url";
-import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import icon from "public/assets/icon.png";
 ---
-
-<link
-  rel="preload"
-  as="font"
-  type="font/woff2"
-  href={instrument}
-  crossorigin="anonymous"
-/>
 
 <section class="animate-reveal opacity-0">
   <div class="mx-auto flex h-full self-center px-8 py-32">
@@ -31,15 +21,6 @@ import icon from "public/assets/icon.png";
       </div>
       <div class="text-tertiary font-serif font-light tracking-wide italic">
         digital designer.
-      </div>
-      <div class="group absolute right-0 left-0 mx-auto mt-8 w-fit">
-        <a href="#featured-projects">
-          <Icon
-            name="mdi:chevron-up"
-            class="text-tertiary group-hover:text-secondary h-8 w-auto rotate-180 animate-bounce transition-all duration-300 ease-in-out"
-            title="Move down"
-          />
-        </a>
       </div>
     </div>
   </div>

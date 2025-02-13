@@ -2,89 +2,23 @@
 import Layout from "@layouts/Layout.astro";
 import { HOME } from "@consts";
 import { getCollection } from "astro:content";
-import ShowcasePost from "@components/ShowcasePost.astro";
 import Hero from "@components/Hero.astro";
-import Button from "@components/Button.astro";
-import { Icon } from "astro-icon/components";
 import Carousel from "@components/Carousel.astro";
 
-const allPosts = await getCollection("posts");
-
-const posts = allPosts
-  .filter((post) => !post.data.draft)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, HOME.HOMESETTINGS?.NUM_POSTS_ON_HOMEPAGE);
-
 const allProjects = await getCollection("projects");
-
 const projects = allProjects
   .filter((project) => !project.data.draft && project.data.featured)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, HOME.HOMESETTINGS?.NUM_PROJECTS_ON_HOMEPAGE);
-
 const projectsJSON = JSON.stringify(projects);
 ---
 
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Hero />
-  <section aria-labelledby="featured-projects" class="animate-reveal opacity-0 [animation-delay:0.1s]">
-    <div
-      class="mx-auto flex flex-col items-start justify-between sm:flex-row sm:items-center"
-    >
-      <h2
-        class=" text-2xl font-semibold break-words capitalize "
-        id="featured-projects"
-      >
-        Featured projects
-      </h2>
-      {
-        allProjects.length > HOME.HOMESETTINGS!.NUM_PROJECTS_ON_HOMEPAGE ? (
-          <div class="group">
-            <a
-              href="/projects"
-              class="group text-tertiary group-hover:text-secondary flex items-center justify-center gap-1 transition-colors duration-300"
-            >
-              View all
-              <Icon
-                name="mdi:chevron-right"
-                class="group-hover:text-secondary transition-all duration-300 group-hover:translate-x-2"
-              />
-            </a>
-          </div>
-        ) : null
-      }
-    </div>
+  <section
+    id="featured-projects"
+    class="animate-reveal opacity-0 [animation-delay:0.1s]"
+  >
     <Carousel data={projectsJSON} />
-  </section>
-
-  <section aria-labelledby="recent-posts" class="mt-24 animate-reveal opacity-0 [animation-delay:0.2s]">
-    <div class="group flex w-fit flex-row items-center">
-      <h2
-        class="text-2xl font-semibold break-words capitalize"
-      >
-        Recent posts
-      </h2>
-    </div>
-    <ol
-      class="mt-8 grid grid-cols-1 gap-6"
-    >
-      {posts.map((post) => <ShowcasePost collection={post} />)}
-    </ol>
-    {
-      allPosts.length > HOME.HOMESETTINGS!.NUM_POSTS_ON_HOMEPAGE ? (
-        <div class="group">
-          <a
-            href="/posts"
-            class="group text-tertiary group-hover:text-secondary flex items-center justify-center gap-1 transition-colors duration-300"
-          >
-            View all
-            <Icon
-              name="mdi:chevron-right"
-              class="group-hover:text-secondary transition-all duration-300 group-hover:translate-x-2"
-            />
-          </a>
-        </div>
-      ) : null
-    }
   </section>
 </Layout>

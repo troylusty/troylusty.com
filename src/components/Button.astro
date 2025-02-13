@@ -2,18 +2,15 @@
 type Props = {
   href: String;
   link: String;
-  class?: string;
 };
 
-const { href, link, class: additionalClasses } = Astro.props;
-
-const baseClasses =
-  "bg-tertiary text-primary hover:bg-accent flex w-fit flex-row items-center gap-1 justify-self-center rounded-sm px-2 py-1 text-center text-sm font-medium text-nowrap capitalize";
-const combinedClasses = `${baseClasses} ${additionalClasses || ""}`;
+const { href, link } = Astro.props;
 ---
 
 <a href={`${href}`}>
-  <div class={combinedClasses}>
+  <div
+    class="bg-button text-secondary hover:bg-button-active flex w-fit flex-row items-center gap-1 justify-self-center rounded-full px-3 py-1.5 text-center text-sm font-medium text-nowrap capitalize transition-colors duration-300"
+  >
     {link}
   </div>
 </a>
