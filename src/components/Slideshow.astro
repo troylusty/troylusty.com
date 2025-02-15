@@ -1,0 +1,60 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  interval?: number;
+  images: any;
+}
+
+const { interval = 3000, images } = Astro.props;
+---
+
+<div
+  class="relative h-64 w-full overflow-hidden md:h-96"
+  data-interval={interval}
+>
+  {
+    images.map((image: any, index: number) => (
+      <div
+        class="absolute top-0 left-0 h-full w-full transition-opacity duration-500"
+        style={`opacity: ${index === 0 ? 1 : 0}; z-index: ${
+          index === 0 ? 10 : 1
+        }`}
+        data-slide-index={index}
+      >
+        <a href={`/${image.collection}/${image.slug}`}>
+          <Image
+            src={image.data.image.url}
+            alt={`Slide ${index + 1}`}
+            title={image.data.title}
+            class="h-full w-full rounded-sm object-cover"
+            loading="eager"
+          />
+        </a>
+      </div>
+    ))
+  }
+</div>
+
+<script>
+  const images = document.querySelectorAll<HTMLElement>("[data-slide-index]");
+  let currentImageIndex = 0;
+  const interval =
+    Number(
+      (
+        document
+          .querySelector<HTMLElement>("[data-slide-index]")
+          ?.closest(".relative") as HTMLElement
+      )?.dataset?.interval,
+    ) || 3000;
+
+  function showNextImage() {
+    images[currentImageIndex].style.opacity = "0";
+    images[currentImageIndex].style.zIndex = "1";
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+    images[currentImageIndex].style.opacity = "1";
+    images[currentImageIndex].style.zIndex = "10";
+  }
+
+  setInterval(showNextImage, interval);
+</script>

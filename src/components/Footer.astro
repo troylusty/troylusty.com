@@ -1,29 +1,12 @@
 ---
 import { SITE } from "@consts";
-import Link from "@components/Link.astro";
-import { Icon } from "astro-icon/components";
 ---
 
-<footer class="mx-auto mt-auto w-full">
-  <div class="flex flex-col items-center justify-between gap-2 md:gap-4">
-    <span class="text-tertiary text-center text-sm"
-      >&copy; {new Date().getFullYear()}
-      <a href="/" class="hover:text-secondary transition-colors duration-300"
-        >{SITE.TITLE}</a
-      >. All rights reserved.
-    </span>
-    <div class="flex gap-3 sm:justify-center">
-      {
-        SITE.LINKS.map((i) => (
-          <Link href={i.href}>
-            <Icon
-              name={i.icon}
-              title={i.name}
-              class="text-tertiary hover:text-secondary h-4 w-auto transition-colors duration-300"
-            />
-          </Link>
-        ))
-      }
-    </div>
-  </div>
+<footer class="w-full">
+  <span class="text-tertiary"
+    >&copy; {new Date().getFullYear()}
+    <a href="/" class="hover:text-secondary transition-colors duration-300"
+      >{SITE.TITLE}</a
+    >. All rights reserved.
+  </span>
 </footer>

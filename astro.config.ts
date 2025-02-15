@@ -4,12 +4,11 @@ import rehypeExternalLinks from "rehype-external-links";
 import mdx from "@astrojs/mdx";
 import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
-import alpinejs from "@astrojs/alpinejs";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://troylusty.com",
-  integrations: [sitemap(), mdx(), icon(), alpinejs()],
+  integrations: [sitemap(), mdx(), icon()],
   vite: {
     plugins: [tailwindcss()],
   },
