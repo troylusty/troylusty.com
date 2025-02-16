@@ -16,7 +16,6 @@
 
 @theme {
   --font-sans: "Outfit Variable", "sans-serif";
-  --font-serif: "Instrument Serif", "serif";
   --font-mono: "Red Hat Mono Variable", "monospace";
 
   --animate-reveal: reveal 0.3s forwards ease-in-out;
