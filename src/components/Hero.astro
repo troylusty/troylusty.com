@@ -1,27 +1,41 @@
 ---
-import { Image } from "astro:assets";
-import icon from "public/assets/icon.png";
+import { SITE } from "@consts";
+import Link from "@components/Link.astro";
 ---
 
-<section class="animate-reveal opacity-0">
-  <div class="mx-auto flex h-full self-center px-8 py-32">
-    <div
-      class="mx-auto my-auto max-w-xl text-center text-4xl tracking-tight text-balance text-white md:text-6xl"
+<section class="animate-reveal flex flex-col gap-6 opacity-0">
+  <h1
+    class="flex w-full flex-col lowercase text-start text-7xl leading-[1] font-medium tracking-[-2px] sm:tracking-[-4px]"
+  >
+    <span class="text-nowrap">Troy Lusty</span>
+    <span class="text-tertiary text-pretty">Digital Designer</span>
+  </h1>
+  <div class="text-secondary/70 text-lg font-medium">
+    I am in my final year of studying on a Game Arts and Design BA (Hons) degree
+    and on the side I manage online operations for a
+    <Link href="/projects/camouflage-store" class="underline underline-offset-2"
+      >family run business</Link
+    >.
+  </div>
+  <div class="text-tertiary text-lg font-medium">
+    Want to chat?
+    <Link
+      href="mailto:hello@troylusty.com"
+      class="underline lowercase underline-offset-2"
     >
-      <div
-        class="text-secondary flex items-center justify-center gap-3 font-semibold"
-      >
-        Hi, I'm Troy,
-        <Image
-          src={icon}
-          class="size-12 rounded-xl md:size-16"
-          alt="Troy Lusty"
-          loading="eager"
-        />
-      </div>
-      <div class="text-tertiary font-serif font-light tracking-wide italic">
-        digital designer.
-      </div>
-    </div>
+      Send me a message
+    </Link>
+  </div>
+  <div id="social-links" class="flex flex-row gap-4">
+    {
+      SITE.LINKS.map((i) => (
+        <Link
+          href={i.href}
+          class="text-tertiary hover:text-accent text-lg font-medium lowercase underline-offset-2 hover:underline"
+        >
+          {i.name}
+        </Link>
+      ))
+    }
   </div>
 </section>

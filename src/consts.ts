@@ -25,7 +25,7 @@ export const SITE: Site = {
   AUTHOR: "Troy Lusty",
   LINKS: [
     {
-      name: "RSS feed",
+      name: "RSS",
       href: "/rss.xml",
       icon: "mdi:rss",
     },
@@ -50,7 +50,7 @@ export const SITE: Site = {
       icon: "mdi:github",
     },
     {
-      name: "Steam developer",
+      name: "Steam",
       href: "https://store.steampowered.com/developer/troy",
       icon: "mdi:steam",
     },

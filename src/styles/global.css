@@ -43,8 +43,11 @@
   --tertiary: light-dark(var(--color-neutral-500), var(--color-neutral-500));
   --accent: light-dark(var(--color-neutral-700), var(--color-neutral-300));
 
-  --button: light-dark(#f3f4f6, #1f1f1f);
-  --button-active: light-dark(#e5e7eb, #2f2f2f);
+  --button: light-dark(var(--color-neutral-200), var(--color-neutral-800));
+  --button-active: light-dark(
+    var(--color-neutral-300),
+    var(--color-neutral-700)
+  );
 }
 
 @media (prefers-color-scheme: dark) {
