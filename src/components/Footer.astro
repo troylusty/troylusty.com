@@ -1,12 +1,27 @@
 ---
 import { SITE } from "@consts";
+import Link from "./Link.astro";
+import { Icon } from "astro-icon/components";
 ---
 
-<footer class="w-full">
+<footer class="flex w-full flex-col justify-between gap-2 md:flex-row">
   <span class="text-tertiary"
     >&copy; {new Date().getFullYear()}
     <a href="#top" class="hover:text-secondary transition-colors duration-300"
       >{SITE.TITLE}</a
     >. All rights reserved.
   </span>
+  <div class="text-tertiary flex flex-row items-center gap-4">
+    {
+      SITE.LINKS.map((i) => (
+        <Link href={i.href}>
+          <Icon
+            name={i.icon}
+            title={i.name}
+            class="hover:text-secondary h-4 w-auto transition-colors duration-300"
+          />
+        </Link>
+      ))
+    }
+  </div>
 </footer>
