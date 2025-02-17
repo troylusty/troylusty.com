@@ -8,10 +8,12 @@
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-tertiary: var(--tertiary);
-  --color-accent: var(--accent);
 
   --color-button: var(--button);
   --color-button-active: var(--button-active);
+
+  --color-gradient-start: #fb5246;
+  --color-gradient-end: #ff9068;
 }
 
 @theme {
@@ -39,7 +41,6 @@
   --primary: light-dark(var(--color-neutral-50), var(--color-black));
   --secondary: light-dark(var(--color-neutral-950), var(--color-neutral-50));
   --tertiary: light-dark(var(--color-neutral-500), var(--color-neutral-500));
-  --accent: light-dark(var(--color-neutral-700), var(--color-neutral-300));
 
   --button: light-dark(var(--color-neutral-200), var(--color-neutral-800));
   --button-active: light-dark(

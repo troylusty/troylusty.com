@@ -5,33 +5,35 @@ import Link from "@components/Link.astro";
 
 <section class="animate-reveal flex flex-col gap-6 opacity-0">
   <h1
-    class="flex w-full flex-col text-start text-7xl leading-[1] font-medium tracking-[-2px] lowercase sm:tracking-[-4px]"
+    class="flex w-full flex-col text-start text-7xl leading-[1] font-semibold tracking-[-2px] lowercase"
   >
     <span class="text-nowrap">Troy Lusty</span>
     <span class="text-tertiary text-pretty">Digital Designer</span>
   </h1>
   <div class="text-secondary/70 text-lg font-medium">
     I am in my final year of studying on a Game Arts and Design BA (Hons) degree
-    and on the side I manage online operations for a
-    <Link href="/projects/camouflage-store" class="underline underline-offset-2"
-      >family run business</Link
+    and on the side I manage online operations for a family run
+    <a
+      href="/projects/camouflage-store"
+      class="hover:text-gradient-start hover:decoration-gradient-start underline decoration-wavy underline-offset-2 transition-colors duration-300"
+      >outdoor apparel business</a
     >.
   </div>
   <div class="text-tertiary text-lg font-medium">
-    Want to chat?
+    Think I could help with a project you're working on?
     <Link
       href="mailto:hello@troylusty.com"
-      class="lowercase underline underline-offset-2"
+      class="hover:text-secondary lowercase underline decoration-wavy underline-offset-2 transition-colors duration-300"
     >
       Send me a message
     </Link>
   </div>
-  <div id="social-links" class="flex flex-row gap-4">
+  <div class="flex flex-row gap-4">
     {
       SITE.LINKS.map((i) => (
         <Link
           href={i.href}
-          class="text-tertiary hover:text-accent text-lg font-medium lowercase underline-offset-2 hover:underline"
+          class="text-tertiary hover:text-secondary text-lg font-medium lowercase decoration-wavy underline-offset-2 transition-colors duration-300 hover:underline"
         >
           {i.name}
         </Link>
