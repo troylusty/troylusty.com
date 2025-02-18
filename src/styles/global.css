@@ -11,9 +11,6 @@
 
   --color-button: var(--button);
   --color-button-active: var(--button-active);
-
-  --color-gradient-start: #fb5246;
-  --color-gradient-end: #ff9068;
 }
 
 @theme {
