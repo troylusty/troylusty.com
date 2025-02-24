@@ -2,6 +2,5 @@
 pkgs.mkShell {
   nativeBuildInputs = with pkgs.buildPackages; [
     bun
-    nodejs
   ];
 }

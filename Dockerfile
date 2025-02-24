@@ -5,7 +5,7 @@ WORKDIR /usr/src/app
 COPY . .
 
 RUN ["bun", "install", "--frozen-lockfile"]
-RUN ["bun", "run", "build"]
+RUN ["bunx", "--bun", "astro", "build"]
 
 FROM ghcr.io/static-web-server/static-web-server:latest
 WORKDIR /
