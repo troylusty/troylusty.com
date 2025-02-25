@@ -10,7 +10,7 @@ const { interval = 3000, images } = Astro.props;
 ---
 
 <div
-  class="relative min-h-[50svh] w-full overflow-hidden"
+  class="group relative min-h-[50svh] w-full overflow-hidden"
   data-interval={interval}
 >
   {
@@ -27,7 +27,7 @@ const { interval = 3000, images } = Astro.props;
             src={image.data.image.url}
             alt={`Slide ${index + 1}`}
             title={image.data.title}
-            class="h-full w-full rounded-sm object-cover"
+            class="h-full w-full rounded-sm object-cover transition-all duration-300 group-hover:brightness-50"
             loading="eager"
           />
         </a>
