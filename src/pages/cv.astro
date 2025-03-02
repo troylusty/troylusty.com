@@ -1,6 +1,6 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import { SITE, HOME } from "@consts";
+import { SITE, CV } from "@consts";
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import Link from "@components/Link.astro";
@@ -107,7 +107,7 @@ const education = [
 const sortedEducation = [...education].sort((a, b) => a.id - b.id);
 ---
 
-<Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
+<Layout title={CV.TITLE} description={CV.DESCRIPTION}>
   <div class="animate-reveal flex items-center justify-between opacity-0">
     <div class="flex-1 space-y-1.5">
       <h1 class="text-2xl font-bold">{SITE.AUTHOR}</h1><p
