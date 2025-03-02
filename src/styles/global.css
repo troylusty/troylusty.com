@@ -56,25 +56,3 @@
     text-decoration: var(--shiki-dark-text-decoration) !important;
   }
 }
-
-@utility container {
-  margin-inline: auto;
-  padding-inline: 2rem;
-  margin-inline: auto;
-}
-
-@media print {
-  body {
-    background: none;
-    color: black;
-  }
-  header,
-  footer,
-  main {
-    max-width: unset !important;
-  }
-  header,
-  footer {
-    display: none;
-  }
-}

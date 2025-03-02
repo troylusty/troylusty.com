@@ -268,7 +268,7 @@ const sortedEducation = [...education].sort((a, b) => a.id - b.id);
   <section
     class="animate-reveal flex min-h-0 flex-col gap-y-3 opacity-0 [animation-delay:0.4s]"
   >
-    <h2 class="text-xl font-bold">Skills & Tools</h2><div
+    <h2 class="text-xl font-bold">Skills & Tools</h2><ul
       class="flex flex-wrap gap-1"
     >
       {
@@ -278,18 +278,18 @@ const sortedEducation = [...education].sort((a, b) => a.id - b.id);
           </li>
         ))
       }
-    </div>
+    </ul>
   </section>
   <section
     class="animate-reveal flex min-h-0 scroll-mb-16 flex-col gap-y-3 opacity-0 [animation-delay:0.5s]"
   >
     <h2 class="text-xl font-bold">Projects</h2>
     <ol
-      class="-mx-3 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 print:grid-cols-3 print:gap-2"
+      class="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 print:grid-cols-3 print:gap-2"
     >
       {
         sortedProjects.map((project) => (
-          <li class="flex flex-col overflow-hidden rounded-lg p-3">
+          <li class="flex flex-col overflow-hidden">
             <div class="flex flex-col space-y-1.5">
               <div class="space-y-1">
                 <>
