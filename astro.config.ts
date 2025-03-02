@@ -1,4 +1,4 @@
-import { defineConfig, passthroughImageService } from "astro/config";
+import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import rehypeExternalLinks from "rehype-external-links";
 import mdx from "@astrojs/mdx";
@@ -30,7 +30,7 @@ export default defineConfig({
       },
     },
   },
-  image: {
-    service: passthroughImageService(),
+  experimental: {
+    responsiveImages: true,
   },
 });

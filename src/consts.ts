@@ -40,11 +40,6 @@ export const SITE: Site = {
       icon: "mdi:email",
     },
     {
-      name: "CV",
-      href: "/cv",
-      icon: "mdi:certificate",
-    },
-    {
       name: "GitHub",
       href: "https://github.com/troylusty",
       icon: "mdi:github",
@@ -63,6 +58,10 @@ export const SITE: Site = {
     {
       name: "posts",
       href: "/posts",
+    },
+    {
+      name: "cv",
+      href: "/cv",
     },
   ],
 };

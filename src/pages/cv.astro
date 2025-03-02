@@ -1,393 +1,328 @@
 ---
-import "@styles/global.css";
-import { SITE, CV } from "@consts";
-import { Icon } from "astro-icon/components";
-import Head from "@components/Head.astro";
-import Link from "@components/Link.astro";
+import Layout from "@layouts/Layout.astro";
+import { SITE, HOME } from "@consts";
 import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import Link from "@components/Link.astro";
 import icon from "public/assets/icon.png";
+
+const skills = [
+  { id: 1, name: "Python" },
+  { id: 2, name: "Rust" },
+  { id: 3, name: "TypeScript" },
+  { id: 4, name: "Git" },
+  { id: 5, name: "Docker" },
+  { id: 6, name: "Linux" },
+  { id: 7, name: "Shopify" },
+  { id: 8, name: "Astro" },
+  { id: 9, name: "Steamworks" },
+  { id: 10, name: "Blender" },
+  { id: 11, name: "Godot" },
+  { id: 12, name: "Unreal Engine" },
+  { id: 13, name: "Adobe Photoshop" },
+  { id: 14, name: "GIMP" },
+  { id: 15, name: "Inkscape" },
+  { id: 16, name: "DaVinci Resolve" },
+  { id: 17, name: "Pixelmator Pro" },
+  { id: 99, name: "Full drivers licence (A & B)" },
+];
+const sortedSkills = [...skills].sort((a, b) => a.id - b.id);
+
+const projects = [
+  {
+    id: 1,
+    name: "troylusty.com",
+    description: "My personal portfolio website made using Astro.",
+    tags: ["Astro", "Tailwind CSS", "TypeScript", "GitHub Actions", "Docker"],
+    link: "https://github.com/troylusty/troylusty.com/",
+  },
+  {
+    id: 2,
+    name: "Artwork",
+    description:
+      "A collection of digital artwork created with a variety of tools.",
+    tags: ["Blender"],
+    link: "/projects",
+  },
+  {
+    id: 3,
+    name: "Packard",
+    description: "Terminal based feed checker.",
+    tags: ["Rust", "Tokio", "Clap", "NixOS Flake"],
+    link: "https://github.com/troylusty/packard/",
+  },
+];
+const sortedProjects = [...projects].sort((a, b) => a.id - b.id);
+
+const education = [
+  {
+    id: 1,
+    school: "University of Plymouth",
+    course: "BA (Hons) Game Arts and Design",
+    dates: "2024 - 2025",
+    description: ["1st year: Estimated completion May 2025"],
+  },
+  {
+    id: 2,
+    school: "University Centre South Devon",
+    course: "FdA Games and Interactive Design",
+    dates: "2022 - 2024",
+    description: [
+      "2nd year: 70.25% State Aggregate Mark",
+      "1st year: 69.43% State Aggregate Mark",
+    ],
+  },
+  {
+    id: 3,
+    school: "South Devon College",
+    course:
+      "UAL Level 3 Extended Diploma in Creative Media Production and Technology",
+    dates: "2020 - 2022",
+    description: [
+      "2nd year: Extended Diploma - Distinction",
+      "1st year: Diploma - Distinction",
+    ],
+  },
+  {
+    id: 4,
+    school: "Kennicott Sixth Form",
+    course: "BTEC & A-level",
+    dates: "2018 - 2020",
+    description: [
+      "Pearson BTEC Level 3 National Extended Diploma in Art and Design - Distinction Merit Merit",
+      "AQA GCE/A Computer Science ADV (Python) - C",
+    ],
+  },
+  {
+    id: 5,
+    school: "King Edward VI Community College",
+    course: "GCSEs & Cambridge Nationals qualification",
+    dates: "2014 - 2018",
+    description: [
+      "10 GCSEs including Maths and English",
+      "OCR Cambridge Nationals Creative iMedia Level 1/2 Award/Certificate - Merit at Level 2",
+    ],
+  },
+];
+const sortedEducation = [...education].sort((a, b) => a.id - b.id);
 ---
 
-<!doctype html>
-<html lang="en" class="scroll-smooth antialiased" transition:animate="none">
-  <Head title={CV.TITLE} description={CV.DESCRIPTION} />
-  <body class="w-full font-sans antialiased">
-    <div class="mx-auto max-w-screen-xl">
-      <main class="flex flex-col sm:m-12">
-        <div
-          class="flex flex-col items-center justify-between p-4 sm:flex-row-reverse sm:items-start sm:p-8"
+<Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
+  <div class="animate-reveal flex items-center justify-between opacity-0">
+    <div class="flex-1 space-y-1.5">
+      <h1 class="text-2xl font-bold">{SITE.AUTHOR}</h1><p
+        class="text-secondary/70 max-w-md font-mono text-sm text-pretty"
+      >
+        Digital designer.
+      </p><p
+        class="text-secondary/70 max-w-md items-center font-mono text-xs text-pretty"
+      >
+        <Link
+          class="inline-flex gap-x-1.5 align-baseline leading-none hover:underline"
+          href="https://www.google.com/maps/place/Devon"
         >
-          <div>
-            <Image
-              src={icon}
-              alt="Troy Lusty"
-              class="mx-auto mb-2 w-32 rounded-full"
-              loading="eager"
-            />
-          </div>
-          <div>
-            <h1 class="mb-2 text-5xl font-bold">{SITE.AUTHOR}</h1>
-            <h2 class="mb-2 text-center text-xl italic sm:text-left">
-              Digital Designer
-            </h2>
-            <div
-              class="social-links grid grid-cols-1 gap-1 py-4 font-medium md:grid-cols-2"
-            >
-              <div class="flex items-center">
-                <Icon name="mdi:house" class="mr-2 inline w-6" />
-                Devon, United Kingdom
-              </div>
-              <div class="flex items-center">
-                <Icon name="mdi:globe" class="mr-2 inline w-6" />
-                <a href="/">troylusty.com</a>
-              </div>
-              <div class="flex items-center">
-                <Icon name="mdi:email" class="mr-2 inline w-6" />
-                <a href={`mailto:${SITE.EMAIL}`}>hello@troylusty.com</a>
-              </div>
-              <div class="flex items-center">
-                <Icon name="mdi:house" class="mr-2 inline w-6" />
-                <Link href="https://github.com/troylusty"
-                  >github.com/troylusty</Link
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="flex flex-col sm:flex-row-reverse">
-          <div class="w-full p-4 sm:max-w-sm sm:p-8">
-            <div class="mb-12 px-2 text-lg font-light">
-              <div class="mb-4 flex items-center">
-                <Icon name="mdi:cogs" class="mr-2" />
-                <h2 class="text-xl font-semibold">Skills & Tools</h2>
-              </div>
-              <h3>Programming</h3>
-              <p class="leading-8">
-                <span class="box">Python</span>
-                <span class="box">Rust</span>
-                <span class="box">TypeScript</span>
-              </p>
-              <h3>Development</h3>
-              <p class="leading-8">
-                <span class="box">Git</span>
-                <span class="box">Docker</span>
-                <span class="box">Linux</span>
-                <span class="box">Shopify</span>
-                <span class="box">Astro</span>
-                <span class="box">Steamworks</span>
-              </p>
-              <h3>3D</h3>
-              <p class="leading-8">
-                <span class="box">Blender</span>
-                <span class="box">Godot</span>
-                <span class="box">Unreal Engine</span>
-              </p>
-              <h3>2D</h3>
-              <p class="leading-8">
-                <span class="box">Adobe Photoshop</span>
-                <span class="box">GIMP</span>
-                <span class="box">Inkscape</span>
-                <span class="box">DaVinci Resolve</span>
-                <span class="box">Pixelmator Pro</span>
-              </p>
-              <h3>Other</h3>
-              <p class="leading-8">
-                <span class="box">Full drivers licence (A & B)</span>
-              </p>
-            </div>
-            <div class="mb-12 px-2 text-lg font-light">
-              <div class="mb-4 flex items-center">
-                <Icon name="mdi:chart-timeline-variant-shimmer" class="mr-2" />
-                <h2 class="text-xl font-semibold">Education</h2>
-              </div>
-              <h3 class="font-semibold">BA (Hons) Game Arts and Design</h3>
-              <p>2024 - 2025 University of Plymouth</p>
-              <ol class="list-inside list-disc">
-                <li><small>1st year: Estimated completion May 2025</small></li>
-              </ol>
-              <h3 class="font-semibold">FdA Games and Interactive Design</h3>
-              <p>2022 - 2024 University Centre South Devon</p>
-              <ol class="list-inside list-disc">
-                <li><small>2nd year: 70.25% State Aggregate Mark</small></li>
-                <li><small>1st year: 69.43% State Aggregate Mark</small></li>
-              </ol>
-              <h3 class="font-semibold">
-                UAL Level 3 Extended Diploma in Creative Media Production and
-                Technology
-              </h3>
-              <p>2020 - 2022 South Devon College</p>
-              <ol class="list-inside list-disc">
-                <li><small>2nd year: Extended Diploma - Distinction</small></li>
-                <li><small>1st year: Diploma - Distinction</small></li>
-              </ol>
-              <h3 class="font-semibold">BTEC & A-level</h3>
-              <p>2018 - 2020 Kennicott Sixth Form</p>
-              <ol class="list-inside list-disc">
-                <li>
-                  <small
-                    >Pearson BTEC Level 3 National Extended Diploma in Art and
-                    Design - Distinction Merit Merit</small
-                  >
-                </li>
-                <li>
-                  <small>AQA GCE/A Computer Science ADV (Python) - C</small>
-                </li>
-              </ol>
-              <h3 class="font-semibold">
-                GCSEs & Cambridge Nationals qualification
-              </h3>
-              <p>2014 - 2018 King Edward VI Community College</p>
-              <ol class="list-inside list-disc">
-                <li><small>10 GCSEs including Maths and English</small></li>
-                <li>
-                  <small
-                    >OCR Cambridge Nationals Creative iMedia Level 1/2
-                    Award/Certificate - Merit at Level 2</small
-                  >
-                </li>
-              </ol>
-            </div>
-            <div class="mb-12 px-2 text-lg font-light">
-              <div class="mb-4 flex items-center">
-                <Icon name="mdi:wrench" class="mr-2" />
-                <h2 class="text-xl font-semibold">Other</h2>
-              </div>
-              <h3 class="font-semibold">Production Assistant</h3>
-              <p>2024 SDC Radiant Rumble</p>
-              <h3 class="font-semibold">Photogrammetrist</h3>
-              <p>2023 Paignton Picture House</p>
-            </div>
-            <div class="mb-12 px-2 text-lg font-light">
-              <div class="mb-4 flex items-center">
-                <Icon name="mdi:plane-train" class="mr-2" />
-                <h2 class="text-xl font-semibold">Languages</h2>
-              </div>
-              <h3 class="font-semibold">English</h3>
-              <p>Native</p>
-            </div>
-          </div>
-          <div class="content w-full p-4 sm:p-8">
-            <div class="prose">
-              <h2>Summary</h2>
-              <p>
-                My specific chosen area of focus is design, lighting, and
-                rendering focusing on 3D environments within software such as
-                Blender and Unreal Engine. Using either real-time or offline
-                rendering techniques. In addition to this I also have interests
-                in web development and cyber security.
-              </p>
-              <p>
-                My portfolio of work can be found on my website at <a
-                  href="/projects">troylusty.com/projects</a
-                >.
-              </p>
-            </div>
-            <hr class="mt-8 mb-12" />
-            <div class="prose">
-              <h2>Experience</h2>
-              <div>
-                <h3>Camouflage Store</h3>
-                <section class="mb-6">
-                  <p class="mb-2 italic lg:inline-block lg:w-3/12 lg:align-top">
-                    2020 - Current:
-                  </p>
-                  <p class="w-full lg:inline-block lg:w-8/12">
-                    E-commerce Business Management
-                  </p>
-                </section>
-                <section class="mb-6">
-                  <p class="mb-2 italic lg:inline-block lg:w-3/12 lg:align-top">
-                    Task:
-                  </p>
-                  <p class="w-full lg:inline-block lg:w-8/12">
-                    <Link href="/projects/camouflage-store"
-                      >CMS Migration and Rebrand</Link
-                    >
-                  </p>
-                </section>
-                <section class="mb-6">
-                  <p class="mb-2 italic lg:inline-block lg:w-3/12 lg:align-top">
-                    Description:
-                  </p>
-                  <div class="w-full lg:inline-block lg:w-8/12">
-                    <p>
-                      My role has me in charge of managing an online e-commerce
-                      store in addition to creating, editing, and publishing
-                      informational YouTube and social media content for a
-                      family run outdoors store. This includes the recent
-                      redesign and also any maintenance and general upkeep of
-                      the site with all its related systems.
-                    </p>
-                    <ul>
-                      <li>Migration of content to Shopify</li>
-                      <li>Branding refresh and site redesign</li>
-                      <li>VPS setup and self-hosted analytics platform</li>
-                    </ul>
-                  </div>
-                </section>
-                <section class="mb-6">
-                  <div
-                    class="mb-2 italic lg:inline-block lg:w-3/12 lg:align-top"
-                  >
-                    Tools:
-                  </div>
-                  <div class="w-full lg:inline-block lg:w-8/12">
-                    <span class="box">Shopify</span>
-                    <span class="box">Docker</span>
-                    <span class="box">DaVinci Resolve</span>
-                    <span class="box">Pixelmator Pro</span>
-                    <span class="box">YouTube Creator Studio</span>
-                    <span class="box">GitHub</span>
-                  </div>
-                </section>
-              </div>
-            </div>
-            <hr class="mt-8 mb-12" />
-            <div class="prose">
-              <h2>Projects</h2>
-              <div class="mb-16">
-                <h3>troylusty.com</h3>
-                <section class="mb-6">
-                  <p class="mb-2 italic lg:inline-block lg:w-3/12 lg:align-top">
-                    Personal blog:
-                  </p>
-                  <p class="w-full lg:inline-block lg:w-8/12">
-                    My personal portfolio website made using Astro. A place for
-                    me to share my portfolio of work and anything else I've
-                    learnt.
-                  </p>
-                </section>
-                <section class="mb-6">
-                  <p class="mb-2 italic lg:inline-block lg:w-3/12 lg:align-top">
-                    Deployed to:
-                  </p>
-                  <p class="w-full lg:inline-block lg:w-8/12">
-                    <Link href="/">troylusty.com</Link>
-                  </p>
-                </section>
-                <section class="mb-6">
-                  <p class="mb-2 italic lg:inline-block lg:w-3/12 lg:align-top">
-                    Code on:
-                  </p>
-                  <p class="w-full lg:inline-block lg:w-8/12">
-                    <Link href="https://github.com/troylusty/troylusty.com"
-                      >github.com/troylusty/troylusty.com</Link
-                    >
-                  </p>
-                </section>
-                <section class="mb-6">
-                  <p class="mb-2 italic lg:inline-block lg:w-3/12 lg:align-top">
-                    Features:
-                  </p>
-                  <div class="w-full lg:inline-block lg:w-8/12">
-                    <ul>
-                      <li>Static generation</li>
-                      <li>Blog and project articles written in Markdown/MDX</li>
-                      <li>SEO</li>
-                      <li>RSS feed</li>
-                    </ul>
-                  </div>
-                </section>
-                <section class="mb-6">
-                  <p class="mb-2 italic lg:inline-block lg:w-3/12 lg:align-top">
-                    Built with:
-                  </p>
-                  <div class="mt-5 w-full lg:inline-block lg:w-8/12">
-                    <span class="box">Astro</span>
-                    <span class="box">Tailwind CSS</span>
-                    <span class="box">TypeScript</span>
-                    <span class="box">GitHub Actions</span>
-                    <span class="box">Docker</span>
-                  </div>
-                </section>
-              </div>
-              <div class="mb-16">
-                <h3>Packard</h3>
-                <section class="mb-6">
-                  <p class="mb-2 italic lg:inline-block lg:w-3/12 lg:align-top">
-                    Terminal based feed checker:
-                  </p>
-                  <p class="w-full lg:inline-block lg:w-8/12">
-                    Packard is a simple RSS aggregator meant to allow you to
-                    take a quick glance at what's occurring in topics you care
-                    about.
-                  </p>
-                </section>
-                <section class="mb-6">
-                  <p class="mb-2 italic lg:inline-block lg:w-3/12 lg:align-top">
-                    Code on:
-                  </p>
-                  <p class="w-full lg:inline-block lg:w-8/12">
-                    <Link href="https://github.com/troylusty/packard"
-                      >github.com/troylusty/packard</Link
-                    >
-                  </p>
-                </section>
-                <section class="mb-6">
-                  <p class="mb-2 italic lg:inline-block lg:w-3/12 lg:align-top">
-                    Features:
-                  </p>
-                  <div class="w-full lg:inline-block lg:w-8/12">
-                    <ul>
-                      <li>Fast feed fetching with visual progress updates</li>
-                      <li>Feed lists configurable via TOML</li>
-                      <li>
-                        Command line configuration of selected list and more
-                      </li>
-                      <li>Quickly open feed items as links</li>
-                    </ul>
-                  </div>
-                </section>
-                <section class="mb-6">
-                  <p class="mb-2 italic lg:inline-block lg:w-3/12 lg:align-top">
-                    Built with:
-                  </p>
-                  <div class="mt-5 w-full lg:inline-block lg:w-8/12">
-                    <span class="box">Rust</span>
-                    <span class="box">Tokio</span>
-                    <span class="box">Clap</span>
-                    <span class="box">NixOS Flake</span>
-                  </div>
-                </section>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-    </div>
-  </body>
-</html>
+          <Icon name="mdi:earth" class="h-3 w-3" />
+          Devon, United Kingdom, GMT
+        </Link>
+      </p><div
+        class="text-secondary/70 flex gap-x-1 pt-1 font-mono text-sm print:hidden"
+      >
+        <a
+          href={`mailto:${SITE.EMAIL}`}
+          class="bg-button text-secondary hover:bg-button-active flex w-fit flex-row items-center gap-1 justify-self-center rounded-full p-2 text-center text-sm text-nowrap capitalize transition-colors duration-300"
+        >
+          <Icon name="mdi:email" title="Email" class="h-4 w-4" />
+        </a>
+        <Link
+          href="/"
+          class="bg-button text-secondary hover:bg-button-active flex w-fit flex-row items-center gap-1 justify-self-center rounded-full p-2 text-center text-sm text-nowrap capitalize transition-colors duration-300"
+        >
+          <Icon name="mdi:link-variant" title="Website" class="h-4 w-4" />
+        </Link>
 
-<style>
-  body {
-    color: #3c3c42;
-    background: #f3f1ea;
-  }
-  p,
-  li,
-  h1,
-  h2,
-  h3 {
-    color: #3c3c42;
-    a {
-      color: #3c3c42;
+        <Link
+          href="https://github.com/troylusty"
+          class="bg-button text-secondary hover:bg-button-active flex w-fit flex-row items-center gap-1 justify-self-center rounded-full p-2 text-center text-sm text-nowrap capitalize transition-colors duration-300"
+        >
+          <Icon name="mdi:github" title="GitHub" class="h-4 w-4" />
+        </Link>
+        <Link
+          href="https://store.steampowered.com/developer/troy"
+          class="bg-button text-secondary hover:bg-button-active flex w-fit flex-row items-center gap-1 justify-self-center rounded-full p-2 text-center text-sm text-nowrap capitalize transition-colors duration-300"
+        >
+          <Icon name="mdi:steam" title="Steamworks" class="h-4 w-4" />
+        </Link>
+      </div><div
+        class="text-secondary/70 hidden flex-col gap-x-1 font-mono text-sm print:flex"
+      >
+        <a href={`mailto:${SITE.EMAIL}`}
+          ><span class="underline">{`mailto:${SITE.EMAIL}`}</span></a
+        >
+      </div>
+    </div><span
+      class="relative flex h-28 w-28 shrink-0 overflow-hidden rounded-xl"
+    >
+      <Image
+        src={icon}
+        alt="Troy Lusty"
+        class="aspect-square h-full w-full"
+        loading="eager"
+      />
+    </span>
+  </div>
+
+  <section
+    class="animate-reveal flex min-h-0 flex-col gap-y-3 opacity-0 [animation-delay:0.1s]"
+  >
+    <h2 class="text-xl font-bold">About</h2><p
+      class="text-secondary/70 font-mono text-sm text-pretty"
+    >
+      My specific chosen area of focus is design, lighting, and rendering
+      focusing on 3D environments within software such as Blender and Unreal
+      Engine. Using either real-time or offline rendering techniques. In
+      addition to this I also have interests in web development and cyber
+      security. My portfolio of work can be found on my website at <a
+        href="/projects"
+        class="underline hover:no-underline">troylusty.com/projects</a
+      >.
+    </p>
+  </section>
+  <section
+    class="animate-reveal flex min-h-0 flex-col gap-y-3 opacity-0 [animation-delay:0.2s]"
+  >
+    <h2 class="text-xl font-bold">Experience</h2>
+    <div>
+      <div class="flex flex-col space-y-1.5">
+        <div class="flex items-center justify-between gap-x-2 text-base">
+          <h3
+            class="inline-flex items-center justify-center gap-x-1 leading-none font-semibold"
+          >
+            <Link class="hover:underline" href="https://camouflagestore.uk/"
+              >Camouflage Store</Link
+            >
+          </h3><div class="text-tertiary text-sm tabular-nums">
+            2020 - Current
+          </div>
+        </div><h4 class="font-mono text-sm leading-none">
+          E-commerce Business Management
+        </h4>
+      </div><div class="text-secondary/70 mt-2 font-mono text-xs text-pretty">
+        My role has me in charge of managing an online e-commerce store in
+        addition to creating, editing, and publishing informational YouTube and
+        social media content for a family run outdoors store. This includes the
+        recent redesign and also any maintenance and general upkeep of the site
+        with all its related systems.
+        <ul class="mt-2 list-inside list-disc">
+          <li>Migration of content to Shopify</li>
+          <li>Branding refresh and site redesign</li>
+          <li>VPS setup and self-hosted analytics platform</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="flex flex-col space-y-1.5">
+        <div class="flex items-center justify-between gap-x-2 text-base">
+          <h3
+            class="inline-flex items-center justify-center gap-x-1 leading-none font-semibold"
+          >
+            Smaller Roles
+          </h3>
+        </div>
+        <h4 class="font-mono text-sm leading-none">Production Assistant</h4>
+      </div><div class="text-secondary/70 mt-2 font-mono text-xs text-pretty">
+        SDC Radiant Rumble (2024)
+      </div>
+      <h4 class="mt-2 font-mono text-sm leading-none">Photogrammetrist</h4>
+      <div class="text-secondary/70 mt-2 font-mono text-xs text-pretty">
+        Paignton Picture House (2023)
+      </div>
+    </div>
+  </section>
+  <section
+    class="animate-reveal flex min-h-0 flex-col gap-y-3 opacity-0 [animation-delay:0.3s]"
+  >
+    <h2 class="text-xl font-bold">Education</h2>
+    {
+      sortedEducation.map((education) => (
+        <div>
+          <div class="flex flex-col space-y-1.5">
+            <div class="flex items-center justify-between gap-x-2 text-base">
+              <h3 class="leading-none font-semibold">{education.school}</h3>
+              <div class="text-tertiary text-sm tabular-nums">
+                {education.dates}
+              </div>
+            </div>
+          </div>
+          <div class="text-secondary mt-2 font-mono text-sm text-pretty">
+            {education.course}
+            <ul class="text-secondary/70 mt-2 list-inside list-disc text-xs">
+              {education.description.map((line) => (
+                <li>{line}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))
     }
-  }
-  a {
-    text-decoration-style: wavy;
-    text-decoration-color: #3c3c42;
-  }
-  hr {
-    color: #d4d2cc;
-  }
-  .social-links {
-    color: #78787e;
-  }
-  .box {
-    border-radius: var(--radius-md);
-    background: #d4d2cc;
-    color: #3c3c42;
-    padding-inline: calc(var(--spacing) * 2);
-    font-weight: var(--font-weight-medium);
-  }
-</style>
+  </section>
+  <section
+    class="animate-reveal flex min-h-0 flex-col gap-y-3 opacity-0 [animation-delay:0.4s]"
+  >
+    <h2 class="text-xl font-bold">Skills & Tools</h2><div
+      class="flex flex-wrap gap-1"
+    >
+      {
+        sortedSkills.map((skill) => (
+          <li class="bg-button text-secondary hover:bg-button-active flex w-fit flex-row items-center gap-1 justify-self-center rounded-full px-2 py-1 text-center text-xs text-nowrap capitalize transition-colors duration-300">
+            {skill.name}
+          </li>
+        ))
+      }
+    </div>
+  </section>
+  <section
+    class="animate-reveal flex min-h-0 scroll-mb-16 flex-col gap-y-3 opacity-0 [animation-delay:0.5s]"
+  >
+    <h2 class="text-xl font-bold">Projects</h2>
+    <ol
+      class="-mx-3 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 print:grid-cols-3 print:gap-2"
+    >
+      {
+        sortedProjects.map((project) => (
+          <li class="flex flex-col overflow-hidden rounded-lg p-3">
+            <div class="flex flex-col space-y-1.5">
+              <div class="space-y-1">
+                <>
+                  <h3 class="text-base font-semibold tracking-tight">
+                    <Link
+                      href={project.link}
+                      class="text-secondary inline-flex items-center gap-1 hover:underline"
+                    >
+                      <span class="mr-1 h-1 w-1 rounded-full bg-green-500" />
+                      {project.name}
+                    </Link>
+                  </h3>
+                  <div class="hidden font-mono text-xs underline print:visible">
+                    {project.name}
+                  </div>
+                  <p class="text-secondary/70 font-mono text-xs">
+                    {project.description}
+                  </p>
+                </>
+              </div>
+            </div>
+            <div class="mt-auto flex font-mono text-sm text-pretty">
+              <div class="mt-2 flex flex-wrap gap-1">
+                {project.tags.map((tag) => (
+                  <div class="bg-button text-secondary hover:bg-button-active flex w-fit flex-row items-center gap-1 justify-self-center rounded-full px-2 py-1 text-center font-sans text-[10px] font-light text-nowrap capitalize transition-colors duration-300">
+                    {tag}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+</Layout>

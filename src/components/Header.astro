@@ -9,15 +9,13 @@ const currentPath = pathname.replace(/\/$/, "");
 
 <header class="mx-auto w-full">
   <nav class="flex w-full justify-between">
-    <div class="flex w-fit items-center justify-between">
-      <a href="/" aria-label={SITE.TITLE} title={SITE.TITLE} class="group">
-        <Icon
-          name="icon"
-          title={SITE.TITLE}
-          class="hover:text-tertiary h-8 w-auto transition-colors duration-500 ease-in-out"
-        />
-      </a>
-    </div>
+    <a href="/" aria-label={SITE.TITLE} title={SITE.TITLE}>
+      <Icon
+        name="icon"
+        title={SITE.TITLE}
+        class="hover:text-tertiary h-8 w-auto transition-colors duration-500 ease-in-out"
+      />
+    </a>
     <ul class="flex w-fit flex-row items-center gap-4">
       {
         SITE.NAVLINKS.map((link) => {
@@ -27,7 +25,11 @@ const currentPath = pathname.replace(/\/$/, "");
             <li class="text-tertiary hover:text-secondary focus:text-secondary font-medium capitalize transition-colors duration-300 focus:outline-hidden">
               <a
                 href={link.href}
-                class:list={[isActive ? "text-secondary" : null]}
+                class:list={[
+                  isActive
+                    ? "text-secondary hover:text-tertiary transition-colors duration-300"
+                    : null,
+                ]}
               >
                 {link.name}
               </a>

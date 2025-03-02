@@ -1,12 +1,12 @@
-FROM oven/bun:latest as bun
-USER bun
+FROM node:latest as node
+USER node
 WORKDIR /usr/src/app
 
 COPY . .
 
-RUN ["bun", "install", "--frozen-lockfile"]
-RUN ["bunx", "--bun", "astro", "build"]
+RUN ["npm", "ci"]
+RUN ["npx", "astro", "build"]
 
 FROM ghcr.io/static-web-server/static-web-server:latest
 WORKDIR /
-COPY --from=bun /usr/src/app/dist /public
+COPY --from=node /usr/src/app/dist /public
