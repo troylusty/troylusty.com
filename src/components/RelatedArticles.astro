@@ -19,7 +19,7 @@ const next = items[(index + 1) % items.length];
 
 {
   items.length > 1 ? (
-    <div class="mx-auto flex w-full flex-col-reverse items-center justify-between gap-4 md:flex-row">
+    <div class="animate-reveal mx-auto flex w-full flex-col-reverse items-center justify-between gap-4 opacity-0 [animation-delay:0.1s] md:flex-row">
       <Button
         href={`/${prev.collection}/${prev.slug}`}
         link={`Previous: ${prev.data.title}`}
