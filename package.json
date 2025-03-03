@@ -9,7 +9,7 @@
     "astro": "astro",
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
-    "update": "npx npm-check-updates -u"
+    "update": "npx npm-check-updates -u && npm install"
   },
   "dependencies": {
     "@astrojs/check": "0.9.4",
